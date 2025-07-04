@@ -8,6 +8,9 @@ import platform
 import time
 import datetime
 import socket
+from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
+from werkzeug.security import generate_password_hash, check_password_hash
+
 # =========================================================
 # GASTOS FIJOS
 # =========================================================
@@ -23,6 +26,16 @@ efectivo = 15000
 # =========================================================
 # CLASES
 # =========================================================
+
+class User(UserMixin):
+    def __init__(self, id, username, password_hash):
+        self.id = id
+        self.username = username
+        self.password_hash = password_hash
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
 
 class Ingreso:
     def __init__(self, id, fecha, monto, nota, cuenta):
@@ -54,6 +67,32 @@ class Notas:
 # =========================================================
 # FUNCIONES
 # =========================================================
+
+def cargar_usuarios(archivo):
+    usuarios = []
+    if os.path.exists(archivo):
+        with open(archivo, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            for item in data:
+                usuarios.append(User(
+                    item["id"],
+                    item["username"],
+                    item["password_hash"]
+                ))
+    return usuarios
+
+def guardar_usuarios(lista, archivo):
+    data = []
+    for user in lista:
+        data.append({
+            "id": user.id,
+            "username": user.username,
+            "password_hash": user.password_hash
+        })
+    with open(archivo, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=4)
+
+
 
 def cargar_ingresos(archivo):
     lista = []
@@ -151,7 +190,19 @@ def guardar_nota(lista, archivo):
 
 app = Flask(__name__)
 
+login_manager = LoginManager()
+login_manager.login_view = "login"
+login_manager.init_app(app)
+
+usuarios = cargar_usuarios("users.json")
+
+@login_manager.user_loader
+def load_user(user_id):
+    return next((u for u in usuarios if str(u.id) == str(user_id)), None)
+
+
 @app.route("/")
+@login_required
 def index():
     ingresos = cargar_ingresos("ingresos.json")
     gastos = cargar_gastos("gastos.json")
@@ -426,6 +477,31 @@ def api_vps():
     })
 
 
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+
+        user = next((u for u in usuarios if u.username == username), None)
+        if user and user.check_password(password):
+            login_user(user)
+            return redirect(url_for("index"))
+        else:
+            return "Usuario o contraseña incorrectos.", 401
+
+    return render_template("login.html")
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("login"))
+
+
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=5000, debug=True)
      
+
+
+app.secret_key = "superclaveultrasecreta123"
