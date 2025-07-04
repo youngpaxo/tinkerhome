@@ -10,6 +10,8 @@ import datetime
 import socket
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Flask, render_template, request, redirect, url_for, jsonify, make_response
+
 
 # =========================================================
 # GASTOS FIJOS
@@ -213,17 +215,18 @@ def index():
     saldo_neto = total_ingresos - total_gastos
     total_notas = len(notas)
 
-    # Ejemplo de info para U. de Chile
     proximo_partido = "U. de Chile vs Colo Colo - Domingo 16:30"
 
-    return render_template(
+    response = make_response(render_template(
         "vps.html",
         total_ingresos=total_ingresos,
         total_gastos=total_gastos,
         saldo_neto=saldo_neto,
         total_notas=total_notas,
         proximo_partido=proximo_partido,
-    )
+    ))
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    return response
 
 
 @app.route("/ingresos", methods=["GET", "POST"])

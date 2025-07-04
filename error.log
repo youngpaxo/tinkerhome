@@ -625,3 +625,804 @@ ModuleNotFoundError: No module named 'psutil'
 [2025-07-03 18:48:53 +0000] [15877] [INFO] Worker exiting (pid: 15877)
 [2025-07-03 18:48:53 +0000] [15883] [INFO] Parent changed, shutting down: <Worker 15883>
 [2025-07-03 18:48:53 +0000] [15883] [INFO] Worker exiting (pid: 15883)
+[2025-07-04 13:59:12 +0000] [11496] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['127.0.0.1:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /root
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1', '::1']
+  accesslog: /var/www/ingresos-gastos/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /var/www/ingresos-gastos/error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x71a734434f40>
+  on_reload: <function OnReload.on_reload at 0x71a734435080>
+  when_ready: <function WhenReady.when_ready at 0x71a7344351c0>
+  pre_fork: <function Prefork.pre_fork at 0x71a7344353a0>
+  post_fork: <function Postfork.post_fork at 0x71a7344354e0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x71a734435620>
+  worker_int: <function WorkerInt.worker_int at 0x71a734435760>
+  worker_abort: <function WorkerAbort.worker_abort at 0x71a7344358a0>
+  pre_exec: <function PreExec.pre_exec at 0x71a7344359e0>
+  pre_request: <function PreRequest.pre_request at 0x71a734435b20>
+  post_request: <function PostRequest.post_request at 0x71a734435bc0>
+  child_exit: <function ChildExit.child_exit at 0x71a734435d00>
+  worker_exit: <function WorkerExit.worker_exit at 0x71a734435e40>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x71a734435f80>
+  on_exit: <function OnExit.on_exit at 0x71a7344360c0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x71a7344362a0>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1', '::1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  permit_obsolete_folding: False
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  forwarder_headers: ['SCRIPT_NAME', 'PATH_INFO']
+  header_map: drop
+[2025-07-04 13:59:12 +0000] [11496] [INFO] Starting gunicorn 23.0.0
+[2025-07-04 13:59:12 +0000] [11496] [DEBUG] Arbiter booted
+[2025-07-04 13:59:12 +0000] [11496] [INFO] Listening at: http://127.0.0.1:8000 (11496)
+[2025-07-04 13:59:12 +0000] [11496] [INFO] Using worker: sync
+[2025-07-04 13:59:12 +0000] [11497] [INFO] Booting worker with pid: 11497
+[2025-07-04 13:59:12 +0000] [11497] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+    ~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+                    ~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'app'
+[2025-07-04 13:59:12 +0000] [11497] [INFO] Worker exiting (pid: 11497)
+[2025-07-04 13:59:12 +0000] [11496] [ERROR] Worker (pid:11497) exited with code 3
+[2025-07-04 13:59:12 +0000] [11496] [ERROR] Shutting down: Master
+[2025-07-04 13:59:12 +0000] [11496] [ERROR] Reason: Worker failed to boot.
+[2025-07-04 14:00:44 +0000] [11528] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['127.0.0.1:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /var/www/ingresos-gastos
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1', '::1']
+  accesslog: /var/www/ingresos-gastos/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /var/www/ingresos-gastos/error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x75f630a34f40>
+  on_reload: <function OnReload.on_reload at 0x75f630a35080>
+  when_ready: <function WhenReady.when_ready at 0x75f630a351c0>
+  pre_fork: <function Prefork.pre_fork at 0x75f630a353a0>
+  post_fork: <function Postfork.post_fork at 0x75f630a354e0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x75f630a35620>
+  worker_int: <function WorkerInt.worker_int at 0x75f630a35760>
+  worker_abort: <function WorkerAbort.worker_abort at 0x75f630a358a0>
+  pre_exec: <function PreExec.pre_exec at 0x75f630a359e0>
+  pre_request: <function PreRequest.pre_request at 0x75f630a35b20>
+  post_request: <function PostRequest.post_request at 0x75f630a35bc0>
+  child_exit: <function ChildExit.child_exit at 0x75f630a35d00>
+  worker_exit: <function WorkerExit.worker_exit at 0x75f630a35e40>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x75f630a35f80>
+  on_exit: <function OnExit.on_exit at 0x75f630a360c0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x75f630a362a0>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1', '::1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  permit_obsolete_folding: False
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  forwarder_headers: ['SCRIPT_NAME', 'PATH_INFO']
+  header_map: drop
+[2025-07-04 14:00:44 +0000] [11528] [INFO] Starting gunicorn 23.0.0
+[2025-07-04 14:00:44 +0000] [11528] [DEBUG] Arbiter booted
+[2025-07-04 14:00:44 +0000] [11528] [INFO] Listening at: http://127.0.0.1:8000 (11528)
+[2025-07-04 14:00:44 +0000] [11528] [INFO] Using worker: sync
+[2025-07-04 14:00:44 +0000] [11529] [INFO] Booting worker with pid: 11529
+[2025-07-04 14:00:44 +0000] [11528] [DEBUG] 1 workers
+[2025-07-04 14:01:02 +0000] [11528] [INFO] Handling signal: int
+[2025-07-04 14:01:02 +0000] [11529] [INFO] Worker exiting (pid: 11529)
+[2025-07-04 14:01:02 +0000] [11528] [INFO] Shutting down: Master
+[2025-07-04 14:01:14 +0000] [11538] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['127.0.0.1:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /var/www/ingresos-gastos
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1', '::1']
+  accesslog: /var/www/ingresos-gastos/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /var/www/ingresos-gastos/error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x742a2b230f40>
+  on_reload: <function OnReload.on_reload at 0x742a2b231080>
+  when_ready: <function WhenReady.when_ready at 0x742a2b2311c0>
+  pre_fork: <function Prefork.pre_fork at 0x742a2b2313a0>
+  post_fork: <function Postfork.post_fork at 0x742a2b2314e0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x742a2b231620>
+  worker_int: <function WorkerInt.worker_int at 0x742a2b231760>
+  worker_abort: <function WorkerAbort.worker_abort at 0x742a2b2318a0>
+  pre_exec: <function PreExec.pre_exec at 0x742a2b2319e0>
+  pre_request: <function PreRequest.pre_request at 0x742a2b231b20>
+  post_request: <function PostRequest.post_request at 0x742a2b231bc0>
+  child_exit: <function ChildExit.child_exit at 0x742a2b231d00>
+  worker_exit: <function WorkerExit.worker_exit at 0x742a2b231e40>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x742a2b231f80>
+  on_exit: <function OnExit.on_exit at 0x742a2b2320c0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x742a2b2322a0>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1', '::1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  permit_obsolete_folding: False
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  forwarder_headers: ['SCRIPT_NAME', 'PATH_INFO']
+  header_map: drop
+[2025-07-04 14:01:14 +0000] [11538] [INFO] Starting gunicorn 23.0.0
+[2025-07-04 14:01:14 +0000] [11538] [DEBUG] Arbiter booted
+[2025-07-04 14:01:14 +0000] [11538] [INFO] Listening at: http://127.0.0.1:8000 (11538)
+[2025-07-04 14:01:14 +0000] [11538] [INFO] Using worker: sync
+[2025-07-04 14:01:14 +0000] [11539] [INFO] Booting worker with pid: 11539
+[2025-07-04 14:01:14 +0000] [11538] [DEBUG] 1 workers
+[2025-07-04 14:01:25 +0000] [11538] [INFO] Handling signal: int
+[2025-07-04 14:01:25 +0000] [11539] [INFO] Worker exiting (pid: 11539)
+[2025-07-04 14:01:25 +0000] [11538] [INFO] Shutting down: Master
+[2025-07-04 14:13:49 +0000] [12217] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['127.0.0.1:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /var/www/ingresos-gastos
+  daemon: True
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1', '::1']
+  accesslog: /var/www/ingresos-gastos/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /var/www/ingresos-gastos/error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x72ae9c930f40>
+  on_reload: <function OnReload.on_reload at 0x72ae9c931080>
+  when_ready: <function WhenReady.when_ready at 0x72ae9c9311c0>
+  pre_fork: <function Prefork.pre_fork at 0x72ae9c9313a0>
+  post_fork: <function Postfork.post_fork at 0x72ae9c9314e0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x72ae9c931620>
+  worker_int: <function WorkerInt.worker_int at 0x72ae9c931760>
+  worker_abort: <function WorkerAbort.worker_abort at 0x72ae9c9318a0>
+  pre_exec: <function PreExec.pre_exec at 0x72ae9c9319e0>
+  pre_request: <function PreRequest.pre_request at 0x72ae9c931b20>
+  post_request: <function PostRequest.post_request at 0x72ae9c931bc0>
+  child_exit: <function ChildExit.child_exit at 0x72ae9c931d00>
+  worker_exit: <function WorkerExit.worker_exit at 0x72ae9c931e40>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x72ae9c931f80>
+  on_exit: <function OnExit.on_exit at 0x72ae9c9320c0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x72ae9c9322a0>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1', '::1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  permit_obsolete_folding: False
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  forwarder_headers: ['SCRIPT_NAME', 'PATH_INFO']
+  header_map: drop
+[2025-07-04 14:13:49 +0000] [12217] [INFO] Starting gunicorn 23.0.0
+[2025-07-04 14:13:49 +0000] [12217] [DEBUG] Arbiter booted
+[2025-07-04 14:13:49 +0000] [12217] [INFO] Listening at: http://127.0.0.1:8000 (12217)
+[2025-07-04 14:13:49 +0000] [12217] [INFO] Using worker: sync
+[2025-07-04 14:13:49 +0000] [12218] [INFO] Booting worker with pid: 12218
+[2025-07-04 14:13:49 +0000] [12217] [DEBUG] 1 workers
+[2025-07-04 14:13:52 +0000] [12222] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['127.0.0.1:8000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /var/www/ingresos-gastos
+  daemon: True
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1', '::1']
+  accesslog: /var/www/ingresos-gastos/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /var/www/ingresos-gastos/error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7742f2b24f40>
+  on_reload: <function OnReload.on_reload at 0x7742f2b25080>
+  when_ready: <function WhenReady.when_ready at 0x7742f2b251c0>
+  pre_fork: <function Prefork.pre_fork at 0x7742f2b253a0>
+  post_fork: <function Postfork.post_fork at 0x7742f2b254e0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7742f2b25620>
+  worker_int: <function WorkerInt.worker_int at 0x7742f2b25760>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7742f2b258a0>
+  pre_exec: <function PreExec.pre_exec at 0x7742f2b259e0>
+  pre_request: <function PreRequest.pre_request at 0x7742f2b25b20>
+  post_request: <function PostRequest.post_request at 0x7742f2b25bc0>
+  child_exit: <function ChildExit.child_exit at 0x7742f2b25d00>
+  worker_exit: <function WorkerExit.worker_exit at 0x7742f2b25e40>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7742f2b25f80>
+  on_exit: <function OnExit.on_exit at 0x7742f2b260c0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7742f2b262a0>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1', '::1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  permit_obsolete_folding: False
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  forwarder_headers: ['SCRIPT_NAME', 'PATH_INFO']
+  header_map: drop
+[2025-07-04 14:13:52 +0000] [12222] [INFO] Starting gunicorn 23.0.0
+[2025-07-04 14:13:52 +0000] [12222] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2025-07-04 14:13:52 +0000] [12222] [ERROR] connection to ('127.0.0.1', 8000) failed: [Errno 98] Address already in use
+[2025-07-04 14:13:52 +0000] [12222] [DEBUG] Retrying in 1 second.
+[2025-07-04 14:13:53 +0000] [12222] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2025-07-04 14:13:53 +0000] [12222] [ERROR] connection to ('127.0.0.1', 8000) failed: [Errno 98] Address already in use
+[2025-07-04 14:13:53 +0000] [12222] [DEBUG] Retrying in 1 second.
+[2025-07-04 14:13:54 +0000] [12222] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2025-07-04 14:13:54 +0000] [12222] [ERROR] connection to ('127.0.0.1', 8000) failed: [Errno 98] Address already in use
+[2025-07-04 14:13:54 +0000] [12222] [DEBUG] Retrying in 1 second.
+[2025-07-04 14:13:55 +0000] [12222] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2025-07-04 14:13:55 +0000] [12222] [ERROR] connection to ('127.0.0.1', 8000) failed: [Errno 98] Address already in use
+[2025-07-04 14:13:55 +0000] [12222] [DEBUG] Retrying in 1 second.
+[2025-07-04 14:13:56 +0000] [12222] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2025-07-04 14:13:56 +0000] [12222] [ERROR] connection to ('127.0.0.1', 8000) failed: [Errno 98] Address already in use
+[2025-07-04 14:13:56 +0000] [12222] [DEBUG] Retrying in 1 second.
+[2025-07-04 14:13:57 +0000] [12222] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2025-07-04 14:17:24 +0000] [12218] [INFO] Worker exiting (pid: 12218)
+[2025-07-04 14:17:24 +0000] [12217] [INFO] Handling signal: term
+[2025-07-04 14:17:24 +0000] [12217] [ERROR] Worker (pid:12218) was sent SIGTERM!
+[2025-07-04 14:17:24 +0000] [12217] [INFO] Shutting down: Master
+[2025-07-04 14:17:29 +0000] [12552] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['127.0.0.1:5000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /var/www/ingresos-gastos
+  daemon: True
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1', '::1']
+  accesslog: /var/www/ingresos-gastos/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /var/www/ingresos-gastos/error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7ab029330f40>
+  on_reload: <function OnReload.on_reload at 0x7ab029331080>
+  when_ready: <function WhenReady.when_ready at 0x7ab0293311c0>
+  pre_fork: <function Prefork.pre_fork at 0x7ab0293313a0>
+  post_fork: <function Postfork.post_fork at 0x7ab0293314e0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7ab029331620>
+  worker_int: <function WorkerInt.worker_int at 0x7ab029331760>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7ab0293318a0>
+  pre_exec: <function PreExec.pre_exec at 0x7ab0293319e0>
+  pre_request: <function PreRequest.pre_request at 0x7ab029331b20>
+  post_request: <function PostRequest.post_request at 0x7ab029331bc0>
+  child_exit: <function ChildExit.child_exit at 0x7ab029331d00>
+  worker_exit: <function WorkerExit.worker_exit at 0x7ab029331e40>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7ab029331f80>
+  on_exit: <function OnExit.on_exit at 0x7ab0293320c0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7ab0293322a0>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1', '::1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  permit_obsolete_folding: False
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  forwarder_headers: ['SCRIPT_NAME', 'PATH_INFO']
+  header_map: drop
+[2025-07-04 14:17:29 +0000] [12552] [INFO] Starting gunicorn 23.0.0
+[2025-07-04 14:17:29 +0000] [12552] [DEBUG] Arbiter booted
+[2025-07-04 14:17:29 +0000] [12552] [INFO] Listening at: http://127.0.0.1:5000 (12552)
+[2025-07-04 14:17:29 +0000] [12552] [INFO] Using worker: sync
+[2025-07-04 14:17:29 +0000] [12553] [INFO] Booting worker with pid: 12553
+[2025-07-04 14:17:29 +0000] [12552] [DEBUG] 1 workers
+[2025-07-04 14:17:32 +0000] [12553] [DEBUG] GET /
+[2025-07-04 14:17:32,641] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/app.py", line 218, in index
+    response = make_response(render_template(
+               ^^^^^^^^^^^^^
+NameError: name 'make_response' is not defined
+[2025-07-04 14:22:03 +0000] [12553] [DEBUG] GET /
+[2025-07-04 14:22:03,159] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/app.py", line 218, in index
+    proximo_partido = "U. de Chile vs Colo Colo - Domingo 16:30"
+               ^^^^^^^^^^^^^
+NameError: name 'make_response' is not defined
+[2025-07-04 14:22:30 +0000] [12553] [DEBUG] GET /
+[2025-07-04 14:23:41 +0000] [12552] [INFO] Handling signal: term
+[2025-07-04 14:23:41 +0000] [12553] [INFO] Worker exiting (pid: 12553)
+[2025-07-04 14:23:42 +0000] [13002] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['127.0.0.1:5000']
+  backlog: 2048
+  workers: 1
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /var/www/ingresos-gastos
+  daemon: True
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 0
+  group: 0
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1', '::1']
+  accesslog: /var/www/ingresos-gastos/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /var/www/ingresos-gastos/error.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x75dc76e34f40>
+  on_reload: <function OnReload.on_reload at 0x75dc76e35080>
+  when_ready: <function WhenReady.when_ready at 0x75dc76e351c0>
+  pre_fork: <function Prefork.pre_fork at 0x75dc76e353a0>
+  post_fork: <function Postfork.post_fork at 0x75dc76e354e0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x75dc76e35620>
+  worker_int: <function WorkerInt.worker_int at 0x75dc76e35760>
+  worker_abort: <function WorkerAbort.worker_abort at 0x75dc76e358a0>
+  pre_exec: <function PreExec.pre_exec at 0x75dc76e359e0>
+  pre_request: <function PreRequest.pre_request at 0x75dc76e35b20>
+  post_request: <function PostRequest.post_request at 0x75dc76e35bc0>
+  child_exit: <function ChildExit.child_exit at 0x75dc76e35d00>
+  worker_exit: <function WorkerExit.worker_exit at 0x75dc76e35e40>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x75dc76e35f80>
+  on_exit: <function OnExit.on_exit at 0x75dc76e360c0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x75dc76e362a0>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1', '::1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  permit_obsolete_folding: False
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  forwarder_headers: ['SCRIPT_NAME', 'PATH_INFO']
+  header_map: drop
+[2025-07-04 14:23:42 +0000] [13002] [INFO] Starting gunicorn 23.0.0
+[2025-07-04 14:23:42 +0000] [13002] [DEBUG] Arbiter booted
+[2025-07-04 14:23:42 +0000] [13002] [INFO] Listening at: http://127.0.0.1:5000 (13002)
+[2025-07-04 14:23:42 +0000] [13002] [INFO] Using worker: sync
+[2025-07-04 14:23:42 +0000] [13003] [INFO] Booting worker with pid: 13003
+[2025-07-04 14:23:42 +0000] [12552] [INFO] Shutting down: Master
+[2025-07-04 14:23:42 +0000] [13002] [DEBUG] 1 workers
+[2025-07-04 14:23:45 +0000] [13003] [DEBUG] GET /
+[2025-07-04 14:23:45 +0000] [13003] [DEBUG] GET /static/style.css
+[2025-07-04 14:24:19 +0000] [13003] [DEBUG] GET /ingresos
+[2025-07-04 14:24:20 +0000] [13003] [DEBUG] GET /static/style.css
+[2025-07-04 14:36:33 +0000] [13003] [DEBUG] GET /
+[2025-07-04 14:36:33 +0000] [13003] [DEBUG] GET /login
