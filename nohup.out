@@ -1,0 +1,472 @@
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://31.97.245.157:5000
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 467-382-725
+172.226.126.36 - - [02/Jul/2025 03:33:50] "GET / HTTP/1.1" 200 -
+172.226.126.36 - - [02/Jul/2025 03:33:51] "GET /static/style.css HTTP/1.1" 200 -
+172.226.126.36 - - [02/Jul/2025 03:34:05] "GET / HTTP/1.1" 200 -
+172.226.126.36 - - [02/Jul/2025 03:34:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+172.226.126.36 - - [02/Jul/2025 03:34:07] "GET /ingresos HTTP/1.1" 200 -
+172.226.126.36 - - [02/Jul/2025 03:34:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 03:35:05] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 03:35:06] "GET /static/style.css HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 03:35:06] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+181.43.210.43 - - [02/Jul/2025 03:35:23] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 03:35:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 03:35:54] "[32mPOST /gastos HTTP/1.1[0m" 302 -
+181.43.210.43 - - [02/Jul/2025 03:35:54] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 03:35:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 03:36:14] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 03:36:14] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+186.9.147.34 - - [02/Jul/2025 03:42:06] "GET / HTTP/1.1" 200 -
+186.9.147.34 - - [02/Jul/2025 03:42:07] "GET /static/style.css HTTP/1.1" 200 -
+186.9.147.34 - - [02/Jul/2025 03:42:07] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+186.9.147.34 - - [02/Jul/2025 03:42:30] "GET /gastos HTTP/1.1" 200 -
+186.9.147.34 - - [02/Jul/2025 03:42:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+186.9.147.34 - - [02/Jul/2025 03:44:04] "GET / HTTP/1.1" 200 -
+186.9.147.34 - - [02/Jul/2025 03:44:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+186.9.147.34 - - [02/Jul/2025 03:44:07] "GET /ingresos HTTP/1.1" 200 -
+186.9.147.34 - - [02/Jul/2025 03:44:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+186.9.147.34 - - [02/Jul/2025 03:44:37] "[32mPOST /ingresos HTTP/1.1[0m" 302 -
+186.9.147.34 - - [02/Jul/2025 03:44:37] "GET /ingresos HTTP/1.1" 200 -
+186.9.147.34 - - [02/Jul/2025 03:44:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+186.9.147.34 - - [02/Jul/2025 03:46:40] "GET / HTTP/1.1" 200 -
+186.9.147.34 - - [02/Jul/2025 03:46:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 03:47:02] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 03:47:03] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+186.9.147.34 - - [02/Jul/2025 03:47:27] "GET / HTTP/1.1" 200 -
+186.9.147.34 - - [02/Jul/2025 03:47:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+186.9.147.34 - - [02/Jul/2025 03:47:35] "GET /ingresos HTTP/1.1" 200 -
+186.9.147.34 - - [02/Jul/2025 03:47:35] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+186.9.147.34 - - [02/Jul/2025 03:47:51] "GET / HTTP/1.1" 200 -
+186.9.147.34 - - [02/Jul/2025 03:47:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+186.9.147.34 - - [02/Jul/2025 03:47:53] "GET /ingresos HTTP/1.1" 200 -
+186.9.147.34 - - [02/Jul/2025 03:47:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+186.9.147.34 - - [02/Jul/2025 03:47:58] "GET /notas HTTP/1.1" 200 -
+186.9.147.34 - - [02/Jul/2025 03:47:58] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+186.9.147.34 - - [02/Jul/2025 03:49:50] "[32mPOST /notas HTTP/1.1[0m" 302 -
+186.9.147.34 - - [02/Jul/2025 03:49:50] "GET /notas HTTP/1.1" 200 -
+186.9.147.34 - - [02/Jul/2025 03:49:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+186.9.147.34 - - [02/Jul/2025 03:50:01] "GET / HTTP/1.1" 200 -
+186.9.147.34 - - [02/Jul/2025 03:50:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 03:50:02] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 03:50:02] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+186.9.147.34 - - [02/Jul/2025 03:52:36] "GET / HTTP/1.1" 200 -
+186.9.147.34 - - [02/Jul/2025 03:52:36] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+186.9.147.34 - - [02/Jul/2025 03:52:39] "GET /ingresos HTTP/1.1" 200 -
+186.9.147.34 - - [02/Jul/2025 03:52:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+186.9.147.34 - - [02/Jul/2025 03:52:43] "GET /notas HTTP/1.1" 200 -
+186.9.147.34 - - [02/Jul/2025 03:52:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 03:55:19] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 03:55:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+172.226.126.38 - - [02/Jul/2025 03:55:22] "GET /notas HTTP/1.1" 200 -
+172.226.126.38 - - [02/Jul/2025 03:55:22] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 03:55:23] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 03:55:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 03:55:33] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 03:55:34] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+172.226.126.44 - - [02/Jul/2025 04:26:10] "[35m[1mGET /notas HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/app.py", line 243, in notas
+    return render_template("notas.html", notas=lista)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 96, in _get_source_fast
+    return loader.get_source(environment, template)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/loaders.py", line 215, in get_source
+    contents = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xd3 in position 1141: invalid continuation byte
+172.226.126.44 - - [02/Jul/2025 04:26:10] "GET /notas?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+172.226.126.44 - - [02/Jul/2025 04:26:10] "GET /notas?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+172.226.126.44 - - [02/Jul/2025 04:26:11] "GET /notas?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+172.226.126.44 - - [02/Jul/2025 04:26:12] "[35m[1mGET /notas HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/app.py", line 243, in notas
+    return render_template("notas.html", notas=lista)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 96, in _get_source_fast
+    return loader.get_source(environment, template)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/loaders.py", line 215, in get_source
+    contents = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xd3 in position 1141: invalid continuation byte
+172.226.126.44 - - [02/Jul/2025 04:26:12] "[36mGET /notas?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+172.226.126.44 - - [02/Jul/2025 04:26:12] "[36mGET /notas?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+172.226.126.44 - - [02/Jul/2025 04:26:19] "[35m[1mGET /notas HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/app.py", line 243, in notas
+    return render_template("notas.html", notas=lista)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 96, in _get_source_fast
+    return loader.get_source(environment, template)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/loaders.py", line 215, in get_source
+    contents = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xd3 in position 1141: invalid continuation byte
+172.226.126.44 - - [02/Jul/2025 04:26:19] "[36mGET /notas?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+172.226.126.44 - - [02/Jul/2025 04:26:19] "[36mGET /notas?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 04:26:28] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:26:28] "GET /static/style.css HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:26:30] "[35m[1mGET /notas HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/app.py", line 243, in notas
+    return render_template("notas.html", notas=lista)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 96, in _get_source_fast
+    return loader.get_source(environment, template)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/loaders.py", line 215, in get_source
+    contents = f.read()
+  File "<frozen codecs>", line 325, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xd3 in position 1141: invalid continuation byte
+181.43.210.43 - - [02/Jul/2025 04:26:30] "GET /notas?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:26:30] "GET /notas?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:26:30] "GET /notas?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:27:08] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:27:08] "GET /static/css/tailwind.css HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:27:10] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:27:10] "[36mGET /static/css/tailwind.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 04:27:51] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:27:52] "[36mGET /static/css/tailwind.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 04:34:54] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:34:54] "GET /static/css/tailwind.css HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:35:10] "GET / HTTP/1.1" 200 -
+172.226.126.32 - - [02/Jul/2025 04:35:41] "GET /notas HTTP/1.1" 200 -
+172.226.126.32 - - [02/Jul/2025 04:35:41] "GET /static/css/tailwind.css HTTP/1.1" 200 -
+172.226.126.32 - - [02/Jul/2025 04:35:45] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:36:06] "GET /ingresos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:36:13] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:36:13] "[36mGET /static/css/tailwind.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 04:36:41] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:36:41] "[36mGET /static/css/tailwind.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 04:36:50] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:36:50] "[36mGET /static/css/tailwind.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 04:36:53] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:37:22] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:37:23] "[36mGET /static/css/tailwind.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 04:37:24] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:37:24] "[36mGET /static/css/tailwind.css HTTP/1.1[0m" 304 -
+ * Detected change in '/var/www/ingresos-gastos/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 467-382-725
+181.43.210.43 - - [02/Jul/2025 04:37:47] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:37:47] "[36mGET /static/css/tailwind.css HTTP/1.1[0m" 304 -
+ * Detected change in '/var/www/ingresos-gastos/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 467-382-725
+ * Detected change in '/var/www/ingresos-gastos/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 467-382-725
+181.43.210.43 - - [02/Jul/2025 04:38:46] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:38:46] "[36mGET /static/css/tailwind.css HTTP/1.1[0m" 304 -
+ * Detected change in '/var/www/ingresos-gastos/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 467-382-725
+181.43.210.43 - - [02/Jul/2025 04:39:25] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:39:25] "[36mGET /static/css/tailwind.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 04:39:28] "GET /ingresos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:39:43] "GET /ingresos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:39:44] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:39:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 04:39:46] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:39:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 04:39:47] "GET /ingresos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:39:48] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:39:49] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:39:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 04:39:52] "GET /ingresos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:39:53] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:40:03] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:40:04] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:40:04] "GET /ingresos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:40:05] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:40:05] "GET /static/style.css HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:40:07] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:40:08] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 04:40:08] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:40:08] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 04:40:09] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:40:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 04:40:09] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:40:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+181.43.210.43 - - [02/Jul/2025 04:40:12] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:40:44] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:40:45] "GET /ingresos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:40:46] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:40:49] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:40:50] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:40:52] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:41:15] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:41:26] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:41:28] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:41:31] "GET /ingresos HTTP/1.1" 200 -
+172.226.126.39 - - [02/Jul/2025 04:41:35] "GET / HTTP/1.1" 200 -
+172.226.126.39 - - [02/Jul/2025 04:41:37] "GET /ingresos HTTP/1.1" 200 -
+172.226.126.39 - - [02/Jul/2025 04:41:38] "GET /gastos HTTP/1.1" 200 -
+172.226.126.39 - - [02/Jul/2025 04:41:41] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:42:55] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:42:58] "GET /ingresos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:42:59] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:43:37] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:43:38] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:43:41] "GET /ingresos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:43:42] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:43:43] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:44:50] "GET /notas HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:44:52] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:44:53] "GET /ingresos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:44:55] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:45:04] "GET /ingresos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:45:35] "GET /ingresos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:45:36] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:45:36] "GET /ingresos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:45:37] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:45:38] "GET / HTTP/1.1" 200 -
+172.226.126.47 - - [02/Jul/2025 04:45:45] "GET /notas HTTP/1.1" 200 -
+146.75.179.9 - - [02/Jul/2025 04:45:48] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:46:35] "GET / HTTP/1.1" 200 -
+146.75.179.8 - - [02/Jul/2025 04:46:40] "GET / HTTP/1.1" 200 -
+146.75.179.9 - - [02/Jul/2025 04:46:52] code 400, message Bad request syntax ('\x16\x03\x01\x05æ\x01\x00\x05â\x03\x03h\x81ç6æ×\x99')
+146.75.179.9 - - [02/Jul/2025 04:46:52] "[31m[1m\x16\x03\x01\x05æ\x01\x00\x05â\x03\x03h\x81ç6æ×\x99[0m" 400 -
+146.75.179.8 - - [02/Jul/2025 04:46:52] "GET /ingresos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:47:45] "GET /ingresos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:47:46] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:47:54] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:48:17] "GET /gastos HTTP/1.1" 200 -
+146.75.179.8 - - [02/Jul/2025 04:48:29] code 400, message Bad request version ('\xadK\x86\\\x05ã\x9d\x1at#î4Ðì»`\x97Ê\x10\x00*ÊÊ\x13\x02\x13\x03\x13\x01À,À+Ì©À0À/Ì¨À')
+146.75.179.8 - - [02/Jul/2025 04:48:29] "[31m[1m\x16\x03\x01\x05æ\x01\x00\x05â\x03\x03¸Ceºu°\x83\x1fÇÀ×áºÉL ûNýÔ¤À\\E"{\x12%\x14BRB â\x04\x1bµGa»\x17(\x01Å.\x1f­K\x86\\\x05ã\x9d\x1at#î4Ðì»`\x97Ê\x10\x00*ÊÊ\x13\x02\x13\x03\x13\x01À,À+Ì©À0À/Ì¨À[0m" 400 -
+146.75.179.9 - - [02/Jul/2025 04:48:30] "GET /gastos HTTP/1.1" 200 -
+146.75.179.8 - - [02/Jul/2025 04:48:33] "GET /gastos HTTP/1.1" 200 -
+146.75.179.8 - - [02/Jul/2025 04:48:57] "[32mPOST /gastos HTTP/1.1[0m" 302 -
+146.75.179.8 - - [02/Jul/2025 04:48:57] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:49:03] "GET /gastos HTTP/1.1" 200 -
+146.75.179.8 - - [02/Jul/2025 04:49:38] "GET /notas HTTP/1.1" 200 -
+146.75.179.8 - - [02/Jul/2025 04:50:04] "[32mPOST /notas HTTP/1.1[0m" 302 -
+146.75.179.8 - - [02/Jul/2025 04:50:04] "GET /notas HTTP/1.1" 200 -
+146.75.179.8 - - [02/Jul/2025 04:50:16] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:51:11] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:51:13] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:51:40] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:52:05] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:52:25] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:52:48] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:53:24] "GET / HTTP/1.1" 200 -
+146.75.179.8 - - [02/Jul/2025 04:53:41] "GET / HTTP/1.1" 200 -
+146.75.179.8 - - [02/Jul/2025 04:53:44] "GET /ingresos HTTP/1.1" 200 -
+146.75.179.8 - - [02/Jul/2025 04:53:48] "GET /ingresos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:53:55] "GET /ingresos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:53:56] "GET /gastos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:53:57] "GET /ingresos HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 04:54:24] "GET /ingresos HTTP/1.1" 200 -
+146.75.179.8 - - [02/Jul/2025 04:54:33] "GET /ingresos HTTP/1.1" 200 -
+146.75.179.8 - - [02/Jul/2025 04:54:37] "GET /notas HTTP/1.1" 200 -
+146.75.179.8 - - [02/Jul/2025 04:55:05] "GET /notas HTTP/1.1" 200 -
+146.75.179.8 - - [02/Jul/2025 04:55:09] "GET / HTTP/1.1" 200 -
+181.43.210.43 - - [02/Jul/2025 05:33:43] "[33mGET /apple-touch-icon-precomposed.png HTTP/1.1[0m" 404 -
+181.43.210.43 - - [02/Jul/2025 05:33:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+181.43.210.43 - - [02/Jul/2025 05:33:43] "[33mGET /apple-touch-icon.png HTTP/1.1[0m" 404 -
+181.43.210.43 - - [02/Jul/2025 05:33:43] "GET /ingresos HTTP/1.1" 200 -
+104.28.59.132 - - [02/Jul/2025 10:21:25] "GET / HTTP/1.1" 200 -
+104.28.59.128 - - [02/Jul/2025 10:21:31] "GET /gastos HTTP/1.1" 200 -
+104.28.115.48 - - [02/Jul/2025 11:12:23] "GET /gastos HTTP/1.1" 200 -
+ * Detected change in '/var/www/ingresos-gastos/app.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 467-382-725
+104.28.115.49 - - [02/Jul/2025 12:48:55] "GET / HTTP/1.1" 200 -
+[2025-07-02 13:41:29 +0000] [7719] [INFO] Starting gunicorn 23.0.0
+[2025-07-02 13:41:29 +0000] [7719] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 13:41:29 +0000] [7719] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 13:41:30 +0000] [7719] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 13:41:30 +0000] [7719] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 13:41:31 +0000] [7719] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 13:41:31 +0000] [7719] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 13:41:32 +0000] [7719] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 13:41:32 +0000] [7719] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 13:41:33 +0000] [7719] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 13:41:33 +0000] [7719] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 13:41:34 +0000] [7719] [ERROR] Can't connect to ('127.0.0.1', 5000)
+[2025-07-02 13:42:55 +0000] [7720] [INFO] Starting gunicorn 23.0.0
+[2025-07-02 13:42:55 +0000] [7720] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 13:42:55 +0000] [7720] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 13:42:56 +0000] [7720] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 13:42:56 +0000] [7720] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 13:42:57 +0000] [7720] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 13:42:57 +0000] [7720] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 13:42:58 +0000] [7720] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 13:42:58 +0000] [7720] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 13:42:59 +0000] [7720] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 13:42:59 +0000] [7720] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 13:43:00 +0000] [7720] [ERROR] Can't connect to ('127.0.0.1', 5000)
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 208, in run
+    self.sleep()
+    ~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 359, in sleep
+    ready = select.select([self.PIPE[0]], [], [], 1.0)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 241, in handle_chld
+    self.reap_workers()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 529, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/bin/gunicorn", line 8, in <module>
+    sys.exit(run())
+             ~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 66, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]", prog=prog).run()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 235, in run
+    super().run()
+    ~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 71, in run
+    Arbiter(self).run()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 228, in run
+    self.halt(reason=inst.reason, exit_status=inst.exit_status)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 341, in halt
+    self.stop()
+    ~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 395, in stop
+    time.sleep(0.1)
+    ~~~~~~~~~~^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 241, in handle_chld
+    self.reap_workers()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 529, in reap_workers
+    raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>

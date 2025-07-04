@@ -1,0 +1,627 @@
+[2025-07-02 18:45:09 +0000] [10410] [INFO] Starting gunicorn 23.0.0
+[2025-07-02 18:45:09 +0000] [10410] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 18:45:09 +0000] [10410] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 18:45:10 +0000] [10410] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 18:45:10 +0000] [10410] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 18:45:11 +0000] [10410] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 18:45:11 +0000] [10410] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 18:45:12 +0000] [10410] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 18:45:12 +0000] [10410] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 18:45:13 +0000] [10410] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 18:45:13 +0000] [10410] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 18:45:14 +0000] [10410] [ERROR] Can't connect to ('127.0.0.1', 5000)
+[2025-07-02 19:13:40 +0000] [11104] [INFO] Starting gunicorn 23.0.0
+[2025-07-02 19:13:40 +0000] [11104] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 19:13:40 +0000] [11104] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 19:13:41 +0000] [11104] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 19:13:41 +0000] [11104] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 19:13:42 +0000] [11104] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 19:13:42 +0000] [11104] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 19:13:43 +0000] [11104] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 19:13:43 +0000] [11104] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 19:13:44 +0000] [11104] [ERROR] Connection in use: ('127.0.0.1', 5000)
+[2025-07-02 19:13:44 +0000] [11104] [ERROR] connection to ('127.0.0.1', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 19:13:45 +0000] [11104] [ERROR] Can't connect to ('127.0.0.1', 5000)
+[2025-07-02 19:13:55 +0000] [11105] [INFO] Starting gunicorn 23.0.0
+[2025-07-02 19:13:55 +0000] [11105] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2025-07-02 19:13:55 +0000] [11105] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 19:13:56 +0000] [11105] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2025-07-02 19:13:56 +0000] [11105] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 19:13:57 +0000] [11105] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2025-07-02 19:13:57 +0000] [11105] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 19:13:58 +0000] [11105] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2025-07-02 19:13:58 +0000] [11105] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 19:13:59 +0000] [11105] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2025-07-02 19:13:59 +0000] [11105] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 19:14:00 +0000] [11105] [ERROR] Can't connect to ('0.0.0.0', 5000)
+[2025-07-02 19:14:38 +0000] [11107] [INFO] Starting gunicorn 23.0.0
+[2025-07-02 19:14:38 +0000] [11107] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2025-07-02 19:14:38 +0000] [11107] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 19:14:39 +0000] [11107] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2025-07-02 19:14:39 +0000] [11107] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 19:14:40 +0000] [11107] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2025-07-02 19:14:40 +0000] [11107] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 19:14:41 +0000] [11107] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2025-07-02 19:14:41 +0000] [11107] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 19:14:42 +0000] [11107] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2025-07-02 19:14:42 +0000] [11107] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 19:14:43 +0000] [11107] [ERROR] Can't connect to ('0.0.0.0', 5000)
+[2025-07-02 19:15:11 +0000] [11113] [INFO] Starting gunicorn 23.0.0
+[2025-07-02 19:15:11 +0000] [11113] [INFO] Listening at: http://0.0.0.0:5000 (11113)
+[2025-07-02 19:15:11 +0000] [11113] [INFO] Using worker: gthread
+[2025-07-02 19:15:11 +0000] [11114] [INFO] Booting worker with pid: 11114
+[2025-07-02 19:15:11 +0000] [11116] [INFO] Booting worker with pid: 11116
+[2025-07-02 19:15:11 +0000] [11117] [INFO] Booting worker with pid: 11117
+[2025-07-02 19:15:11 +0000] [11118] [INFO] Booting worker with pid: 11118
+[2025-07-02 19:17:01,861] ERROR in app: Exception on /ingresos [GET]
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/app.py", line 198, in ingresos
+    return render_template("ingresos.html", ingresos=lista, total=total)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/var/www/ingresos-gastos/templates/ingresos.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/var/www/ingresos-gastos/templates/base.html", line 59, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/templates/ingresos.html", line 39, in block 'content'
+    <a href="{{ url_for('ver_ingreso', id=i.id) }}"
+    ^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'ver_ingreso' with values ['id']. Did you mean 'ingresos' instead?
+[2025-07-02 19:17:08,395] ERROR in app: Exception on /ingresos [GET]
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/app.py", line 198, in ingresos
+    return render_template("ingresos.html", ingresos=lista, total=total)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/var/www/ingresos-gastos/templates/ingresos.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/var/www/ingresos-gastos/templates/base.html", line 59, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/templates/ingresos.html", line 39, in block 'content'
+    <a href="{{ url_for('ver_ingreso', id=i.id) }}"
+    ^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'ver_ingreso' with values ['id']. Did you mean 'ingresos' instead?
+[2025-07-02 19:18:02,971] ERROR in app: Exception on /ingresos [GET]
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/app.py", line 198, in ingresos
+    return render_template("ingresos.html", ingresos=lista, total=total)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/var/www/ingresos-gastos/templates/ingresos.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/var/www/ingresos-gastos/templates/base.html", line 59, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/templates/ingresos.html", line 39, in block 'content'
+    <a href="{{ url_for('ver_ingreso', id=i.id) }}"
+    ^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'ver_ingreso' with values ['id']. Did you mean 'ingresos' instead?
+[2025-07-02 19:21:53,126] ERROR in app: Exception on /ingresos [GET]
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/app.py", line 198, in ingresos
+    return render_template("ingresos.html", ingresos=lista, total=total)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/var/www/ingresos-gastos/templates/ingresos.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/var/www/ingresos-gastos/templates/base.html", line 59, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/templates/ingresos.html", line 39, in block 'content'
+    <a href=""
+    ^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'ver_ingreso' with values ['id']. Did you mean 'ingresos' instead?
+[2025-07-02 19:21:57,443] ERROR in app: Exception on /ingresos [GET]
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/app.py", line 198, in ingresos
+    return render_template("ingresos.html", ingresos=lista, total=total)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/var/www/ingresos-gastos/templates/ingresos.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/var/www/ingresos-gastos/templates/base.html", line 59, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/templates/ingresos.html", line 39, in block 'content'
+    <a href=""
+    ^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'ver_ingreso' with values ['id']. Did you mean 'ingresos' instead?
+[2025-07-02 19:22:33,706] ERROR in app: Exception on /ingresos [GET]
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/app.py", line 198, in ingresos
+    return render_template("ingresos.html", ingresos=lista, total=total)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/var/www/ingresos-gastos/templates/ingresos.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/var/www/ingresos-gastos/templates/base.html", line 59, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/templates/ingresos.html", line 39, in block 'content'
+    <a href=""
+    ^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'ver_ingreso' with values ['id']. Did you mean 'ingresos' instead?
+[2025-07-02 19:22:35,647] ERROR in app: Exception on /ingresos [GET]
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/app.py", line 198, in ingresos
+    return render_template("ingresos.html", ingresos=lista, total=total)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/var/www/ingresos-gastos/templates/ingresos.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/var/www/ingresos-gastos/templates/base.html", line 59, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/templates/ingresos.html", line 39, in block 'content'
+    <a href=""
+    ^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'ver_ingreso' with values ['id']. Did you mean 'ingresos' instead?
+[2025-07-02 19:24:21 +0000] [11113] [INFO] Handling signal: term
+[2025-07-02 19:24:21 +0000] [11117] [INFO] Worker exiting (pid: 11117)
+[2025-07-02 19:24:21 +0000] [11436] [INFO] Starting gunicorn 23.0.0
+[2025-07-02 19:24:21 +0000] [11436] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2025-07-02 19:24:21 +0000] [11436] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 19:24:22 +0000] [11114] [INFO] Worker exiting (pid: 11114)
+[2025-07-02 19:24:22 +0000] [11116] [INFO] Worker exiting (pid: 11116)
+[2025-07-02 19:24:22 +0000] [11118] [INFO] Worker exiting (pid: 11118)
+[2025-07-02 19:24:22 +0000] [11113] [INFO] Shutting down: Master
+[2025-07-02 19:24:22 +0000] [11436] [INFO] Listening at: http://0.0.0.0:5000 (11436)
+[2025-07-02 19:24:22 +0000] [11436] [INFO] Using worker: gthread
+[2025-07-02 19:24:22 +0000] [11437] [INFO] Booting worker with pid: 11437
+[2025-07-02 19:24:23 +0000] [11438] [INFO] Booting worker with pid: 11438
+[2025-07-02 19:24:23 +0000] [11440] [INFO] Booting worker with pid: 11440
+[2025-07-02 19:24:23 +0000] [11442] [INFO] Booting worker with pid: 11442
+[2025-07-02 19:24:29 +0000] [11436] [INFO] Handling signal: term
+[2025-07-02 19:24:29 +0000] [11442] [INFO] Worker exiting (pid: 11442)
+[2025-07-02 19:24:29 +0000] [11447] [INFO] Starting gunicorn 23.0.0
+[2025-07-02 19:24:29 +0000] [11447] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2025-07-02 19:24:29 +0000] [11447] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2025-07-02 19:24:30 +0000] [11437] [INFO] Worker exiting (pid: 11437)
+[2025-07-02 19:24:30 +0000] [11438] [INFO] Worker exiting (pid: 11438)
+[2025-07-02 19:24:30 +0000] [11440] [INFO] Worker exiting (pid: 11440)
+[2025-07-02 19:24:30 +0000] [11436] [INFO] Shutting down: Master
+[2025-07-02 19:24:30 +0000] [11447] [INFO] Listening at: http://0.0.0.0:5000 (11447)
+[2025-07-02 19:24:30 +0000] [11447] [INFO] Using worker: gthread
+[2025-07-02 19:24:30 +0000] [11448] [INFO] Booting worker with pid: 11448
+[2025-07-02 19:24:30 +0000] [11450] [INFO] Booting worker with pid: 11450
+[2025-07-02 19:24:30 +0000] [11451] [INFO] Booting worker with pid: 11451
+[2025-07-02 19:24:30 +0000] [11453] [INFO] Booting worker with pid: 11453
+[2025-07-02 19:24:53 +0000] [11447] [INFO] Handling signal: term
+[2025-07-02 19:24:54 +0000] [11448] [INFO] Worker exiting (pid: 11448)
+[2025-07-02 19:24:54 +0000] [11450] [INFO] Worker exiting (pid: 11450)
+[2025-07-02 19:24:54 +0000] [11451] [INFO] Worker exiting (pid: 11451)
+[2025-07-02 19:24:54 +0000] [11453] [INFO] Worker exiting (pid: 11453)
+[2025-07-02 19:24:54 +0000] [11447] [INFO] Shutting down: Master
+[2025-07-02 19:25:12 +0000] [11466] [INFO] Starting gunicorn 23.0.0
+[2025-07-02 19:25:12 +0000] [11466] [INFO] Listening at: http://0.0.0.0:5000 (11466)
+[2025-07-02 19:25:12 +0000] [11466] [INFO] Using worker: gthread
+[2025-07-02 19:25:12 +0000] [11467] [INFO] Booting worker with pid: 11467
+[2025-07-02 19:25:12 +0000] [11468] [INFO] Booting worker with pid: 11468
+[2025-07-02 19:25:12 +0000] [11469] [INFO] Booting worker with pid: 11469
+[2025-07-02 19:25:12 +0000] [11471] [INFO] Booting worker with pid: 11471
+[2025-07-02 22:01:41 +0000] [11466] [ERROR] Worker (pid:11468) was sent SIGHUP!
+[2025-07-02 22:01:41 +0000] [11466] [ERROR] Worker (pid:11469) was sent SIGHUP!
+[2025-07-02 22:01:41 +0000] [11466] [ERROR] Worker (pid:11471) was sent SIGHUP!
+[2025-07-02 22:01:41 +0000] [11466] [ERROR] Worker (pid:11467) was sent SIGHUP!
+[2025-07-02 22:01:41 +0000] [11466] [INFO] Handling signal: hup
+[2025-07-02 22:01:41 +0000] [11466] [INFO] Hang up: Master
+[2025-07-02 22:01:41 +0000] [12063] [INFO] Booting worker with pid: 12063
+[2025-07-02 22:01:41 +0000] [12064] [INFO] Booting worker with pid: 12064
+[2025-07-02 22:01:41 +0000] [12065] [INFO] Booting worker with pid: 12065
+[2025-07-02 22:01:41 +0000] [12066] [INFO] Booting worker with pid: 12066
+[2025-07-03 18:42:09 +0000] [12064] [INFO] Worker reloading: /var/www/ingresos-gastos/app.py modified
+[2025-07-03 18:42:10 +0000] [12064] [INFO] Worker exiting (pid: 12064)
+[2025-07-03 18:42:10 +0000] [12063] [INFO] Worker reloading: /var/www/ingresos-gastos/app.py modified
+[2025-07-03 18:42:10 +0000] [12066] [INFO] Worker reloading: /var/www/ingresos-gastos/app.py modified
+[2025-07-03 18:42:10 +0000] [12065] [INFO] Worker reloading: /var/www/ingresos-gastos/app.py modified
+[2025-07-03 18:42:10 +0000] [12065] [INFO] Worker exiting (pid: 12065)
+[2025-07-03 18:42:10 +0000] [15877] [INFO] Booting worker with pid: 15877
+[2025-07-03 18:42:10 +0000] [12066] [INFO] Worker exiting (pid: 12066)
+[2025-07-03 18:42:10 +0000] [15877] [ERROR] unindent does not match any outer indentation level (app.py, line 271)
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+                    ~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1022, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1160, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1090, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/var/www/ingresos-gastos/app.py", line 271
+    = request.form["nota"]
+                          ^
+IndentationError: unindent does not match any outer indentation level
+[2025-07-03 18:42:10 +0000] [15879] [INFO] Booting worker with pid: 15879
+[2025-07-03 18:42:10 +0000] [15879] [ERROR] unindent does not match any outer indentation level (app.py, line 271)
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+                    ~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1022, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1160, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1090, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/var/www/ingresos-gastos/app.py", line 271
+    = request.form["nota"]
+                          ^
+IndentationError: unindent does not match any outer indentation level
+[2025-07-03 18:42:11 +0000] [12063] [INFO] Worker exiting (pid: 12063)
+[2025-07-03 18:42:11 +0000] [15881] [INFO] Booting worker with pid: 15881
+[2025-07-03 18:42:11 +0000] [15881] [ERROR] unindent does not match any outer indentation level (app.py, line 271)
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+                    ~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1022, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1160, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1090, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/var/www/ingresos-gastos/app.py", line 271
+    = request.form["nota"]
+                          ^
+IndentationError: unindent does not match any outer indentation level
+[2025-07-03 18:42:11 +0000] [15883] [INFO] Booting worker with pid: 15883
+[2025-07-03 18:42:11 +0000] [15883] [ERROR] unindent does not match any outer indentation level (app.py, line 271)
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+                    ~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1022, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1160, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1090, in source_to_code
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/var/www/ingresos-gastos/app.py", line 271
+    = request.form["nota"]
+                          ^
+IndentationError: unindent does not match any outer indentation level
+[2025-07-03 18:48:52 +0000] [15879] [INFO] Worker reloading: /var/www/ingresos-gastos/app.py modified
+[2025-07-03 18:48:52 +0000] [15881] [INFO] Worker reloading: /var/www/ingresos-gastos/app.py modified
+[2025-07-03 18:48:52 +0000] [15881] [INFO] Worker exiting (pid: 15881)
+[2025-07-03 18:48:52 +0000] [16021] [INFO] Booting worker with pid: 16021
+[2025-07-03 18:48:52 +0000] [15883] [INFO] Worker reloading: /var/www/ingresos-gastos/app.py modified
+[2025-07-03 18:48:52 +0000] [15879] [INFO] Worker exiting (pid: 15879)
+[2025-07-03 18:48:52 +0000] [16022] [INFO] Booting worker with pid: 16022
+[2025-07-03 18:48:53 +0000] [16021] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/workers/gthread.py", line 94, in init_process
+    super().init_process()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+    ~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+                    ~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/var/www/ingresos-gastos/app.py", line 4, in <module>
+    import psutil
+ModuleNotFoundError: No module named 'psutil'
+[2025-07-03 18:48:53 +0000] [16021] [INFO] Worker exiting (pid: 16021)
+[2025-07-03 18:48:53 +0000] [16022] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/workers/gthread.py", line 94, in init_process
+    super().init_process()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+    ~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+                ~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+                    ~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/var/www/ingresos-gastos/venv/lib/python3.13/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/var/www/ingresos-gastos/app.py", line 4, in <module>
+    import psutil
+ModuleNotFoundError: No module named 'psutil'
+[2025-07-03 18:48:53 +0000] [16022] [INFO] Worker exiting (pid: 16022)
+[2025-07-03 18:48:53 +0000] [11466] [ERROR] Worker (pid:16021) exited with code 3
+[2025-07-03 18:48:53 +0000] [11466] [ERROR] Worker (pid:16022) exited with code 3
+[2025-07-03 18:48:53 +0000] [15877] [INFO] Parent changed, shutting down: <Worker 15877>
+[2025-07-03 18:48:53 +0000] [15877] [INFO] Worker exiting (pid: 15877)
+[2025-07-03 18:48:53 +0000] [15883] [INFO] Parent changed, shutting down: <Worker 15883>
+[2025-07-03 18:48:53 +0000] [15883] [INFO] Worker exiting (pid: 15883)

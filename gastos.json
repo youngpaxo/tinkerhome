@@ -1,0 +1,30 @@
+[
+    {
+        "id": 4,
+        "fecha": "2025-07-01",
+        "monto": 100000.0,
+        "nota": "papa pago mensual",
+        "cuenta": "mercadopago"
+    },
+    {
+        "id": 5,
+        "fecha": "2025-07-01",
+        "monto": 125000.0,
+        "nota": "Mama pago celular",
+        "cuenta": "Mercado pago"
+    },
+    {
+        "id": 6,
+        "fecha": "2025-07-01",
+        "monto": 50000.0,
+        "nota": "Ahorros",
+        "cuenta": "ahorros papa"
+    },
+    {
+        "id": 7,
+        "fecha": "2025-07-01",
+        "monto": 50000.0,
+        "nota": "mama pago universidad ",
+        "cuenta": "mercadopago"
+    }
+]

@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block title %}Gestor de Finanzas - Ingresos{% endblock %}
+
+{% block content %}
+<div class="flex flex-col gap-10">
+
+  <!-- SECCIÓN LISTA DE INGRESOS -->
+  <section class="bg-surface rounded-xl p-8 shadow-card border border-surface">
+    <header class="mb-6">
+      <h2 class="text-3xl font-bold text-accent font-mono mb-2">
+        Lista de Ingresos
+      </h2>
+      <p class="text-textMuted text-sm">
+        Consulta y gestiona tus ingresos registrados en el sistema.
+      </p>
+    </header>
+
+    {% if ingresos %}
+<div class="overflow-hidden border border-surface rounded">
+  <table class="hidden md:table min-w-full text-sm text-text divide-y divide-surface">
+    <thead class="bg-surface text-textMuted uppercase text-xs font-semibold">
+      <tr>
+        <th class="px-5 py-3 text-left">#</th>
+        <th class="px-5 py-3 text-left">Fecha</th>
+        <th class="px-5 py-3 text-left">Monto</th>
+        <th class="px-5 py-3 text-left">Nota</th>
+        <th class="px-5 py-3 text-left">Cuenta</th>
+        <th class="px-5 py-3 text-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-surface">
+      {% for i in ingresos %}
+      <tr class="hover:bg-accent hover:bg-opacity-10 transition-colors">
+        <td class="px-5 py-4">{{ loop.index }}</td>
+        <td class="px-5 py-4">{{ i.fecha }}</td>
+        <td class="px-5 py-4 font-semibold text-terminalgreen">
+          ${{ "{:,.2f}".format(i.monto) }}
+        </td>
+        <td class="px-5 py-4">{{ i.nota }}</td>
+        <td class="px-5 py-4 capitalize">{{ i.cuenta }}</td>
+        <td class="px-5 py-4 text-center">
+          <div class="flex justify-center gap-2">
+            <button class="bg-accent hover:bg-accentHover text-white px-2 py-1 rounded text-xs flex items-center gap-1">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Ver
+            </button>
+            <button class="bg-yellow-500 hover:bg-yellow-600 text-darkbg px-2 py-1 rounded text-xs flex items-center gap-1">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9" />
+                <path d="M16.5 3.5L19.5 6.5L8.5 17.5L5 18.5L6 15L16.5 3.5Z" />
+              </svg>
+              Editar
+            </button>
+            <button class="bg-ured hover:bg-red-700 text-white px-2 py-1 rounded text-xs flex items-center gap-1">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 6h18" />
+                <path d="M19 6l-1 14H6L5 6" />
+                <path d="M10 11v6" />
+                <path d="M14 11v6" />
+              </svg>
+              Borrar
+            </button>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Mobile Version -->
+  <div class="space-y-4 md:hidden">
+    {% for i in ingresos %}
+    <div class="bg-surface border border-surface rounded p-4 shadow-card">
+      <div class="flex justify-between mb-2">
+        <span class="text-textMuted text-xs font-mono">#{{ loop.index }}</span>
+        <span class="text-terminalgreen font-bold text-sm">
+          ${{ "{:,.2f}".format(i.monto) }}
+        </span>
+      </div>
+      <div class="text-sm text-text mb-2">
+        <p class="mb-1"><strong>Fecha:</strong> {{ i.fecha }}</p>
+        <p class="mb-1"><strong>Cuenta:</strong> <span class="capitalize">{{ i.cuenta }}</span></p>
+        {% if i.nota %}
+          <p class="text-textMuted text-xs italic mt-2">{{ i.nota }}</p>
+        {% endif %}
+      </div>
+      <div class="flex justify-end gap-2 mt-3">
+        <button class="bg-accent hover:bg-accentHover text-white px-3 py-1 rounded text-xs flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Ver
+        </button>
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-darkbg px-3 py-1 rounded text-xs flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9" />
+            <path d="M16.5 3.5L19.5 6.5L8.5 17.5L5 18.5L6 15L16.5 3.5Z" />
+          </svg>
+          Editar
+        </button>
+        <button class="bg-ured hover:bg-red-700 text-white px-3 py-1 rounded text-xs flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 6h18" />
+            <path d="M19 6l-1 14H6L5 6" />
+            <path d="M10 11v6" />
+            <path d="M14 11v6" />
+          </svg>
+          Borrar
+        </button>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+  <p class="text-textMuted mt-4">No hay ingresos registrados.</p>
+{% endif %}
+
+    <div class="mt-6 text-lg font-bold text-terminalgreen font-mono">
+      Total ingresos: ${{ "{:,.2f}".format(total) if total is not none else "0.00" }}
+    </div>
+  </section>
+
+  <!-- SECCIÓN FORMULARIO -->
+  <section class="bg-surface rounded-xl p-8 shadow-card border border-surface">
+    <h2 class="text-3xl font-bold text-accent font-mono mb-6">
+      Agregar Nuevo Ingreso
+    </h2>
+
+    <form method="post" class="space-y-6">
+
+      <!-- FECHA -->
+      <div class="flex flex-col gap-2">
+        <label for="fecha" class="text-sm font-semibold text-text">
+          Fecha
+        </label>
+        <input type="date" id="fecha" name="fecha" required
+          class="w-full rounded bg-darkbg border border-surface text-text p-3 focus:ring-2 focus:ring-accent placeholder:text-textMuted" />
+      </div>
+
+      <!-- MONTO -->
+      <div class="flex flex-col gap-2">
+        <label for="monto" class="text-sm font-semibold text-text">
+          Monto
+        </label>
+        <input type="number" id="monto" name="monto" step="0.01" min="0" required
+          class="w-full rounded bg-darkbg border border-surface text-text p-3 focus:ring-2 focus:ring-accent placeholder:text-textMuted" />
+      </div>
+
+      <!-- NOTA -->
+      <div class="flex flex-col gap-2">
+        <label for="nota" class="text-sm font-semibold text-text">
+          Nota
+        </label>
+        <input type="text" id="nota" name="nota" maxlength="100" placeholder="Descripción breve (opcional)"
+          class="w-full rounded bg-darkbg border border-surface text-text p-3 focus:ring-2 focus:ring-accent placeholder:text-textMuted" />
+      </div>
+
+      <!-- CUENTA -->
+      <div class="flex flex-col gap-2">
+        <label for="cuenta" class="text-sm font-semibold text-text">
+          Cuenta
+        </label>
+        <select id="cuenta" name="cuenta" required
+          class="w-full rounded bg-darkbg border border-surface text-text p-3 focus:ring-2 focus:ring-accent">
+          <option value="">Seleccione una cuenta</option>
+          <option value="efectivo">Efectivo</option>
+          <option value="banco">Banco</option>
+          <option value="mercadopago">MercadoPago</option>
+          <option value="ahorros papa">Ahorros Papá</option>
+        </select>
+      </div>
+
+      <!-- BOTONES -->
+      <div class="flex flex-col sm:flex-row gap-4 mt-6">
+        <button type="submit"
+          class="w-full sm:w-auto px-5 py-3 rounded bg-terminalgreen text-darkbg font-semibold hover:bg-green-400 transition-colors">
+          Agregar Ingreso
+        </button>
+        <a href="{{ url_for('index') }}"
+          class="w-full sm:w-auto text-center px-5 py-3 rounded bg-gray-600 text-white font-semibold hover:bg-gray-500 transition-colors">
+          Cancelar
+        </a>
+      </div>
+    </form>
+  </section>
+
+</div>
+{% endblock %}

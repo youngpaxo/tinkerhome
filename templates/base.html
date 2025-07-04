@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Dashboard - Mi Cloud{% endblock %}</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind personalizado -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ublue: '#003DA5',
+            ured: '#EE1C25',
+            darkbg: '#0A0A0A',
+            terminalgreen: '#00FF00',
+            surface: '#1E1E1E',
+            footerbg: '#141414',
+            text: '#E0E0E0',
+            textMuted: '#9CA3AF',
+            accent: '#2563eb',
+            accentHover: '#1e40af'
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+            mono: ['Fira Code', 'Source Code Pro', 'Menlo', 'Consolas', 'monospace'],
+          },
+          borderRadius: {
+            DEFAULT: '0.5rem',
+            lg: '0.75rem'
+          },
+          boxShadow: {
+            card: '0 4px 12px rgba(0,0,0,0.3)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="bg-darkbg text-text min-h-screen flex flex-col font-sans">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 bg-darkbg border-b border-surface z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+      <h1 class="text-3xl font-bold text-ublue tracking-tight font-mono">
+        Mi Cloud Panel
+      </h1>
+
+      <!-- Botón Hamburguesa -->
+      <button 
+        id="menu-btn" 
+        class="block md:hidden text-text hover:text-accent transition" 
+        aria-controls="mobile-menu" 
+        aria-expanded="false" 
+        aria-label="Abrir menú de navegación"
+      >
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+
+      <!-- Menú Desktop -->
+      <nav class="hidden md:flex gap-8 font-mono text-sm items-center">
+        <a href="{{ url_for('index') }}" class="hover:text-accent transition">&gt; Inicio</a>
+        <a href="{{ url_for('ingresos') }}" class="hover:text-accent transition">&gt; Ingresos</a>
+        <a href="{{ url_for('gastos') }}" class="hover:text-accent transition">&gt; Gastos</a>
+        <a href="{{ url_for('notas') }}" class="hover:text-accent transition">&gt; Notas</a>
+        <a href="{{ url_for('vps') }}" class="text-terminalgreen font-bold hover:text-accent transition">&gt; Estadísticas</a>
+      </nav>
+    </div>
+
+    <!-- Menú Mobile -->
+    <nav id="mobile-menu" class="hidden md:hidden bg-surface border-t border-ublue">
+      <ul class="flex flex-col gap-2 p-4 font-mono text-sm">
+        <li><a href="{{ url_for('index') }}" class="block py-2 px-3 rounded hover:bg-accent hover:text-white transition">&gt; Inicio</a></li>
+        <li><a href="{{ url_for('ingresos') }}" class="block py-2 px-3 rounded hover:bg-accent hover:text-white transition">&gt; Ingresos</a></li>
+        <li><a href="{{ url_for('gastos') }}" class="block py-2 px-3 rounded hover:bg-accent hover:text-white transition">&gt; Gastos</a></li>
+        <li><a href="{{ url_for('notas') }}" class="block py-2 px-3 rounded hover:bg-accent hover:text-white transition">&gt; Notas</a></li>
+        <li><a href="{{ url_for('vps') }}" class="block py-2 px-3 rounded hover:bg-terminalgreen text-terminalgreen font-bold transition">&gt; Estadísticas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn?.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('hidden');
+      menuBtn.setAttribute('aria-expanded', !isOpen);
+    });
+  </script>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-8">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-footerbg text-textMuted text-center py-6 text-xs border-t border-surface mt-8">
+    <div class="max-w-7xl mx-auto space-y-2">
+      <p>
+        Panel corriendo en 
+        <span class="text-accent font-bold">{{ request.host }}</span>
+      </p>
+      <p>
+        Para más detalles sobre el servidor, revisa la sección 
+        <a href="{{ url_for('vps') }}" class="text-accent hover:text-ured font-semibold transition">
+          &gt; Estadísticas
+        </a>.
+      </p>
+      <p>
+        Desarrollado por TinkerHome Cloud © 2025
+      </p>
+    </div>
+  </footer>
+
+</body>
+
+</html>

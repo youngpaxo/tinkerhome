@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Mi Cloud{% endblock %}
+
+{% block content %}
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+  <!-- Card Ingresos -->
+  <section class="bg-surface rounded-lg p-6 shadow-card border border-surface hover:border-accent transition-colors flex flex-col justify-between">
+    <div>
+      <h2 class="text-xl font-bold text-accent mb-2 font-mono">/Ingresos</h2>
+      <p class="text-textMuted text-sm mb-4">Gestiona y añade ingresos.</p>
+      <p class="text-terminalgreen text-2xl font-mono">
+        ${{ "{:,.0f}".format(total_ingresos) }}
+      </p>
+    </div>
+    <a href="{{ url_for('ingresos') }}"
+       class="mt-6 inline-block text-center w-full py-2 px-4 bg-accent hover:bg-accentHover text-white rounded font-semibold transition-colors">
+      ➜ Ver Ingresos
+    </a>
+  </section>
+
+  <!-- Card Gastos -->
+  <section class="bg-surface rounded-lg p-6 shadow-card border border-surface hover:border-ured transition-colors flex flex-col justify-between">
+    <div>
+      <h2 class="text-xl font-bold text-ured mb-2 font-mono">/Gastos</h2>
+      <p class="text-textMuted text-sm mb-4">Registra y controla tus gastos.</p>
+    </div>
+    <a href="{{ url_for('gastos') }}"
+       class="mt-6 inline-block text-center w-full py-2 px-4 bg-ured hover:bg-accent text-white rounded font-semibold transition-colors">
+      ➜ Ver Gastos
+    </a>
+  </section>
+
+  <!-- Card Notas -->
+  <section class="bg-surface rounded-lg p-6 shadow-card border border-surface hover:border-gray-400 transition-colors flex flex-col justify-between">
+    <div>
+      <h2 class="text-xl font-bold text-accent mb-2 font-mono">/Notas</h2>
+      <p class="text-textMuted text-sm mb-4">Guarda recordatorios o ideas.</p>
+    </div>
+    <a href="{{ url_for('notas') }}"
+       class="mt-6 inline-block text-center w-full py-2 px-4 bg-accent hover:bg-ured text-white rounded font-semibold transition-colors">
+      ➜ Ver Notas
+    </a>
+  </section>
+
+  <!-- Card Estadísticas -->
+  <section class="bg-surface rounded-lg p-6 shadow-card border border-surface hover:border-accent transition-colors flex flex-col justify-between md:col-span-2">
+    <div>
+      <h2 class="text-xl font-bold text-accent mb-2 font-mono">/Estadísticas</h2>
+      <p class="text-textMuted text-sm mb-4">
+        Visualiza información del servidor y tu sistema financiero.
+      </p>
+    </div>
+    <a href="{{ url_for('vps') }}"
+       class="mt-6 inline-block text-center w-full py-2 px-4 bg-accent hover:bg-accentHover text-white rounded font-semibold transition-colors">
+      ➜ Ver Estadísticas
+    </a>
+  </section>
+
+  <!-- Card Universidad de Chile -->
+  <section class="bg-surface rounded-lg p-6 shadow-card border border-surface hover:border-ured transition-colors flex flex-col justify-between">
+    <div>
+      <h2 class="text-xl font-bold text-ured mb-2 font-mono">/UniversidadDeChile</h2>
+      <p class="text-terminalgreen text-sm mb-4">
+        ¡Vamos La U locooo! Aquí podrás incluir datos, próximos partidos, historia del club, canciones y más.
+      </p>
+    </div>
+    <a href="#"
+       class="mt-6 inline-block text-center w-full py-2 px-4 bg-accent hover:bg-ured text-white rounded font-semibold transition-colors">
+      ➜ Ir a U. de Chile
+    </a>
+  </section>
+
+</div>
+
+{% endblock %}
