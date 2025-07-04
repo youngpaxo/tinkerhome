@@ -1,0 +1,4 @@
+node_modules/
+__pycache__/
+*.log
+nohup.out
