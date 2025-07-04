@@ -161,3 +161,5 @@
 127.0.0.1 - - [04/Jul/2025:14:24:20 +0000] "GET /static/style.css HTTP/1.0" 304 0 "https://tinkerhome.cloud/ingresos" "Mozilla/5.0 (iPhone; CPU iPhone OS 19_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Mobile/15E148 Safari/604.1"
 127.0.0.1 - - [04/Jul/2025:14:36:33 +0000] "GET / HTTP/1.0" 302 217 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0"
 127.0.0.1 - - [04/Jul/2025:14:36:33 +0000] "GET /login?next=%2F HTTP/1.0" 200 412 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0"
+127.0.0.1 - - [04/Jul/2025:14:49:03 +0000] "GET / HTTP/1.0" 302 217 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/601.2.4 (KHTML, like Gecko) Version/9.0.1 Safari/601.2.4 facebookexternalhit/1.1 Facebot Twitterbot/1.0"
+127.0.0.1 - - [04/Jul/2025:14:49:03 +0000] "GET /login?next=%2F HTTP/1.0" 200 412 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit/601.2.4 (KHTML, like Gecko) Version/9.0.1 Safari/601.2.4 facebookexternalhit/1.1 Facebot Twitterbot/1.0"

@@ -1426,3 +1426,5 @@ NameError: name 'make_response' is not defined
 [2025-07-04 14:24:20 +0000] [13003] [DEBUG] GET /static/style.css
 [2025-07-04 14:36:33 +0000] [13003] [DEBUG] GET /
 [2025-07-04 14:36:33 +0000] [13003] [DEBUG] GET /login
+[2025-07-04 14:49:03 +0000] [13003] [DEBUG] GET /
+[2025-07-04 14:49:03 +0000] [13003] [DEBUG] GET /login
