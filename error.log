@@ -15997,3 +15997,6 @@ jinja2.exceptions.TemplateSyntaxError: expected token 'name', got '**'
 [2025-07-05 04:19:57 +0000] [50202] [DEBUG] GET /
 [2025-07-05 04:19:57 +0000] [50202] [DEBUG] GET /static/style.css
 [2025-07-05 04:19:57 +0000] [50202] [DEBUG] GET /static/sw.js
+[2025-07-05 04:21:28 +0000] [50202] [DEBUG] GET /
+[2025-07-05 04:21:28 +0000] [50202] [DEBUG] GET /static/style.css
+[2025-07-05 04:21:28 +0000] [50202] [DEBUG] GET /static/sw.js
