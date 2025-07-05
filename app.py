@@ -67,10 +67,13 @@ init_db()
 # -------------------------------------------------------
 
 class User(UserMixin):
-    def __init__(self, id, username, password_hash):
+    def __init__(self, id, username, password_hash, created_at):
         self.id = id
         self.username = username
         self.password_hash = password_hash
+        self.created_at = None
+        if created_at:
+            self.created_at = datetime.datetime.strptime(created_at, "%Y-%m-%d %H:%M:%S")
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
@@ -84,16 +87,45 @@ def load_user(user_id):
     with sqlite3.connect(DB_NAME) as conn:
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
-        cursor.execute("SELECT id, username, password_hash FROM users WHERE id = ?", (user_id,))
+        cursor.execute("""
+            SELECT id, username, password_hash, created_at
+            FROM users
+            WHERE id = ?
+        """, (user_id,))
         row = cursor.fetchone()
 
     if row:
-        return User(row["id"], row["username"], row["password_hash"])
+        return User(
+            row["id"],
+            row["username"],
+            row["password_hash"],
+            row["created_at"]
+        )
     return None
+
 
 # -------------------------------------------------------
 # FUNCIONES REUTILIZABLES
 # -------------------------------------------------------
+
+def ultimos_movimientos(user_id, tipo, limite=5):
+    """
+    Devuelve los últimos movimientos (ingresos o gastos) ordenados por fecha.
+    """
+    with sqlite3.connect(DB_NAME) as conn:
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT fecha, monto, nota
+            FROM movimientos
+            WHERE user_id = ? AND tipo = ?
+            ORDER BY fecha DESC
+            LIMIT ?
+        """, (user_id, tipo, limite))
+        rows = cursor.fetchall()
+
+    return rows
+
 
 def calcular_totales(user_id):
     """
@@ -285,7 +317,17 @@ def top_categorias(user_id, limite=5):
 @login_required
 def index():
     totales = calcular_totales(current_user.id)
-    return render_template("index.html", **totales)
+
+    ultimos_ingresos = ultimos_movimientos(current_user.id, "Ingreso", limite=5)
+    ultimos_gastos = ultimos_movimientos(current_user.id, "Gasto", limite=5)
+
+    return render_template(
+        "index.html",
+        ultimos_ingresos=ultimos_ingresos,
+        ultimos_gastos=ultimos_gastos,
+        **totales
+    )
+
 
 @app.route("/movimientos", methods=["GET", "POST"])
 @login_required
@@ -393,12 +435,15 @@ def register():
         password = request.form["password"]
 
         hashed_password = generate_password_hash(password)
+        created_at = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         with sqlite3.connect(DB_NAME) as conn:
             cursor = conn.cursor()
             try:
-                cursor.execute("INSERT INTO users (username, password_hash) VALUES (?, ?)",
-                               (username, hashed_password))
+                cursor.execute("""
+                    INSERT INTO users (username, password_hash, created_at)
+                    VALUES (?, ?, ?)
+                """, (username, hashed_password, created_at))
                 conn.commit()
             except sqlite3.IntegrityError:
                 return "El usuario ya existe."
@@ -406,6 +451,7 @@ def register():
         return redirect(url_for("login"))
 
     return render_template("register.html")
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -416,18 +462,29 @@ def login():
         with sqlite3.connect(DB_NAME) as conn:
             conn.row_factory = sqlite3.Row
             cursor = conn.cursor()
-            cursor.execute("SELECT * FROM users WHERE username = ?", (username,))
+            cursor.execute(
+                "SELECT id, username, password_hash, created_at FROM users WHERE username = ?",
+                (username,)
+            )
             row = cursor.fetchone()
 
         if row:
-            user = User(row["id"], row["username"], row["password_hash"])
+            user = User(
+                row["id"],
+                row["username"],
+                row["password_hash"],
+                row["created_at"]
+            )
+
             if user.check_password(password):
                 login_user(user)
                 return redirect(url_for("index"))
 
+        # Si row es None o la contraseña está mal:
         return "Usuario o contraseña incorrectos."
 
     return render_template("login.html")
+
 
 @app.route("/logout")
 @login_required

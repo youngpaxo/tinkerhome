@@ -1,0 +1,248 @@
+{# ==========================
+   INPUT FIELD
+   ========================== #}
+{% macro input_field(label, name, type='text', placeholder='', value='', extra_classes='') %}
+<div>
+  <label for="{{ name }}" class="block text-sm font-medium text-[var(--color-text)] mb-1">
+    {{ label }}
+  </label>
+  <div class="relative">
+    <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+      {% if type == 'password' %}
+        <i data-feather="lock" class="w-5 h-5 text-[var(--color-text-muted)]"></i>
+      {% elif type == 'email' %}
+        <i data-feather="mail" class="w-5 h-5 text-[var(--color-text-muted)]"></i>
+      {% else %}
+        <i data-feather="user" class="w-5 h-5 text-[var(--color-text-muted)]"></i>
+      {% endif %}
+    </span>
+    <input
+      type="{{ type }}"
+      name="{{ name }}"
+      id="{{ name }}"
+      value="{{ value }}"
+      placeholder="{{ placeholder }}"
+      required
+      class="w-full pl-10 pr-4 py-3 rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text)] border border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent placeholder-[var(--color-text-muted)] transition-all duration-200 {{ extra_classes }}"
+      {% for key, val in kwargs.items() %} {{ key }}="{{ val }}"{% endfor %}
+    >
+  </div>
+</div>
+{% endmacro %}
+
+{# ==========================
+   PRIMARY BUTTON
+   ========================== #}
+{% macro primary_button(label, icon='log-in', disabled=False) %}
+<button type="submit"
+  class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-semibold rounded-lg text-white bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-hover)] hover:from-[var(--color-primary-hover)] hover:to-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-primary)] transition-all duration-200"
+  {% if disabled %}disabled{% endif %}>
+  <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+    <i data-feather="{{ icon }}" class="h-5 w-5 text-[var(--color-primary-light)] group-hover:text-[var(--color-primary-light)]"></i>
+  </span>
+  {{ label }}
+</button>
+{% endmacro %}
+
+{# ==========================
+   BADGE
+   ========================== #}
+{% macro badge(text, color='primary') %}
+<span class="
+  inline-flex
+  items-center
+  justify-center
+  px-2
+  py-1
+  rounded-full
+  text-xs
+  font-semibold
+  bg-[var(--color-{{ color }})]
+  text-white
+">
+  {{ text }}
+</span>
+{% endmacro %}
+
+{# ==========================
+   SECTION TITLE
+   ========================== #}
+{% macro section_title(title) %}
+<div class="px-4 mt-6 text-[var(--color-text-muted)] uppercase text-xs tracking-wide">
+  {{ title }}
+</div>
+{% endmacro %}
+
+{# ==========================
+   CARD
+   ========================== #}
+{% macro card(title='', icon='', content='') %}
+<div class="bg-[var(--color-surface)] rounded-lg shadow p-6 border border-[var(--color-border)]">
+  {% if title %}
+    <div class="flex items-center gap-2 mb-4">
+      {% if icon %}
+        <i data-feather="{{ icon }}" class="w-5 h-5 text-[var(--color-primary)]"></i>
+      {% endif %}
+      <h2 class="text-lg font-semibold text-[var(--color-text)]">{{ title }}</h2>
+    </div>
+  {% endif %}
+  <div class="text-[var(--color-text-muted)] text-sm">
+    {{ content | safe }}
+  </div>
+</div>
+{% endmacro %}
+
+{# ==========================
+   BUTTON
+   ========================== #}
+{% macro button(label, color='primary', icon='', href='#', extra_classes='') %}
+<a href="{{ href }}"
+   class="inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium text-sm text-white bg-[var(--color-{{ color }})] hover:bg-[var(--color-{{ color }}-hover)] focus:outline-none focus:ring-2 focus:ring-[var(--color-{{ color }})] transition-colors {{ extra_classes }}">
+  {% if icon %}
+    <i data-feather="{{ icon }}" class="w-4 h-4 mr-2"></i>
+  {% endif %}
+  {{ label }}
+</a>
+{% endmacro %}
+
+{# ==========================
+   ALERT BOX
+   ========================== #}
+{% macro alert_box(message, color='primary', icon='info') %}
+<div class="flex items-center gap-3 bg-[var(--color-{{ color }}-hover)] border border-[var(--color-{{ color }})] text-[var(--color-text)] rounded p-4">
+  <i data-feather="{{ icon }}" class="w-5 h-5 text-[var(--color-{{ color }})]"></i>
+  <span class="text-sm">{{ message }}</span>
+</div>
+{% endmacro %}
+
+{# ==========================
+   TABLE
+   ========================== #}
+{% macro table(headers=[], rows=[], table_classes='') %}
+<div class="overflow-x-auto rounded-lg border border-[var(--color-border)]">
+  <table class="min-w-full text-sm text-[var(--color-text)] divide-y divide-[var(--color-border)] {{ table_classes }}">
+    <thead class="bg-[var(--color-surface)]">
+      <tr>
+        {% for h in headers %}
+        <th class="px-4 py-2 text-left text-[var(--color-text-muted)] uppercase tracking-wider">{{ h }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody class="bg-[var(--color-surface-dark)] divide-y divide-[var(--color-border)]">
+      {% for row in rows %}
+      <tr class="hover:bg-[var(--color-surface-hover)]">
+        {% for cell in row %}
+        <td class="px-4 py-2">{{ cell | safe }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endmacro %}
+
+{# ==========================
+   LOGO
+   ========================== #}
+{% macro logo(title="Tinkerhome", href="#") %}
+<a href="{{ href }}" class="sidebar-logo">
+  <span class="sidebar-logo-icon material-icons">rocket_launch</span>
+  <span>{{ title }}</span>
+</a>
+{% endmacro %}
+
+{# ==========================
+   SEARCH INPUT
+   ========================== #}
+{% macro search_input(query_var='query', placeholder='Buscar...') %}
+<div class="px-4" x-data="{ {{ query_var }}: '' }">
+  <input type="text"
+         placeholder="{{ placeholder }}"
+         x-model="{{ query_var }}"
+         class="w-full px-3 py-2 rounded border border-[var(--border)] bg-[var(--surface-hover)] text-[var(--text-primary)] text-sm mb-4">
+</div>
+{% endmacro %}
+
+{# ==========================
+   NAV SECTION
+   ========================== #}
+{% macro nav_section(title, links=[]) %}
+<div class="px-4 mt-6 text-[var(--text-muted)] uppercase text-xs tracking-wide">
+  {{ title }}
+</div>
+<nav class="mt-2 flex flex-col space-y-1 px-4">
+  {% for link in links %}
+    <a href="{{ link.href }}"
+       class="menu-link {% if link.active %}menu-link-active{% endif %}">
+      <span class="flex items-center gap-3">
+        <i data-feather="{{ link.icon }}" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
+        <span class="whitespace-nowrap">{{ link.label }}</span>
+      </span>
+      {% if link.badge %}
+        <span class="ml-auto {{ link.badge_classes }}">{{ link.badge }}</span>
+      {% endif %}
+    </a>
+  {% endfor %}
+</nav>
+{% endmacro %}
+
+{# ==========================
+   COLLAPSIBLE SECTION
+   ========================== #}
+{% macro collapsible_section(id, title, icon, links=[]) %}
+<div class="px-4 mt-6 text-[var(--text-muted)] uppercase text-xs tracking-wide">
+  {{ title }}
+</div>
+<button class="menu-link justify-between" data-toggle="{{ id }}" aria-expanded="false" aria-controls="{{ id }}">
+  <span class="flex items-center gap-3">
+    <i data-feather="{{ icon }}" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
+    <span>{{ title }}</span>
+  </span>
+  <i data-feather="chevron-down" class="w-4 h-4 transition-transform" aria-hidden="true"></i>
+</button>
+<nav id="{{ id }}" class="hidden flex-col space-y-1 px-4">
+  {% for link in links %}
+  <a href="{{ link.href }}" class="menu-link pl-9 {% if link.active %}menu-link-active{% endif %}">
+    {{ link.label }}
+    {% if link.badge %}
+      <span class="ml-auto {{ link.badge_classes }}">{{ link.badge }}</span>
+    {% endif %}
+  </a>
+  {% endfor %}
+</nav>
+{% endmacro %}
+
+{# ==========================
+   SIDEBAR ITEM
+   ========================== #}
+{% macro sidebar_item(name, icon, url='', active=False, badge=None, children=None) %}
+  {% if children %}
+    <button class="menu-link justify-between" data-toggle="{{ name|lower }}" aria-expanded="false" aria-controls="{{ name|lower }}">
+      <span class="flex items-center gap-3">
+        <i data-feather="{{ icon }}" class="w-5 h-5 shrink-0"></i>
+        <span>{{ name }}</span>
+      </span>
+      <i data-feather="chevron-down" class="w-4 h-4 transition-transform"></i>
+    </button>
+    <nav id="{{ name|lower }}" class="hidden flex-col space-y-1 px-4">
+      {% for child in children %}
+        <a href="{{ child.url }}" class="menu-link pl-9 {% if child.active %}menu-link-active{% endif %}">
+          {{ child.label }}
+          {% if child.badge %}
+          <span class="ml-auto {{ child.badge.class }}">{{ child.badge.text }}</span>
+          {% endif %}
+        </a>
+      {% endfor %}
+    </nav>
+  {% else %}
+    <a href="{{ url }}" class="menu-link {% if active %}menu-link-active{% endif %}">
+      <span class="flex items-center gap-3">
+        <i data-feather="{{ icon }}" class="w-5 h-5 shrink-0"></i>
+        <span>{{ name }}</span>
+      </span>
+      {% if badge %}
+        <span class="ml-auto {{ badge.class }}">{{ badge.text }}</span>
+      {% endif %}
+    </a>
+  {% endif %}
+{% endmacro %}

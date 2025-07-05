@@ -1,0 +1,54 @@
+{% extends "layouts/auth_base.html" %}
+{% from "components.html" import input_field, primary_button %}
+
+{% block title %}Registro - Tinkerhome{% endblock %}
+
+{% block content %}
+  <div class="w-full max-w-md p-8 space-y-8 bg-[var(--color-surface)] rounded-2xl shadow-2xl border border-[var(--color-border)]">
+
+    <div class="flex justify-center">
+      <i data-feather="user-plus" class="w-12 h-12 text-[var(--color-primary)]"></i>
+    </div>
+
+    <h1 class="text-3xl font-extrabold text-[var(--color-primary)] text-center">Regístrate en Tinkerhome</h1>
+    <p class="text-center text-[var(--color-text-muted)]">Crea tu cuenta para comenzar</p>
+
+    <form method="POST" class="space-y-6 mt-8" id="registerForm">
+      {{ input_field('Usuario', 'username', 'text', 'Tu nombre de usuario') }}
+      {{ input_field('Contraseña', 'password', 'password', '••••••••') }}
+      {{ input_field('Repite la contraseña', 'confirm_password', 'password', '••••••••') }}
+      <p id="passwordError" class="hidden text-sm text-[var(--color-danger)] mt-2">
+        Las contraseñas no coinciden.
+      </p>
+      {{ primary_button('Registrarse', 'user-plus') }}
+    </form>
+
+    <p class="text-center text-sm text-[var(--color-text-muted)] mt-6">
+      ¿Ya tienes una cuenta?
+      <a href="{{ url_for('login') }}" class="font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]">Inicia sesión</a>
+    </p>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    feather.replace();
+
+    const form = document.getElementById('registerForm');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        const pwd = form.querySelector('[name="password"]').value;
+        const confirm = form.querySelector('[name="confirm_password"]').value;
+        const error = document.getElementById('passwordError');
+        if (pwd !== confirm) {
+          e.preventDefault();
+          error.classList.remove('hidden');
+        } else {
+          error.classList.add('hidden');
+        }
+      });
+    }
+  });
+</script>
+{% endblock %}

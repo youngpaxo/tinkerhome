@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Tinkerhome{% endblock %}</title>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+            },
+            colors: {
+              primary: 'var(--primary)',
+              'primary-dark': 'var(--primary-dark)',
+              'primary-light': 'var(--primary-light)',
+              'primary-lighter': 'var(--primary-lighter)',
+              surface: 'var(--surface)',
+              'surface-dark': 'var(--surface-dark)',
+              'surface-hover': 'var(--surface-hover)',
+              'text-primary': 'var(--text-primary)',
+              'text-secondary': 'var(--text-secondary)',
+              'text-muted': 'var(--text-muted)',
+              border: 'var(--border)',
+              accent: 'var(--accent)',
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Feather Icons -->
+    <script defer src="https://unpkg.com/feather-icons"></script>
+
+  </head>
+  <body class="bg-gradient-to-br from-[var(--color-surface)] to-[var(--color-bg)] text-[var(--color-text)] font-sans min-h-screen flex items-center justify-center">
+
+    {% block content %}{% endblock %}
+    {% block scripts %}{% endblock %}
+
+  </body>
+</html>

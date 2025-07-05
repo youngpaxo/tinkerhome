@@ -6,81 +6,50 @@ Movimientos
 
 {% block content %}
 
-<div class="space-y-10">
+<div class="space-y-6 px-2 sm:px-0">
 
-  <!-- METAS ACTIVAS -->
-  {% if meta_activa %}
-  <div class="p-4 rounded-lg border border-border bg-surface shadow">
-    <span class="text-textMuted text-xs uppercase">Meta activa</span>
-    <div class="flex justify-between items-center mt-2">
-      <span class="text-textPrimary font-medium">{{ meta_activa.nombre }}</span>
-      <span class="text-accent font-semibold">${{ meta_activa.total }}</span>
-    </div>
-    <div class="w-full h-2 bg-surfaceDark rounded mt-2">
-      <div class="bg-primary h-2 rounded" style="width: {{ meta_activa.porcentaje }}%;"></div>
-    </div>
-    <span class="text-xs text-textMuted mt-1 block">{{ meta_activa.porcentaje }}% completado</span>
+  {% if mensaje_exito %}
+  <div class="alert alert-success">
+    {{ mensaje_exito }}
   </div>
   {% endif %}
 
-  <!-- RESUMEN -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <div class="p-4 rounded-lg border border-border bg-surface shadow flex justify-between items-center">
+  <!-- TOTALES -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+    <div class="card flex justify-between items-center">
       <span class="text-textMuted text-xs uppercase">Total Ingresos</span>
-      <span class="text-green-400 font-semibold text-lg flex items-center gap-1">
-        ${{ total_ingresos or "0.00" }}
-        <i data-feather="arrow-up-right" class="w-4 h-4"></i>
-        <span class="text-xs text-green-300">+12% vs. mes anterior</span>
+      <span class="text-green-400 font-semibold text-base flex items-center gap-1">
+        ${{ "{:,.2f}".format(total_ingresos or 0) | replace(",", ".") }}
+        <i data-feather="arrow-up-right" class="w-4 h-4" title="Ingresos"></i>
       </span>
     </div>
-    <div class="p-4 rounded-lg border border-border bg-surface shadow flex justify-between items-center">
+    <div class="card flex justify-between items-center">
       <span class="text-textMuted text-xs uppercase">Total Gastos</span>
-      <span class="text-red-400 font-semibold text-lg flex items-center gap-1">
-        ${{ total_gastos or "0.00" }}
-        <i data-feather="arrow-down-right" class="w-4 h-4"></i>
-        <span class="text-xs text-red-300">-8% vs. mes anterior</span>
+      <span class="text-red-400 font-semibold text-base flex items-center gap-1">
+        ${{ "{:,.2f}".format(total_gastos or 0) | replace(",", ".") }}
+        <i data-feather="arrow-down-right" class="w-4 h-4" title="Gastos"></i>
       </span>
     </div>
-    <div class="p-4 rounded-lg border border-border bg-surface shadow flex justify-between items-center">
+    <div class="card flex justify-between items-center">
       <span class="text-textMuted text-xs uppercase">Ahorro Neto</span>
-      <span class="
-        font-semibold text-lg flex items-center gap-1
-{% if (total_ahorro | default(0)) < 0 %}
-          text-red-400
-        {% else %}
-          text-accent
-        {% endif %}
-      ">
-        ${{ total_ahorro or "0.00" }}
+      <span class="{% if (total_ahorro | default(0)) < 0 %}text-red-400{% else %}text-accent{% endif %} font-semibold text-base">
+        ${{ "{:,.2f}".format(total_ahorro or 0) | replace(",", ".") }}
       </span>
     </div>
   </div>
 
-  <!-- GRÁFICOS -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div class="bg-surface p-6 rounded-lg border border-border shadow">
-      <h2 class="text-textMuted text-sm uppercase mb-4">Gastos por Categoría</h2>
-      <canvas id="chart-categorias" height="160"></canvas>
-    </div>
-    <div class="bg-surface p-6 rounded-lg border border-border shadow">
-      <h2 class="text-textMuted text-sm uppercase mb-4">Movimientos Diario</h2>
-      <canvas id="chart-diario" height="160"></canvas>
-    </div>
-  </div>
-
-  <!-- FORMULARIO -->
-  <div class="bg-surface p-6 rounded-lg border border-border shadow">
-    <h2 class="text-xl font-semibold mb-4">Registrar Movimiento</h2>
-    <form method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
+  <!-- REGISTRO DE MOVIMIENTO -->
+  <div class="card">
+    <h2 class="text-lg font-semibold mb-3">Registrar Movimiento</h2>
+    <form method="POST" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
       <label class="flex flex-col">
         <span class="text-sm text-textMuted mb-1">Fecha</span>
-        <input type="date" name="fecha" required class="p-2 rounded bg-surfaceDark border border-border text-textPrimary focus:ring-2 focus:ring-primary">
+        <input type="date" name="fecha" value="{{ fecha_actual }}" required class="form-control">
       </label>
 
       <label class="flex flex-col">
         <span class="text-sm text-textMuted mb-1">Tipo</span>
-        <select name="tipo" required class="p-2 rounded bg-surfaceDark border border-border text-textPrimary focus:ring-2 focus:ring-primary">
+        <select name="tipo" required class="form-control">
           <option value="Ingreso">Ingreso</option>
           <option value="Gasto">Gasto</option>
           <option value="Ahorro">Ahorro</option>
@@ -89,100 +58,100 @@ Movimientos
 
       <label class="flex flex-col">
         <span class="text-sm text-textMuted mb-1">Categoría</span>
-        <input type="text" name="categoria" placeholder="Categoría" required class="p-2 rounded bg-surfaceDark border border-border text-textPrimary focus:ring-2 focus:ring-primary">
+        <input list="categorias" name="categoria" required class="form-control">
+        <datalist id="categorias">
+          <option value="Alimentación">
+          <option value="Transporte">
+          <option value="Entretenimiento">
+          <option value="Salud">
+        </datalist>
       </label>
 
       <label class="flex flex-col">
         <span class="text-sm text-textMuted mb-1">Monto</span>
-        <input type="number" step="0.01" name="monto" placeholder="Monto" required class="p-2 rounded bg-surfaceDark border border-border text-textPrimary focus:ring-2 focus:ring-primary">
+        <input type="number" step="0.01" name="monto" required class="form-control">
       </label>
 
       <label class="flex flex-col">
         <span class="text-sm text-textMuted mb-1">Cuenta</span>
-        <input type="text" name="cuenta" placeholder="Cuenta" required class="p-2 rounded bg-surfaceDark border border-border text-textPrimary focus:ring-2 focus:ring-primary">
+        <input list="cuentas" name="cuenta" required class="form-control">
+        <datalist id="cuentas">
+          <option value="Banco">
+          <option value="Efectivo">
+          <option value="Tarjeta Crédito">
+        </datalist>
       </label>
 
       <label class="flex flex-col">
         <span class="text-sm text-textMuted mb-1">Nota breve</span>
-        <input type="text" name="nota" placeholder="Nota breve" class="p-2 rounded bg-surfaceDark border border-border text-textPrimary focus:ring-2 focus:ring-primary">
+        <input type="text" name="nota" class="form-control">
       </label>
 
-      <label class="flex flex-col md:col-span-2">
+      <label class="flex flex-col sm:col-span-2">
         <span class="text-sm text-textMuted mb-1">Meta asociada (opcional)</span>
-        <input type="text" name="meta_asociada" placeholder="Meta asociada" class="p-2 rounded bg-surfaceDark border border-border text-textPrimary focus:ring-2 focus:ring-primary">
+        <input type="text" name="meta_asociada" class="form-control">
       </label>
 
-      <label class="flex flex-col md:col-span-2">
+      <label class="flex flex-col sm:col-span-2">
         <span class="text-sm text-textMuted mb-1">Descripción larga</span>
-        <textarea name="descripcion" placeholder="Descripción larga" class="p-2 rounded bg-surfaceDark border border-border text-textPrimary focus:ring-2 focus:ring-primary"></textarea>
+        <textarea name="descripcion" class="form-control"></textarea>
       </label>
 
-      <button type="submit" class="col-span-2 bg-primary hover:bg-primaryDark text-white font-semibold py-2 rounded transition flex items-center justify-center gap-2">
-        <i data-feather="check-circle" class="w-4 h-4"></i> Guardar
+      <button type="submit" class="btn btn-primary w-full sm:col-span-2">
+        <i data-feather="check-circle" class="w-4 h-4"></i> Guardar Movimiento
       </button>
     </form>
   </div>
 
   <!-- FILTROS -->
-  <div class="flex flex-wrap gap-4">
-    <a href="{{ url_for('movimientos') }}" class="flex items-center gap-2 text-accent hover:text-primary text-sm">
-      <i data-feather="list" class="w-4 h-4"></i> Todos
-    </a>
-    <a href="{{ url_for('movimientos', tipo='Ingreso') }}" class="flex items-center gap-2 text-green-400 hover:text-green-300 text-sm">
-      <i data-feather="trending-up" class="w-4 h-4"></i> Ingresos
-    </a>
-    <a href="{{ url_for('movimientos', tipo='Gasto') }}" class="flex items-center gap-2 text-red-400 hover:text-red-300 text-sm">
-      <i data-feather="trending-down" class="w-4 h-4"></i> Gastos
-    </a>
-    <a href="{{ url_for('movimientos', tipo='Ahorro') }}" class="flex items-center gap-2 text-accent hover:text-primary text-sm">
-      <i data-feather="dollar-sign" class="w-4 h-4"></i> Ahorros
-    </a>
-    <input type="text" id="buscador" placeholder="Buscar..." class="p-2 rounded bg-surfaceDark border border-border text-textPrimary focus:ring-2 focus:ring-primary text-sm">
+  <div class="flex flex-wrap gap-2 mt-2">
+    <a href="{{ url_for('movimientos') }}" class="btn btn-outline">Todos</a>
+    <a href="{{ url_for('movimientos', tipo='Ingreso') }}" class="btn btn-outline btn-success">Ingresos</a>
+    <a href="{{ url_for('movimientos', tipo='Gasto') }}" class="btn btn-outline btn-danger">Gastos</a>
+    <a href="{{ url_for('movimientos', tipo='Ahorro') }}" class="btn btn-outline btn-accent">Ahorros</a>
+    <div class="relative flex-1 min-w-[120px]">
+      <input type="text" id="buscador" placeholder="Buscar..." class="form-control pl-8 pr-2">
+      <i data-feather="search" class="absolute left-2 top-2.5 w-4 h-4 text-textMuted"></i>
+    </div>
   </div>
 
-  <!-- TABLA -->
-  <div class="bg-surface p-6 rounded-lg border border-border shadow overflow-x-auto">
-    <table class="min-w-full text-left text-sm">
-      <thead class="text-textMuted uppercase tracking-wide text-xs border-b border-border">
+  <!-- LISTADO EN TABLA -->
+  <div class="card hidden md:block">
+    <table class="table">
+      <thead>
         <tr>
-          <th class="py-3">Fecha</th>
-          <th class="py-3">Tipo</th>
-          <th class="py-3">Categoría</th>
-          <th class="py-3">Monto</th>
-          <th class="py-3">Cuenta</th>
-          <th class="py-3">Nota</th>
-          <th class="py-3">Meta</th>
-          <th class="py-3">Acciones</th>
+          <th>Fecha</th>
+          <th>Tipo</th>
+          <th>Categoría</th>
+          <th>Monto</th>
+          <th>Cuenta</th>
+          <th>Nota</th>
+          <th>Meta</th>
+          <th>Acciones</th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-border">
+      <tbody>
         {% for m in movimientos %}
-        <tr class="{% if m[2] == 'Ingreso' %}text-green-400{% elif m[2] == 'Gasto' %}text-red-400{% else %}text-accent{% endif %}">
-          <td class="py-2">{{ m[1] }}</td>
-          <td class="py-2">{{ m[2] }}</td>
-          <td class="py-2">{{ m[3] }}</td>
-          <td class="py-2">${{ "%.2f"|format(m[4]) }}</td>
-          <td class="py-2">{{ m[5] }}</td>
-          <td class="py-2 relative group">
-            <span class="truncate">{{ m[6] }}</span>
-            <div class="absolute z-10 hidden group-hover:block w-max max-w-xs text-xs text-white bg-black bg-opacity-80 rounded p-2 mt-1">
-              {{ m[6] }}
-            </div>
+        <tr>
+          <td>{{ m[1] }}</td>
+          <td>
+            <span class="badge {% if m[2] == 'Ingreso' %}badge-ingreso{% elif m[2] == 'Gasto' %}badge-gasto{% else %}badge-ahorro{% endif %}">
+              {{ m[2] }}
+            </span>
           </td>
-          <td class="py-2 relative group">
-            <span class="truncate">{{ m[8] }}</span>
-            <div class="absolute z-10 hidden group-hover:block w-max max-w-xs text-xs text-white bg-black bg-opacity-80 rounded p-2 mt-1">
-              {{ m[8] }}
-            </div>
-          </td>
-          <td class="py-2 flex gap-2">
-            <form method="POST" action="{{ url_for('borrar_movimiento', id=m[0]) }}" onsubmit="return confirm('¿Estás seguro de borrar este movimiento?');">
-              <button type="submit" class="text-red-400 hover:text-red-600 flex items-center gap-1 transition">
-                <i data-feather="trash" class="w-4 h-4"></i> Borrar
+          <td>{{ m[3] }}</td>
+          <td>${{ "{:,.2f}".format(m[4]) | replace(",", ".") }}</td>
+          <td>{{ m[5] }}</td>
+          <td>{{ m[6] }}</td>
+          <td>{{ m[8] }}</td>
+          <td class="flex gap-2 flex-wrap">
+            <form method="POST" action="{{ url_for('borrar_movimiento', id=m[0]) }}">
+              <button type="submit" class="btn btn-danger text-xs">
+                <i data-feather="trash" class="w-4 h-4" title="Borrar"></i> Borrar
               </button>
             </form>
-            <button type="button" class="text-accent hover:text-primary flex items-center gap-1 transition">
-              <i data-feather="edit" class="w-4 h-4"></i> Editar
+            <button type="button" class="btn btn-outline text-xs">
+              <i data-feather="edit" class="w-4 h-4" title="Editar"></i> Editar
             </button>
           </td>
         </tr>
@@ -195,6 +164,45 @@ Movimientos
     </table>
   </div>
 
+  <!-- LISTADO EN CARDS MOBILE -->
+  <div class="md:hidden space-y-3">
+    {% for m in movimientos %}
+    <div class="card">
+      <div class="flex justify-between mb-2">
+        <span class="text-xs text-textMuted">{{ m[1] }}</span>
+        <span class="{% if m[2] == 'Ingreso' %}text-green-400{% elif m[2] == 'Gasto' %}text-red-400{% else %}text-accent{% endif %} font-semibold">
+          ${{ "{:,.2f}".format(m[4]) | replace(",", ".") }}
+        </span>
+      </div>
+      <div class="text-sm">
+        <span class="badge {% if m[2] == 'Ingreso' %}badge-ingreso{% elif m[2] == 'Gasto' %}badge-gasto{% else %}badge-ahorro{% endif %}">
+          {{ m[2] }}
+        </span><br>
+        <strong>Categoría:</strong> {{ m[3] }}<br>
+        <strong>Cuenta:</strong> {{ m[5] }}<br>
+        {% if m[6] %}<strong>Nota:</strong> {{ m[6] }}<br>{% endif %}
+        {% if m[8] %}<strong>Meta:</strong> {{ m[8] }}<br>{% endif %}
+      </div>
+      <div class="mt-2 flex gap-2">
+        <form method="POST" action="{{ url_for('borrar_movimiento', id=m[0]) }}">
+          <button type="submit" class="btn btn-danger text-xs">
+            <i data-feather="trash" class="w-4 h-4"></i> Borrar
+          </button>
+        </form>
+        <button type="button" class="btn btn-outline text-xs">
+          <i data-feather="edit" class="w-4 h-4"></i> Editar
+        </button>
+      </div>
+    </div>
+    {% else %}
+    <div class="text-center text-textMuted">No hay movimientos registrados.</div>
+    {% endfor %}
+  </div>
+
 </div>
+
+<script>
+  feather.replace();
+</script>
 
 {% endblock %}

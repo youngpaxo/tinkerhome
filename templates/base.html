@@ -1,3 +1,6 @@
+{% import 'components.html' as macros %}
+
+
 <!DOCTYPE html>
 <html lang="es" data-theme="dark" class="scroll-smooth">
 
@@ -411,7 +414,6 @@
   <script>
     // Theme initialization moved to Alpine.js data attribute for better DX and performance
       document.documentElement.setAttribute('data-theme', 'light');
-    }
   </script>
 </head>
 
@@ -446,225 +448,70 @@
     <!-- Sidebar -->
     <aside id="sidebar"
       class="fixed top-0 left-0 h-full w-72 bg-[var(--surface)] border-r border-[var(--border)] shadow-lg transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-50 overflow-y-auto scrollbar-thin scrollbar-thumb-[var(--primary)]">
-      <div class="sidebar-header">
-        <a href="#" class="sidebar-logo">
-          <span class="sidebar-logo-icon material-icons">rocket_launch</span>
-          <span>Tinkerhome</span>
-        </a>
-      </div>
-      
-      <div class="px-4" x-data="{ query: '' }">
-        <input type="text" placeholder="Buscar..." x-model="query"
-          class="w-full px-3 py-2 rounded border border-[var(--border)] bg-[var(--surface-hover)] text-[var(--text-primary)] text-sm mb-4">
-      </div>
-      
-      <!-- Dashboard -->
-      <div class="px-4 mt-4 text-[var(--text-muted)] uppercase text-xs tracking-wide">Dashboard</div>
-      <nav class="mt-2 flex flex-col space-y-1 px-4">
-        <a href="{{ url_for('index') }}" class="menu-link {% if request.path == '/' %}menu-link-active{% endif %}">
-          <span class="flex items-center gap-3">
-            <i data-feather="home" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
-            <span class="whitespace-nowrap">Inicio</span>
-          </span>
-        </a>
-        <a href="#" class="menu-link">
-          <span class="flex items-center gap-3">
-            <i data-feather="calendar" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
-            <span class="whitespace-nowrap">Resumen diario</span>
-          </span>
-        </a>
-      </nav>
+  
+  <div class="sidebar-header">
+    {{ macros.logo('Tinkerhome', href=url_for('index')) }}
+  </div>
 
-      <!-- Finanzas -->
-      <div class="px-4 mt-6 text-[var(--text-muted)] uppercase text-xs tracking-wide">Finanzas</div>
-      <button class="menu-link justify-between" data-toggle="finanzas" aria-expanded="false" aria-controls="finanzas">
-        <span class="flex items-center gap-3">
-          <i data-feather="activity" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
-          <span>Finanzas</span>
-        </span>
-        <i data-feather="chevron-down" class="w-4 h-4 transition-transform" aria-hidden="true"></i>
-      </button>
-      <nav id="finanzas" class="hidden flex-col space-y-1 px-4">
-        <a href="{{ url_for('movimientos') }}"
-          class="menu-link pl-9 {% if request.path == '/movimientos' %}menu-link-active{% endif %}">
-          Movimientos
-          <span class="ml-auto bg-[var(--accent)] text-black text-xs px-2 py-1 rounded-full">34</span>
-        </a>
-        <a href="#" class="menu-link pl-9">
-          Cuentas
-          <span class="ml-auto text-[var(--text-secondary)] text-xs">7</span>
-        </a>
-        <a href="#" class="menu-link pl-9">
-          Ahorros
-          <span class="ml-auto text-[var(--primary)] text-xs font-semibold">$5.400.000</span>
-        </a>
-        <a href="#" class="menu-link pl-9">
-          Reportes
-          <span class="ml-auto bg-[var(--primary-dark)] text-white text-xs px-2 py-1 rounded-full">2</span>
-        </a>
-      </nav>
+  {{ macros.search_input() }}
 
-      <hr class="border-[var(--border)] my-4">
+  {{ macros.nav_section('Dashboard', [
+      {'label': 'Inicio', 'href': url_for('index'), 'icon': 'home', 'active': request.path == '/'},
+      {'label': 'Resumen diario', 'href': '#', 'icon': 'calendar'}
+  ]) }}
 
-      <!-- Mente -->
-      <div class="px-4 mt-6 text-[var(--text-muted)] uppercase text-xs tracking-wide">Mente</div>
-      <button class="menu-link justify-between" data-toggle="mente" aria-expanded="false" aria-controls="mente">
-        <span class="flex items-center gap-3">
-          <i data-feather="activity" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
-          <span>Mente</span>
-        </span>
-        <i data-feather="chevron-down" class="w-4 h-4 transition-transform" aria-hidden="true"></i>
-      </button>
-      <nav id="mente" class="hidden flex-col space-y-1 px-4">
-        <a href="#" class="menu-link pl-9">
-          Estado emocional
-          <span class="ml-auto text-green-400 text-xs">😊 Feliz</span>
-        </a>
-        <a href="#" class="menu-link pl-9">
-          Diario de pensamientos
-        </a>
-        <a href="#" class="menu-link pl-9">
-          Meditación
-          <span class="ml-auto bg-[var(--accent)] text-black text-xs px-2 py-1 rounded-full">3</span>
-        </a>
-      </nav>
+  {{ macros.collapsible_section('finanzas', 'Finanzas', 'activity', [
+      {'label': 'Movimientos', 'href': url_for('movimientos'), 'active': request.path == '/movimientos', 'badge': '34', 'badge_classes': 'bg-[var(--accent)] text-black text-xs px-2 py-1 rounded-full'},
+      {'label': 'Cuentas', 'href': '#', 'badge': '7', 'badge_classes': 'text-[var(--text-secondary)] text-xs'},
+      {'label': 'Ahorros', 'href': '#', 'badge': '$5.400.000', 'badge_classes': 'text-[var(--primary)] text-xs font-semibold'},
+      {'label': 'Reportes', 'href': '#', 'badge': '2', 'badge_classes': 'bg-[var(--primary-dark)] text-white text-xs px-2 py-1 rounded-full'}
+  ]) }}
 
-      <hr class="border-[var(--border)] my-4">
+  {{ macros.collapsible_section('mente', 'Mente', 'activity', [
+      {'label': 'Estado emocional', 'href': '#', 'badge': '😊 Feliz', 'badge_classes': 'text-green-400 text-xs'},
+      {'label': 'Diario de pensamientos', 'href': '#'},
+      {'label': 'Meditación', 'href': '#', 'badge': '3', 'badge_classes': 'bg-[var(--accent)] text-black text-xs px-2 py-1 rounded-full'}
+  ]) }}
 
-      <!-- Tiempo -->
-      <div class="px-4 mt-6 text-[var(--text-muted)] uppercase text-xs tracking-wide">Tiempo</div>
-      <button class="menu-link justify-between" data-toggle="tiempo" aria-expanded="false" aria-controls="tiempo">
-        <span class="flex items-center gap-3">
-          <i data-feather="clock" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
-          <span>Tiempo</span>
-        </span>
-        <i data-feather="chevron-down" class="w-4 h-4 transition-transform" aria-hidden="true"></i>
-      </button>
-      <nav id="tiempo" class="hidden flex-col space-y-1 px-4">
-        <a href="#" class="menu-link pl-9">
-          Tareas
-          <span class="ml-auto bg-[var(--danger)] text-white text-xs px-2 py-1 rounded-full">7</span>
-        </a>
-        <a href="#" class="menu-link pl-9">
-          Calendario
-        </a>
-        <a href="#" class="menu-link pl-9">
-          Hábitos
-          <span class="ml-auto text-[var(--primary)] text-xs">85%</span>
-        </a>
-      </nav>
+  {{ macros.collapsible_section('tiempo', 'Tiempo', 'clock', [
+      {'label': 'Tareas', 'href': '#', 'badge': '7', 'badge_classes': 'bg-[var(--danger)] text-white text-xs px-2 py-1 rounded-full'},
+      {'label': 'Calendario', 'href': '#'},
+      {'label': 'Hábitos', 'href': '#', 'badge': '85%', 'badge_classes': 'text-[var(--primary)] text-xs'}
+  ]) }}
 
-      <hr class="border-[var(--border)] my-4">
+  {{ macros.collapsible_section('salud', 'Salud', 'heart', [
+      {'label': 'Datos biométricos', 'href': '#'},
+      {'label': 'Ejercicio', 'href': '#', 'badge': '5', 'badge_classes': 'bg-[var(--accent)] text-black text-xs px-2 py-1 rounded-full'},
+      {'label': 'Sueño', 'href': '#', 'badge': '6.5 h', 'badge_classes': 'text-[var(--primary)] text-xs'},
+      {'label': 'Hidratación', 'href': '#', 'badge': '2.4 L', 'badge_classes': 'text-[var(--primary-dark)] text-xs'}
+  ]) }}
 
-      <!-- Salud -->
-      <div class="px-4 mt-6 text-[var(--text-muted)] uppercase text-xs tracking-wide">Salud</div>
-      <button class="menu-link justify-between" data-toggle="salud" aria-expanded="false" aria-controls="salud">
-        <span class="flex items-center gap-3">
-          <i data-feather="heart" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
-          <span>Salud</span>
-        </span>
-        <i data-feather="chevron-down" class="w-4 h-4 transition-transform" aria-hidden="true"></i>
-      </button>
-      <nav id="salud" class="hidden flex-col space-y-1 px-4">
-        <a href="#" class="menu-link pl-9">
-          Datos biométricos
-        </a>
-        <a href="#" class="menu-link pl-9">
-          Ejercicio
-          <span class="ml-auto bg-[var(--accent)] text-black text-xs px-2 py-1 rounded-full">5</span>
-        </a>
-        <a href="#" class="menu-link pl-9">
-          Sueño
-          <span class="ml-auto text-[var(--primary)] text-xs">6.5 h</span>
-        </a>
-        <a href="#" class="menu-link pl-9">
-          Hidratación
-          <span class="ml-auto text-[var(--primary-dark)] text-xs">2.4 L</span>
-        </a>
-      </nav>
+  {{ macros.collapsible_section('aspecto', 'Aspecto', 'star', [
+      {'label': 'Closet digital', 'href': '#'},
+      {'label': 'Looks favoritos', 'href': '#', 'badge': '12', 'badge_classes': 'bg-[var(--accent)] text-black text-xs px-2 py-1 rounded-full'},
+      {'label': 'Peso corporal', 'href': '#', 'badge': '81.4 kg', 'badge_classes': 'text-[var(--primary)] text-xs'}
+  ]) }}
 
-      <hr class="border-[var(--border)] my-4">
+  {{ macros.nav_section('Seguridad', [
+      {'label': 'VPS', 'href': url_for('vps'), 'icon': 'server', 'active': request.path == '/vps'},
+      {'label': 'Dominios', 'href': '#', 'icon': 'globe'},
+      {'label': 'Logs', 'href': '#', 'icon': 'file-text'}
+  ]) }}
 
-      <!-- Aspecto -->
-      <div class="px-4 mt-6 text-[var(--text-muted)] uppercase text-xs tracking-wide">Aspecto</div>
-      <button class="menu-link justify-between" data-toggle="aspecto" aria-expanded="false" aria-controls="aspecto">
-        <span class="flex items-center gap-3">
-          <i data-feather="star" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
-          <span>Aspecto</span>
-        </span>
-        <i data-feather="chevron-down" class="w-4 h-4 transition-transform" aria-hidden="true"></i>
-      </button>
-      <nav id="aspecto" class="hidden flex-col space-y-1 px-4">
-        <a href="#" class="menu-link pl-9">
-          Closet digital
-        </a>
-        <a href="#" class="menu-link pl-9">
-          Looks favoritos
-          <span class="ml-auto bg-[var(--accent)] text-black text-xs px-2 py-1 rounded-full">12</span>
-        </a>
-        <a href="#" class="menu-link pl-9">
-          Peso corporal
-          <span class="ml-auto text-[var(--primary)] text-xs">81.4 kg</span>
-        </a>
-      </nav>
+  {{ macros.nav_section('Perfil', [
+      {'label': 'Datos personales', 'href': url_for('perfil'), 'icon': 'user', 'active': request.path == '/perfil'},
+      {'label': 'Preferencias', 'href': '#', 'icon': 'settings'},
+      {'label': 'Notificaciones', 'href': '#', 'icon': 'bell'}
+  ]) }}
 
-      <hr class="border-[var(--border)] my-4">
+  {{ macros.nav_section('Configuración', [
+      {'label': 'Sistema', 'href': '#', 'icon': 'settings'},
+      {'label': 'Apariencia', 'href': '#', 'icon': 'sliders'},
+      {'label': 'Cerrar sesión', 'href': url_for('logout'), 'icon': 'log-out'}
+  ]) }}
 
-      <!-- Seguridad -->
-      <div class="px-4 mt-6 text-[var(--text-muted)] uppercase text-xs tracking-wide">Seguridad</div>
-      <nav class="mt-2 flex flex-col space-y-1 px-4">
-        <a href="{{ url_for('vps') }}" class="menu-link {% if request.path == '/vps' %}menu-link-active{% endif %}">
-          <span class="flex items-center gap-3">
-            <i data-feather="server" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
-            <span>VPS</span>
-          </span>
-        </a>
-        <a href="#" class="menu-link pl-9">Dominios</a>
-        <a href="#" class="menu-link pl-9">Logs</a>
-      </nav>
+</aside>
 
-      <hr class="border-[var(--border)] my-4">
-
-      <!-- Perfil -->
-      <div class="px-4 mt-6 text-[var(--text-muted)] uppercase text-xs tracking-wide">Perfil</div>
-      <nav class="mt-2 flex flex-col space-y-1 px-4">
-        <a href="{{ url_for('perfil') }}"
-          class="menu-link {% if request.path == '/perfil' %}menu-link-active{% endif %}">
-          <span class="flex items-center gap-3">
-            <i data-feather="user" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
-            <span>Datos personales</span>
-          </span>
-        </a>
-        <a href="#" class="menu-link pl-9">Preferencias</a>
-        <a href="#" class="menu-link pl-9">Notificaciones</a>
-      </nav>
-
-      <hr class="border-[var(--border)] my-4">
-
-      <!-- Configuración -->
-      <div class="px-4 mt-6 text-[var(--text-muted)] uppercase text-xs tracking-wide">Configuración</div>
-      <nav class="mt-2 flex flex-col space-y-1 px-4">
-        <a href="#" class="menu-link">
-          <span class="flex items-center gap-3">
-            <i data-feather="settings" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
-            <span>Sistema</span>
-          </span>
-        </a>
-        <a href="#" class="menu-link">
-          <span class="flex items-center gap-3">
-            <i data-feather="sliders" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
-            <span>Apariencia</span>
-          </span>
-        </a>
-        <a href="{{ url_for('logout') }}" class="menu-link-danger">
-          <span class="flex items-center gap-3">
-            <i data-feather="log-out" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
-            <span>Cerrar sesión</span>
-          </span>
-        </a>
-      </nav>
-
-    </aside>
 
     <!-- Main Area -->
     <div class="flex-1 flex flex-col md:ml-72">

@@ -1,121 +1,90 @@
 {% extends "base.html" %}
 
-{% block title %}Gestor de Finanzas - Ingresos{% endblock %}
+{% block title %}Gestor de Finanzas - Inicio{% endblock %}
 
 {% block content %}
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-  <!-- SECCIÓN LISTA DE INGRESOS -->
+  <!-- Total Ingresos -->
+  <div class="bg-surface border border-ublue rounded-xl p-6 shadow-lg">
+    <h2 class="text-lg font-bold text-ublue mb-2 font-mono">Total Ingresos</h2>
+    <p class="text-3xl font-bold text-terminalgreen">
+      ${{ total_ingresos | float | round(2) | string | replace(".", ",") }}
+    </p>
+  </div>
+
+  <!-- Total Gastos -->
+  <div class="bg-surface border border-ublue rounded-xl p-6 shadow-lg">
+    <h2 class="text-lg font-bold text-ublue mb-2 font-mono">Total Gastos</h2>
+    <p class="text-3xl font-bold text-ured">
+      ${{ total_gastos | float | round(2) | string | replace(".", ",") }}
+    </p>
+  </div>
+
+  <!-- Total Ahorros -->
+  <div class="bg-surface border border-ublue rounded-xl p-6 shadow-lg">
+    <h2 class="text-lg font-bold text-ublue mb-2 font-mono">Total Ahorros</h2>
+    <p class="text-3xl font-bold text-ublue">
+      ${{ total_ahorros | float | round(2) | string | replace(".", ",") }}
+    </p>
+  </div>
+
+  <!-- Saldo Neto -->
+  <div class="bg-surface border border-ublue rounded-xl p-6 shadow-lg">
+    <h2 class="text-lg font-bold text-ublue mb-2 font-mono">Saldo Neto</h2>
+    <p class="text-3xl font-bold {% if saldo_neto >= 0 %}text-terminalgreen{% else %}text-ured{% endif %}">
+      ${{ saldo_neto | float | round(2) | string | replace(".", ",") }}
+    </p>
+  </div>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+
+  <!-- Últimos Ingresos -->
   <section class="bg-surface rounded-xl shadow-lg border border-ublue p-6">
-    <h2 class="text-2xl font-bold text-ublue mb-2 font-mono">Lista de Ingresos</h2>
-    <p class="text-sm text-textMuted mb-4">Detalle de tus ingresos registrados.</p>
-
-    {% if ingresos %}
-      <div class="overflow-x-auto rounded">
-        <table class="min-w-full text-sm text-text bg-darkbg border border-ublue rounded">
-          <thead class="bg-ublue text-white uppercase text-xs">
-            <tr>
-              <th class="py-3 px-4 text-left font-semibold">#</th>
-              <th class="py-3 px-4 text-left font-semibold">Fecha</th>
-              <th class="py-3 px-4 text-left font-semibold">Monto</th>
-              <th class="py-3 px-4 text-left font-semibold">Nota</th>
-              <th class="py-3 px-4 text-left font-semibold">Cuenta</th>
-              <th class="py-3 px-4 text-left font-semibold">Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for i in ingresos %}
-            <tr class="border-b border-ublue hover:bg-ublue hover:bg-opacity-10 transition">
-              <td class="py-2 px-4">{{ loop.index }}</td>
-              <td class="py-2 px-4">{{ i.fecha }}</td>
-              <td class="py-2 px-4 font-semibold text-terminalgreen">
-                ${{ i.monto | float | round(2) | string | replace(".", ",") }}
-              </td>
-              <td class="py-2 px-4">{{ i.nota }}</td>
-              <td class="py-2 px-4 capitalize">{{ i.cuenta }}</td>
-              <td class="py-2 px-4 flex flex-wrap gap-2">
-                <a href="#"
-                   class="inline-block text-xs px-3 py-1 rounded bg-ublue text-white hover:bg-ured transition">
-                  Ver
-                </a>
-                <a href="#"
-                   class="inline-block text-xs px-3 py-1 rounded bg-yellow-500 text-darkbg hover:bg-yellow-600 transition">
-                  Editar
-                </a>
-                <form method="post" action="#" class="inline-block"
-                      onsubmit="return confirm('¿Estás seguro de borrar este ingreso?');">
-                  <button type="submit"
-                          class="text-xs px-3 py-1 rounded bg-ured text-white hover:bg-red-700 transition">
-                    Borrar
-                  </button>
-                </form>
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
+    <h2 class="text-2xl font-bold text-ublue mb-4 font-mono">Últimos Ingresos</h2>
+    {% if ultimos_ingresos %}
+      <ul class="space-y-2">
+        {% for ingreso in ultimos_ingresos %}
+          <li class="flex justify-between items-center border-b border-ublue pb-2">
+            <span class="text-text">{{ ingreso["fecha"] }} - {{ ingreso["nota"] or "Sin nota" }}</span>
+            <span class="text-terminalgreen font-semibold">
+              ${{ ingreso["monto"] | float | round(2) | string | replace(".", ",") }}
+            </span>
+          </li>
+        {% endfor %}
+      </ul>
     {% else %}
-      <p class="text-textMuted">No hay ingresos registrados.</p>
+      <p class="text-textMuted">No hay ingresos registrados aún.</p>
     {% endif %}
-
-    <h3 class="mt-6 text-lg font-bold text-terminalgreen font-mono">
-      Total ingresos: ${{ (total or 0) | float | round(2) | string | replace(".", ",") }}
-    </h3>
+    <a href="{{ url_for('movimientos', tipo='Ingreso') }}"
+       class="mt-4 inline-block px-4 py-2 rounded bg-ublue text-white hover:bg-ured transition">
+      Ver más
+    </a>
   </section>
 
-  <!-- SECCIÓN FORMULARIO -->
+  <!-- Últimos Gastos -->
   <section class="bg-surface rounded-xl shadow-lg border border-ublue p-6">
-    <h2 class="text-2xl font-bold text-ublue mb-6 font-mono">Agregar nuevo ingreso</h2>
-
-    <form method="post" class="space-y-6">
-
-      <!-- FECHA -->
-      <div class="flex flex-col md:flex-row md:items-center gap-4">
-        <label for="fecha" class="w-full md:w-1/3 text-sm font-semibold text-text">Fecha:</label>
-        <input type="date" id="fecha" name="fecha" required
-          class="w-full md:w-2/3 rounded bg-darkbg border border-ublue text-text p-2 focus:ring-2 focus:ring-ublue" />
-      </div>
-
-      <!-- MONTO -->
-      <div class="flex flex-col md:flex-row md:items-center gap-4">
-        <label for="monto" class="w-full md:w-1/3 text-sm font-semibold text-text">Monto:</label>
-        <input type="number" id="monto" name="monto" step="0.01" min="0" required
-          class="w-full md:w-2/3 rounded bg-darkbg border border-ublue text-text p-2 focus:ring-2 focus:ring-ublue" />
-      </div>
-
-      <!-- NOTA -->
-      <div class="flex flex-col md:flex-row md:items-center gap-4">
-        <label for="nota" class="w-full md:w-1/3 text-sm font-semibold text-text">Nota:</label>
-        <input type="text" id="nota" name="nota" maxlength="100" placeholder="Descripción breve (opcional)"
-          class="w-full md:w-2/3 rounded bg-darkbg border border-ublue text-text p-2 focus:ring-2 focus:ring-ublue" />
-      </div>
-
-      <!-- CUENTA -->
-      <div class="flex flex-col md:flex-row md:items-center gap-4">
-        <label for="cuenta" class="w-full md:w-1/3 text-sm font-semibold text-text">Cuenta:</label>
-        <select id="cuenta" name="cuenta" required
-          class="w-full md:w-2/3 rounded bg-darkbg border border-ublue text-text p-2 focus:ring-2 focus:ring-ublue">
-          <option value="">Seleccione una cuenta</option>
-          <option value="efectivo">Efectivo</option>
-          <option value="banco">Banco</option>
-          <option value="mercadopago">MercadoPago</option>
-          <option value="ahorros papa">Ahorros Papá</option>
-        </select>
-      </div>
-
-      <!-- BOTONES -->
-      <div class="flex flex-col sm:flex-row gap-4 mt-6">
-        <button type="submit"
-          class="w-full sm:w-auto px-5 py-2 rounded bg-terminalgreen text-darkbg font-semibold hover:bg-green-400 transition">
-          Guardar
-        </button>
-        <a href="{{ url_for('index') }}"
-          class="w-full sm:w-auto text-center px-5 py-2 rounded bg-gray-600 text-white font-semibold hover:bg-gray-500 transition">
-          Cancelar
-        </a>
-      </div>
-    </form>
+    <h2 class="text-2xl font-bold text-ublue mb-4 font-mono">Últimos Gastos</h2>
+    {% if ultimos_gastos %}
+      <ul class="space-y-2">
+        {% for gasto in ultimos_gastos %}
+          <li class="flex justify-between items-center border-b border-ublue pb-2">
+            <span class="text-text">{{ gasto["fecha"] }} - {{ gasto["nota"] or "Sin nota" }}</span>
+            <span class="text-ured font-semibold">
+              ${{ gasto["monto"] | float | round(2) | string | replace(".", ",") }}
+            </span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-textMuted">No hay gastos registrados aún.</p>
+    {% endif %}
+    <a href="{{ url_for('movimientos', tipo='Gasto') }}"
+       class="mt-4 inline-block px-4 py-2 rounded bg-ublue text-white hover:bg-ured transition">
+      Ver más
+    </a>
   </section>
 
 </div>
