@@ -1,20 +1,12 @@
+import sqlite3
 from werkzeug.security import generate_password_hash
-import json
 
-# Cambia estos valores:
-username = "admin"
-password = "admin123"
+conn = sqlite3.connect("finanzas.db")
+cursor = conn.cursor()
 
-password_hash = generate_password_hash(password)
+hashed_password = generate_password_hash("Diegocalderon01")
+cursor.execute("INSERT INTO users (username, password_hash) VALUES (?, ?)", ("Diego", hashed_password))
+conn.commit()
+conn.close()
 
-user_data = [{
-    "id": 1,
-    "username": username,
-    "password_hash": password_hash
-}]
-
-with open("users.json", "w", encoding="utf-8") as f:
-    json.dump(user_data, f, indent=4)
-
-print("Usuario creado:", username)
-print("Password hash:", password_hash)
+print("Usuario creado!")

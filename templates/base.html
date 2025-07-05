@@ -1,124 +1,978 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark" class="scroll-smooth">
 
 <head>
+  <!-- Primary Meta Tags -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% block title %}Dashboard - Mi Cloud{% endblock %}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>{% block title %}Dashboard - Tinkerhome{% endblock %}</title>
 
-  <!-- Tailwind CDN -->
+  <!-- SEO & Meta Tags -->
+  <meta name="description" content="Panel de administración Tinkerhome para gestionar finanzas, mente, tiempo, salud y vida digital.">
+  <meta name="author" content="Tinkerhome">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#8B5CF6" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#F5F3FF" media="(prefers-color-scheme: light)">
+
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <!-- Preload critical CSS -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"></noscript>
+
+  <!-- Tailwind CSS with critical configuration -->
   <script src="https://cdn.tailwindcss.com"></script>
-
   <script>
+    // Enhanced Tailwind configuration with theme support
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
-          colors: {
-            primary: '#5B3EFF',
-            primaryVariant: '#4A2FCC',
-            secondary: '#00D0FF',
-            secondaryVariant: '#00AACC',
-            accent: '#FF3B81',
-            background: '#F8F9FB',
-            surface: '#FFFFFF',
-            surfaceMuted: '#F1F3F7',
-            textPrimary: '#1A1A1A',
-            textSecondary: '#6B6B6B',
-            textMuted: '#A3A3A3',
-            success: '#4CAF50',
-            warning: '#FFC107',
-            error: '#F44336'
-          },
           fontFamily: {
-            sans: ['Inter', 'ui-sans-serif', 'system-ui'],
-            mono: ['Fira Code', 'Source Code Pro', 'Menlo', 'Consolas', 'monospace'],
+            sans: ['Poppins', 'ui-sans-serif', 'system-ui']
           },
           borderRadius: {
-            sm: '4px',
             md: '8px',
-            lg: '16px',
-            xl: '24px',
-            pill: '9999px',
+            lg: '16px'
           },
-          boxShadow: {
-            sm: '0 1px 3px rgba(0,0,0,0.1)',
-            md: '0 4px 8px rgba(0,0,0,0.1)',
-            lg: '0 12px 24px rgba(0,0,0,0.15)',
-          }
+          transitionProperty: {
+            'width': 'width',
+            'height': 'height',
+            'spacing': 'margin, padding',
+          },
+          keyframes: {
+            'fade-in': {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            'slide-in': {
+              '0%': { transform: 'translateX(-100%)' },
+              '100%': { transform: 'translateX(0)' },
+            },
+          },
+          animation: {
+            'fade-in': 'fade-in 0.3s ease-out',
+            'slide-in': 'slide-in 0.3s ease-out',
+          },
         }
       }
     }
   </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <!-- Deferred and optimized scripts -->
+  <link rel="preload" as="script" href="https://unpkg.com/feather-icons">
+  <script defer src="https://unpkg.com/feather-icons"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  
+  <!-- Non-critical CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"></noscript>
+
+  <!-- PWA and Web App Manifest -->
+  <link rel="manifest" href="/static/manifest.json" />
+  <link rel="apple-touch-icon" href="/static/icons/icon-192x192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Tinkerhome">
+
+  <!-- Custom Styles with preload -->
+  <link rel="preload" href="{{ url_for('static', filename='style.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></noscript>
+
+  <!-- Theme Variables -->
+  <style>
+    /* Material Icons */
+    @font-face {
+      font-family: 'Material Icons';
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://fonts.gstatic.com/s/materialicons/v139/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+    }
+    
+    .material-icons {
+      font-family: 'Material Icons';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      font-feature-settings: 'liga';
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    :root {
+      /* Color Palette */
+      --primary: #8b5cf6;
+      --primary-light: #c4b5fd;
+      --primary-dark: #7c3aed;
+      --primary-focus: rgba(139, 92, 246, 0.15);
+      
+      /* Surface Colors */
+      --surface: #1e1e2e;
+      --surface-light: #27293a;
+      --surface-lighter: #2f3344;
+      --surface-dark: #181825;
+      
+      /* Text Colors */
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --text-secondary: #a1a1aa;
+      
+      /* UI Colors */
+      --border: #2d3748;
+      --border-light: #3f3f46;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --info: #3b82f6;
+      
+      /* Sidebar Specific */
+      --sidebar-bg: #1a1b26;
+      --sidebar-section: #24283b;
+      --sidebar-item-hover: rgba(203, 213, 225, 0.08);
+      --sidebar-text: #e2e8f0;
+      --sidebar-text-secondary: #a1a1aa;
+      
+      /* Transitions */
+      --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      
+      /* Shadows */
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      
+      /* Border Radius */
+      --radius-sm: 0.25rem;
+      --radius: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-full: 9999px;
+    }
+
+    [data-theme="dark"] {
+      --surface: #1E1E1E;
+      --surface-dark: #242424;
+      --surface-hover: #333333;
+      --text-primary: #FFFFFF;
+      --text-secondary: #CFCFCF;
+      --text-muted: #999999;
+      --border: #3D3D3D;
+    }
+
+    html {
+      touch-action: manipulation;
+    }
+
+    /* Enhanced Sidebar Header */
+    .sidebar-header {
+      padding: 0 1.5rem 1.5rem;
+      margin: 0 0 0.5rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--primary);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      transition: all var(--transition-fast);
+    }
+    
+    .sidebar-section {
+      color: var(--sidebar-text-secondary);
+      text-transform: uppercase;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 1.5rem 1.5rem 0.5rem;
+      margin: 0 0.5rem;
+      position: relative;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .sidebar-section::before {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      margin-left: 0.5rem;
+    }
+    
+    .sidebar-section:first-child {
+      margin-top: 0.5rem;
+    }
+    
+    .sidebar-logo:hover {
+      color: var(--primary-light);
+    }
+    
+    .sidebar-logo-icon {
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: var(--radius);
+      color: white;
+      font-size: 1.25rem;
+    }
+
+    .sidebar-search {
+      padding: 0 1.25rem 1.25rem;
+      position: relative;
+    }
+
+    .sidebar-search::after {
+      content: '\e8b6';
+      font-family: 'Material Icons';
+      position: absolute;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1.25rem;
+      pointer-events: none;
+      transition: color var(--transition-fast);
+    }
+
+    .sidebar-search input {
+      width: 100%;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.625rem 2.5rem 0.625rem 1rem;
+      color: var(--text);
+      font-size: 0.9375rem;
+      outline: none;
+      transition: all var(--transition-fast);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .sidebar-search input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+      background: var(--surface-lighter);
+    }
+
+    .sidebar-search input::placeholder {
+      color: var(--text-muted);
+      opacity: 0.8;
+    }
+
+    .sidebar-search input:focus::placeholder {
+      opacity: 0.5;
+    }
+
+    /* Enhanced Sidebar */
+    .sidebar {
+      width: 17.5rem;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      overflow-x: hidden;
+      transition: all var(--transition-normal);
+      z-index: 50;
+      padding: 1.25rem 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--primary) transparent;
+    }
+
+    .sidebar::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .sidebar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .sidebar::-webkit-scrollbar-thumb {
+      background-color: var(--primary);
+      border-radius: 3px;
+    }
+
+    /* Enhanced Menu Links */
+    .menu-link {
+      --indicator-width: 4px;
+      --indicator-offset: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.625rem 1.25rem;
+      color: var(--sidebar-text);
+      text-decoration: none;
+      transition: all var(--transition-fast);
+      border-left: var(--indicator-width) solid transparent;
+      margin: 0.125rem 0.5rem 0.125rem calc(0.5rem - var(--indicator-width));
+      padding-left: calc(1.25rem - var(--indicator-width) + var(--indicator-offset));
+      border-radius: var(--radius);
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      font-weight: 400;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-link::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: calc(-1 * var(--indicator-offset));
+      width: 0.5rem;
+      height: 0.5rem;
+      background: var(--primary);
+      border-radius: 50%;
+      transform: translateY(-50%) scale(0);
+      transition: all var(--transition-normal) cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      opacity: 0;
+    }
+
+    .menu-link:hover {
+      background: var(--sidebar-item-hover);
+      color: var(--primary-light);
+      transform: translateX(2px);
+    }
+
+    .menu-link:hover::before {
+      transform: translateY(-50%) scale(1);
+      opacity: 1;
+    }
+
+    .menu-link.active {
+      background: var(--primary-focus);
+      color: var(--primary-light);
+      font-weight: 500;
+      border-left-color: var(--primary);
+    }
+
+    .menu-link.active::before {
+      transform: translateY(-50%) scale(1);
+      opacity: 1;
+    }
+
+    .menu-link i {
+      margin-right: 0.75rem;
+      width: 1.25rem;
+      text-align: center;
+      color: var(--text-muted);
+      transition: color var(--transition-fast);
+    }
+
+    .menu-link:hover i,
+    .menu-link.active i {
+      color: var(--primary);
+    }
+
+    /* Badge Styles */
+    .menu-link .badge {
+      font-size: 0.6875rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: var(--radius-full);
+      font-weight: 500;
+      line-height: 1;
+      min-width: 1.5rem;
+      text-align: center;
+      transition: all var(--transition-fast);
+    }
+
+    .menu-link:hover .badge {
+      transform: translateX(2px);
+    }
+  </style>
+
+  <!-- Theme Switcher (moved to Alpine.js in body) -->
+  <script>
+    // Theme initialization moved to Alpine.js data attribute for better DX and performance
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  </script>
 </head>
 
-<body class="bg-background text-textPrimary font-sans">
+<body class="bg-[var(--surface-dark)] text-[var(--text-primary)] font-sans min-h-screen flex flex-col" 
+      role="document" 
+      x-data="{ mobileMenuOpen: false, theme: localStorage.getItem('theme') || 'dark' }"
+      x-init="
+        // Initialize theme from localStorage or system preference
+        if (!localStorage.getItem('theme')) {
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          theme = prefersDark ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+        
+        // Watch for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+          if (!localStorage.getItem('theme')) {
+            theme = e.matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+          }
+        });
+      "
+      :class="{ 'overflow-hidden': mobileMenuOpen }">
+  
+  <!-- Skip to main content link for keyboard users -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--primary)] focus:text-white focus:rounded transition-all duration-200">
+    Saltar al contenido principal
+  </a>
 
   <div class="flex min-h-screen">
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="fixed top-0 left-0 h-full w-60 bg-surface border-r border-surfaceMuted shadow-md transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-out z-50">
-      <div class="p-6 text-primary font-bold text-xl">
-        Tinkerhome
+    <aside id="sidebar"
+      class="fixed top-0 left-0 h-full w-72 bg-[var(--surface)] border-r border-[var(--border)] shadow-lg transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-50 overflow-y-auto scrollbar-thin scrollbar-thumb-[var(--primary)]">
+      <div class="sidebar-header">
+        <a href="#" class="sidebar-logo">
+          <span class="sidebar-logo-icon material-icons">rocket_launch</span>
+          <span>Tinkerhome</span>
+        </a>
       </div>
-      <nav class="flex flex-col space-y-1 text-textSecondary text-sm px-4">
-        <a href="{{ url_for('index') }}" class="py-2 px-3 rounded hover:bg-surfaceMuted transition duration-200 ease-out">&gt; Dashboard</a>
-        <a href="{{ url_for('ingresos') }}" class="py-2 px-3 rounded hover:bg-surfaceMuted transition duration-200 ease-out">&gt; Ingresos</a>
-        <a href="{{ url_for('gastos') }}" class="py-2 px-3 rounded hover:bg-surfaceMuted transition duration-200 ease-out">&gt; Gastos</a>
-        <a href="{{ url_for('notas') }}" class="py-2 px-3 rounded hover:bg-surfaceMuted transition duration-200 ease-out">&gt; Notas</a>
-        <a href="{{ url_for('vps') }}" class="py-2 px-3 rounded hover:bg-surfaceMuted transition duration-200 ease-out">&gt; VPS</a>
+      
+      <div class="px-4" x-data="{ query: '' }">
+        <input type="text" placeholder="Buscar..." x-model="query"
+          class="w-full px-3 py-2 rounded border border-[var(--border)] bg-[var(--surface-hover)] text-[var(--text-primary)] text-sm mb-4">
+      </div>
+      
+      <!-- Dashboard -->
+      <div class="px-4 mt-4 text-[var(--text-muted)] uppercase text-xs tracking-wide">Dashboard</div>
+      <nav class="mt-2 flex flex-col space-y-1 px-4">
+        <a href="{{ url_for('index') }}" class="menu-link {% if request.path == '/' %}menu-link-active{% endif %}">
+          <span class="flex items-center gap-3">
+            <i data-feather="home" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
+            <span class="whitespace-nowrap">Inicio</span>
+          </span>
+        </a>
+        <a href="#" class="menu-link">
+          <span class="flex items-center gap-3">
+            <i data-feather="calendar" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
+            <span class="whitespace-nowrap">Resumen diario</span>
+          </span>
+        </a>
       </nav>
+
+      <!-- Finanzas -->
+      <div class="px-4 mt-6 text-[var(--text-muted)] uppercase text-xs tracking-wide">Finanzas</div>
+      <button class="menu-link justify-between" data-toggle="finanzas" aria-expanded="false" aria-controls="finanzas">
+        <span class="flex items-center gap-3">
+          <i data-feather="activity" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
+          <span>Finanzas</span>
+        </span>
+        <i data-feather="chevron-down" class="w-4 h-4 transition-transform" aria-hidden="true"></i>
+      </button>
+      <nav id="finanzas" class="hidden flex-col space-y-1 px-4">
+        <a href="{{ url_for('movimientos') }}"
+          class="menu-link pl-9 {% if request.path == '/movimientos' %}menu-link-active{% endif %}">
+          Movimientos
+          <span class="ml-auto bg-[var(--accent)] text-black text-xs px-2 py-1 rounded-full">34</span>
+        </a>
+        <a href="#" class="menu-link pl-9">
+          Cuentas
+          <span class="ml-auto text-[var(--text-secondary)] text-xs">7</span>
+        </a>
+        <a href="#" class="menu-link pl-9">
+          Ahorros
+          <span class="ml-auto text-[var(--primary)] text-xs font-semibold">$5.400.000</span>
+        </a>
+        <a href="#" class="menu-link pl-9">
+          Reportes
+          <span class="ml-auto bg-[var(--primary-dark)] text-white text-xs px-2 py-1 rounded-full">2</span>
+        </a>
+      </nav>
+
+      <hr class="border-[var(--border)] my-4">
+
+      <!-- Mente -->
+      <div class="px-4 mt-6 text-[var(--text-muted)] uppercase text-xs tracking-wide">Mente</div>
+      <button class="menu-link justify-between" data-toggle="mente" aria-expanded="false" aria-controls="mente">
+        <span class="flex items-center gap-3">
+          <i data-feather="activity" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
+          <span>Mente</span>
+        </span>
+        <i data-feather="chevron-down" class="w-4 h-4 transition-transform" aria-hidden="true"></i>
+      </button>
+      <nav id="mente" class="hidden flex-col space-y-1 px-4">
+        <a href="#" class="menu-link pl-9">
+          Estado emocional
+          <span class="ml-auto text-green-400 text-xs">😊 Feliz</span>
+        </a>
+        <a href="#" class="menu-link pl-9">
+          Diario de pensamientos
+        </a>
+        <a href="#" class="menu-link pl-9">
+          Meditación
+          <span class="ml-auto bg-[var(--accent)] text-black text-xs px-2 py-1 rounded-full">3</span>
+        </a>
+      </nav>
+
+      <hr class="border-[var(--border)] my-4">
+
+      <!-- Tiempo -->
+      <div class="px-4 mt-6 text-[var(--text-muted)] uppercase text-xs tracking-wide">Tiempo</div>
+      <button class="menu-link justify-between" data-toggle="tiempo" aria-expanded="false" aria-controls="tiempo">
+        <span class="flex items-center gap-3">
+          <i data-feather="clock" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
+          <span>Tiempo</span>
+        </span>
+        <i data-feather="chevron-down" class="w-4 h-4 transition-transform" aria-hidden="true"></i>
+      </button>
+      <nav id="tiempo" class="hidden flex-col space-y-1 px-4">
+        <a href="#" class="menu-link pl-9">
+          Tareas
+          <span class="ml-auto bg-[var(--danger)] text-white text-xs px-2 py-1 rounded-full">7</span>
+        </a>
+        <a href="#" class="menu-link pl-9">
+          Calendario
+        </a>
+        <a href="#" class="menu-link pl-9">
+          Hábitos
+          <span class="ml-auto text-[var(--primary)] text-xs">85%</span>
+        </a>
+      </nav>
+
+      <hr class="border-[var(--border)] my-4">
+
+      <!-- Salud -->
+      <div class="px-4 mt-6 text-[var(--text-muted)] uppercase text-xs tracking-wide">Salud</div>
+      <button class="menu-link justify-between" data-toggle="salud" aria-expanded="false" aria-controls="salud">
+        <span class="flex items-center gap-3">
+          <i data-feather="heart" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
+          <span>Salud</span>
+        </span>
+        <i data-feather="chevron-down" class="w-4 h-4 transition-transform" aria-hidden="true"></i>
+      </button>
+      <nav id="salud" class="hidden flex-col space-y-1 px-4">
+        <a href="#" class="menu-link pl-9">
+          Datos biométricos
+        </a>
+        <a href="#" class="menu-link pl-9">
+          Ejercicio
+          <span class="ml-auto bg-[var(--accent)] text-black text-xs px-2 py-1 rounded-full">5</span>
+        </a>
+        <a href="#" class="menu-link pl-9">
+          Sueño
+          <span class="ml-auto text-[var(--primary)] text-xs">6.5 h</span>
+        </a>
+        <a href="#" class="menu-link pl-9">
+          Hidratación
+          <span class="ml-auto text-[var(--primary-dark)] text-xs">2.4 L</span>
+        </a>
+      </nav>
+
+      <hr class="border-[var(--border)] my-4">
+
+      <!-- Aspecto -->
+      <div class="px-4 mt-6 text-[var(--text-muted)] uppercase text-xs tracking-wide">Aspecto</div>
+      <button class="menu-link justify-between" data-toggle="aspecto" aria-expanded="false" aria-controls="aspecto">
+        <span class="flex items-center gap-3">
+          <i data-feather="star" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
+          <span>Aspecto</span>
+        </span>
+        <i data-feather="chevron-down" class="w-4 h-4 transition-transform" aria-hidden="true"></i>
+      </button>
+      <nav id="aspecto" class="hidden flex-col space-y-1 px-4">
+        <a href="#" class="menu-link pl-9">
+          Closet digital
+        </a>
+        <a href="#" class="menu-link pl-9">
+          Looks favoritos
+          <span class="ml-auto bg-[var(--accent)] text-black text-xs px-2 py-1 rounded-full">12</span>
+        </a>
+        <a href="#" class="menu-link pl-9">
+          Peso corporal
+          <span class="ml-auto text-[var(--primary)] text-xs">81.4 kg</span>
+        </a>
+      </nav>
+
+      <hr class="border-[var(--border)] my-4">
+
+      <!-- Seguridad -->
+      <div class="px-4 mt-6 text-[var(--text-muted)] uppercase text-xs tracking-wide">Seguridad</div>
+      <nav class="mt-2 flex flex-col space-y-1 px-4">
+        <a href="{{ url_for('vps') }}" class="menu-link {% if request.path == '/vps' %}menu-link-active{% endif %}">
+          <span class="flex items-center gap-3">
+            <i data-feather="server" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
+            <span>VPS</span>
+          </span>
+        </a>
+        <a href="#" class="menu-link pl-9">Dominios</a>
+        <a href="#" class="menu-link pl-9">Logs</a>
+      </nav>
+
+      <hr class="border-[var(--border)] my-4">
+
+      <!-- Perfil -->
+      <div class="px-4 mt-6 text-[var(--text-muted)] uppercase text-xs tracking-wide">Perfil</div>
+      <nav class="mt-2 flex flex-col space-y-1 px-4">
+        <a href="{{ url_for('perfil') }}"
+          class="menu-link {% if request.path == '/perfil' %}menu-link-active{% endif %}">
+          <span class="flex items-center gap-3">
+            <i data-feather="user" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
+            <span>Datos personales</span>
+          </span>
+        </a>
+        <a href="#" class="menu-link pl-9">Preferencias</a>
+        <a href="#" class="menu-link pl-9">Notificaciones</a>
+      </nav>
+
+      <hr class="border-[var(--border)] my-4">
+
+      <!-- Configuración -->
+      <div class="px-4 mt-6 text-[var(--text-muted)] uppercase text-xs tracking-wide">Configuración</div>
+      <nav class="mt-2 flex flex-col space-y-1 px-4">
+        <a href="#" class="menu-link">
+          <span class="flex items-center gap-3">
+            <i data-feather="settings" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
+            <span>Sistema</span>
+          </span>
+        </a>
+        <a href="#" class="menu-link">
+          <span class="flex items-center gap-3">
+            <i data-feather="sliders" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
+            <span>Apariencia</span>
+          </span>
+        </a>
+        <a href="{{ url_for('logout') }}" class="menu-link-danger">
+          <span class="flex items-center gap-3">
+            <i data-feather="log-out" class="w-5 h-5 shrink-0 align-middle" aria-hidden="true"></i>
+            <span>Cerrar sesión</span>
+          </span>
+        </a>
+      </nav>
+
     </aside>
 
-    <div class="flex-1 flex flex-col md:ml-60">
+    <!-- Main Area -->
+    <div class="flex-1 flex flex-col md:ml-72">
 
       <!-- Topbar -->
-      <header class="h-16 bg-surface border-b border-surfaceMuted shadow-sm flex items-center justify-between px-6">
-        <h1 class="text-lg font-semibold">{% block page_title %}{% endblock %}</h1>
-
-        <!-- Botón hamburguesa (solo móvil) -->
-        <button id="hamburger" class="block md:hidden text-primary">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
-            viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
+      <header
+        class="sticky top-0 z-40 h-16 bg-[var(--surface)] border-b border-[var(--border)] shadow flex items-center justify-between px-6">
+        <h1 class="text-lg font-semibold tracking-wide">{% block page_title %}Panel{% endblock %}</h1>
+        <div class="flex items-center gap-4">
+          <button id="theme-toggle" class="text-[var(--primary)]" aria-label="Cambiar tema">
+            <i id="theme-icon" data-feather="sun" class="w-5 h-5" aria-hidden="true"></i>
+          </button>
+          <button id="hamburger" aria-controls="sidebar" aria-expanded="false" aria-label="Abrir menú"
+            class="md:hidden text-[var(--primary)]">
+            <i data-feather="menu" class="w-6 h-6" aria-hidden="true"></i>
+          </button>
+        </div>
       </header>
 
       <!-- Main Content -->
       <main class="flex-1 p-6 max-w-7xl w-full mx-auto">
+
         {% block content %}{% endblock %}
       </main>
 
       <!-- Footer -->
-      <footer class="bg-surfaceMuted text-textMuted text-center py-6 text-xs border-t border-surface mt-8">
-        <div class="max-w-7xl mx-auto space-y-2">
-          <p>
-            Panel corriendo en
-            <span class="text-primary font-bold">{{ request.host }}</span>
-          </p>
-          <p>
-            Para más detalles sobre el servidor, revisa la sección
-            <a href="{{ url_for('vps') }}" class="text-accent hover:text-primaryVariant font-semibold transition">
-              &gt; VPS
-            </a>.
-          </p>
-          <p>
-            Desarrollado por TinkerHome Cloud © 2025
-          </p>
-        </div>
+      <footer class="text-[var(--text-muted)] text-center text-xs border-t border-[var(--border)] mt-6 py-4">
+        <p>
+          Panel corriendo en
+          <span class="text-[var(--primary)] font-semibold">{{ request.host }}</span>
+        </p>
+        <p>
+          Para más detalles revisa
+          <a href="{{ url_for('vps') }}" class="text-[var(--accent)] hover:text-[var(--primary)] transition-colors">
+            VPS
+          </a>.
+        </p>
+        <p>
+          Tinkerhome Cloud &copy; 2025
+        </p>
       </footer>
+
     </div>
   </div>
 
-  <script>
-    const btn = document.getElementById('hamburger');
-    const sidebar = document.getElementById('sidebar');
+  <!-- Backdrop for mobile -->
+  <div id="backdrop" class="fixed inset-0 bg-black/50 hidden z-40"></div>
 
-    btn?.addEventListener('click', () => {
-      sidebar.classList.toggle('-translate-x-full');
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script>
+    // Initialize application when DOM is fully loaded
+    document.addEventListener('alpine:init', () => {
+      // Initialize Feather Icons
+      feather.replace();
+      
+      // Watch for dynamically added content
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.addedNodes.length) {
+            feather.replace();
+          }
+        });
+      });
+      
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+      
+      // Initialize tooltips
+      document.querySelectorAll('[data-tooltip]').forEach(el => {
+        el.setAttribute('aria-label', el.getAttribute('data-tooltip'));
+        el.setAttribute('role', 'tooltip');
+      });
+
+      // -------------------------------
+      // Hamburger toggle for mobile menu
+      // -------------------------------
+      const btn = document.getElementById('hamburger');
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('backdrop');
+
+      if (btn) {
+        btn.addEventListener('click', () => {
+          sidebar?.classList.toggle('-translate-x-full');
+          backdrop?.classList.toggle('hidden');
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!expanded));
+        });
+      }
+
+      // Close sidebar when clicking on backdrop
+      if (backdrop) {
+        backdrop.addEventListener('click', () => {
+          sidebar?.classList.add('-translate-x-full');
+          backdrop.classList.add('hidden');
+          if (btn) {
+            btn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      // Close sidebar when clicking outside on mobile
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth < 768 && sidebar && btn && 
+            !sidebar.contains(e.target) && !btn.contains(e.target)) {
+          sidebar.classList.add('-translate-x-full');
+          backdrop?.classList.add('hidden');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // -------------------------------
+      // Theme handling
+      // -------------------------------
+      function updateThemeIcon(theme) {
+        const themeIcon = document.getElementById('theme-icon');
+        if (themeIcon) {
+          themeIcon.setAttribute('data-feather', theme === 'dark' ? 'sun' : 'moon');
+          feather.replace();
+        }
+      }
+
+      // Initialize theme icon
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      updateThemeIcon(currentTheme);
+
+      // Theme toggle handler
+      const themeToggle = document.getElementById('theme-toggle');
+      if (themeToggle) {
+        themeToggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+          updateThemeIcon(newTheme);
+        });
+      }
+
+      // -------------------------------
+      // Collapsible submenus
+      // -------------------------------
+      document.querySelectorAll('[data-toggle]').forEach(button => {
+        button.addEventListener('click', () => {
+          const id = button.getAttribute('data-toggle');
+          const target = document.getElementById(id);
+          if (target) {
+            target.classList.toggle('hidden');
+            const expanded = button.getAttribute('aria-expanded') === 'true';
+            button.setAttribute('aria-expanded', String(!expanded));
+            const icon = button.querySelector('i[data-feather]');
+            if (icon) {
+              icon.classList.toggle('rotate-180');
+            }
+          }
+        });
+      });
+
+      // -------------------------------
+      // Chart.js initialization
+      // -------------------------------
+      function initializeCharts() {
+        // Expenses chart
+        const expensesCtx = document.getElementById('chart-gastos');
+        if (expensesCtx) {
+          new Chart(expensesCtx, {
+            type: 'line',
+            data: {
+              labels: ['Enero', 'Febrero', 'Marzo'],
+              datasets: [{
+                label: 'Gastos',
+                data: [500, 800, 300],
+                backgroundColor: 'rgba(139, 92, 246, 0.5)',
+                borderColor: '#8B5CF6',
+                tension: 0.4
+              }]
+            }
+          });
+        }
+
+        // Sleep chart
+        const sleepCtx = document.getElementById('chart-sueno');
+        if (sleepCtx) {
+          new Chart(sleepCtx, {
+            type: 'bar',
+            data: {
+              labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie'],
+              datasets: [{
+                label: 'Sueño (h)',
+                data: [7, 6.5, 8, 5, 7.2],
+                backgroundColor: '#8B5CF6'
+              }]
+            }
+          });
+        }
+
+        // Categories chart
+        const categoriesCtx = document.getElementById('chart-categorias');
+        if (categoriesCtx) {
+          const theme = document.documentElement.getAttribute('data-theme');
+          const textColor = theme === 'dark' ? '#FFFFFF' : '#1F2937';
+          new Chart(categoriesCtx, {
+            type: 'pie',
+            data: {
+              labels: ['Alimentos', 'Transporte', 'Entretenimiento'],
+              datasets: [{
+                data: [300, 150, 200],
+                backgroundColor: ['#8B5CF6', '#22D3EE', '#DC2626'],
+              }]
+            },
+            options: {
+              plugins: {
+                legend: { labels: { color: textColor } }
+              }
+            }
+          });
+        }
+
+        // Daily movements chart
+        const dailyCtx = document.getElementById('chart-diario');
+        if (dailyCtx) {
+          const theme = document.documentElement.getAttribute('data-theme');
+          const textColor = theme === 'dark' ? '#FFFFFF' : '#1F2937';
+          new Chart(dailyCtx, {
+            type: 'bar',
+            data: {
+              labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie'],
+              datasets: [{
+                label: 'Movimientos',
+                data: [2, 4, 1, 3, 5],
+                backgroundColor: '#8B5CF6'
+              }]
+            },
+            options: {
+              scales: {
+                x: { ticks: { color: textColor } },
+                y: { ticks: { color: textColor } }
+              }
+            }
+          });
+        }
+      }
+
+      // Initialize charts
+      initializeCharts();
+
+      // -------------------------------
+      // Table search functionality
+      // -------------------------------
+      const searchInput = document.getElementById('buscador');
+      if (searchInput) {
+        searchInput.addEventListener('keyup', function() {
+          const value = this.value.toLowerCase();
+          document.querySelectorAll('tbody tr').forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(value) ? '' : 'none';
+          });
+        });
+      }
+
+      // -------------------------------
+      // Toast notification example
+      // -------------------------------
+      function showWelcomeToast() {
+        Toastify({
+          text: "Bienvenido al Panel Celestial!",
+          duration: 3000,
+          gravity: "top",
+          position: "right",
+          backgroundColor: "var(--primary)"
+        }).showToast();
+      }
+
+      // Uncomment to enable welcome toast
+      // showWelcomeToast();
+
+      // -------------------------------
+      // Keyboard shortcuts
+      // -------------------------------
+      document.addEventListener('keydown', e => {
+        // Toggle sidebar with Ctrl+M
+        if (e.ctrlKey && e.key === 'm') {
+          e.preventDefault();
+          sidebar?.classList.toggle('-translate-x-full');
+          backdrop?.classList.toggle('hidden');
+          if (btn) {
+            const expanded = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', String(!expanded));
+          }
+        }
+      });
+
+      // -------------------------------
+      // Service Worker for PWA
+      // -------------------------------
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/static/sw.js')
+            .then(registration => {
+              console.log('ServiceWorker registration successful with scope: ', registration.scope);
+              // Check for updates
+              registration.update().catch(err => console.debug('ServiceWorker update check failed:', err));
+            })
+            .catch(err => {
+              console.error('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
     });
   </script>
 
