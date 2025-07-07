@@ -25,9 +25,12 @@ def create_app(config_name=None):
     
     # Create Flask app with correct template and static folder paths
     # Since we're in app/__init__.py, we need to go up one level to find templates and static
-    app = Flask(__name__, 
-                template_folder='templates',
-                static_folder='static')
+    BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+    app = Flask(
+        __name__,
+        template_folder=os.path.join(BASE_DIR, 'templates'),
+        static_folder=os.path.join(BASE_DIR, 'static')
+    )
     
     app.config.from_object(config[config_name])
     

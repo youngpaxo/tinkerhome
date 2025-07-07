@@ -18,7 +18,7 @@ def init_auth_routes(user_service: UserService):
             
             if not username or not password:
                 flash("Username and password are required", "error")
-                return render_template("register.html")
+                return render_template("pages/register.html")
             
             try:
                 user_id = user_service.create_user(username, password)
@@ -33,7 +33,7 @@ def init_auth_routes(user_service: UserService):
                 logger.error(f"Unexpected error during registration: {e}")
                 flash("An unexpected error occurred", "error")
         
-        return render_template("register.html")
+        return render_template("pages/register.html")
     
     @auth_bp.route("/login", methods=["GET", "POST"])
     def login():
@@ -43,7 +43,7 @@ def init_auth_routes(user_service: UserService):
             
             if not username or not password:
                 flash("Username and password are required", "error")
-                return render_template("login.html")
+                return render_template("pages/login.html")
             
             user = user_service.authenticate_user(username, password)
             if user:
@@ -55,7 +55,7 @@ def init_auth_routes(user_service: UserService):
             else:
                 flash("Invalid username or password", "error")
         
-        return render_template("login.html")
+        return render_template("pages/login.html")
     
     @auth_bp.route("/logout")
     @login_required

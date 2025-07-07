@@ -27,7 +27,7 @@ def init_main_routes(finance_service: FinanceService, notes_service: NotesServic
                 current_user.id, "Gasto", limit=5
             )
             return render_template(
-                "index.html",
+                "pages/index.html",
                 ultimos_ingresos=recent_ingresos,
                 ultimos_gastos=recent_gastos,
                 total_ingresos=summary.total_ingresos,
@@ -38,7 +38,7 @@ def init_main_routes(finance_service: FinanceService, notes_service: NotesServic
         except Exception as e:
             logger.error(f"Error loading dashboard for user {current_user.id}: {e}")
             flash("Error loading dashboard", "error")
-            return render_template("index.html")
+            return render_template("pages/index.html")
 
     # -------------------------------
     # Movimientos
@@ -81,7 +81,7 @@ def init_main_routes(finance_service: FinanceService, notes_service: NotesServic
             cuentas = finance_service.get_accounts(current_user.id)
             metas = finance_service.get_goals(current_user.id)
             return render_template(
-                "templates/pages/movimientos.html",
+                "pages/movimientos.html",
                 movimientos=movements,
                 filtro_tipo=filtro_tipo,
                 categorias=categorias,
@@ -149,7 +149,7 @@ def init_main_routes(finance_service: FinanceService, notes_service: NotesServic
     @main_bp.route("/perfil")
     @login_required
     def perfil():
-        return render_template("templates/pages/perfil.html")
+        return render_template("pages/perfil.html")
 
     # -------------------------------
     # Settings
@@ -157,7 +157,7 @@ def init_main_routes(finance_service: FinanceService, notes_service: NotesServic
     @main_bp.route("/settings")
     @login_required
     def settings():
-        return render_template("templates/pages/settings.html")
+        return render_template("pages/settings.html")
 
     # -------------------------------
     # VPS
@@ -165,7 +165,7 @@ def init_main_routes(finance_service: FinanceService, notes_service: NotesServic
     @main_bp.route("/vps")
     @login_required
     def vps():
-        return render_template("templates/pages/vps.html")
+        return render_template("pages/vps.html")
 
     # -------------------------------
     # Stats
@@ -173,7 +173,7 @@ def init_main_routes(finance_service: FinanceService, notes_service: NotesServic
     @main_bp.route("/stats")
     @login_required
     def stats():
-        return render_template("templates/pages/stats.html")
+        return render_template("pages/stats.html")
 
     # -------------------------------
     # Ingresos
@@ -181,7 +181,7 @@ def init_main_routes(finance_service: FinanceService, notes_service: NotesServic
     @main_bp.route("/ingresos")
     @login_required
     def ingresos():
-        return render_template("templates/pages/ingresos.html")
+        return render_template("pages/ingresos.html")
 
     # -------------------------------
     # Gastos
@@ -189,7 +189,7 @@ def init_main_routes(finance_service: FinanceService, notes_service: NotesServic
     @main_bp.route("/gastos")
     @login_required
     def gastos():
-        return render_template("templates/pages/gastos.html")
+        return render_template("pages/gastos.html")
 
     # -------------------------------
     # API Endpoints
