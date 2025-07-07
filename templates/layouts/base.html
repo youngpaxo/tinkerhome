@@ -1,0 +1,539 @@
+{% import 'components.html' as macros %}
+
+
+<!DOCTYPE html>
+<html lang="es" data-theme="dark" class="scroll-smooth">
+
+<head>
+  <!-- Basic Meta -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>{% block title %}Dashboard - Tinkerhome{% endblock %}</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Panel de administración Tinkerhome para gestionar finanzas, mente, tiempo, salud y vida digital.">
+  <meta name="author" content="Tinkerhome">
+  <meta name="robots" content="index, follow">
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+  <!-- Fonts: Inter -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  </noscript>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            // backgrounds
+            bg: 'var(--color-bg)',
+            'bg-secondary': 'var(--color-bg-secondary)',
+            'bg-highlight': 'var(--color-bg-highlight)',
+            surface: 'var(--color-surface)',
+            
+            // text
+            text: 'var(--color-text)',
+            'text-muted': 'var(--color-text-muted)',
+            'text-secondary': 'var(--color-text-secondary)',
+            
+            // primary
+            primary: 'var(--color-primary)',
+            'primary-light': 'var(--color-primary-light)',
+            'primary-dark': 'var(--color-primary-dark)',
+            'primary-focus': 'var(--color-primary-focus)',
+            
+            // danger
+            danger: 'var(--color-danger)',
+            
+            // accent
+            accent: 'var(--color-accent)',
+            'accent-light': 'var(--color-accent-light)',
+            
+            // success & warning
+            success: 'var(--color-success)',
+            warning: 'var(--color-warning)',
+            
+            // borders
+            border: 'var(--color-border)',
+            'border-light': 'var(--color-border-light)',
+          },
+
+          fontFamily: {
+            sans: ['var(--font-family-sans)', 'sans-serif'],
+            mono: ['var(--font-family-mono)', 'monospace'],
+          },
+
+          borderRadius: {
+            sm: 'var(--radius-sm)',
+            md: 'var(--radius-md)',
+            lg: 'var(--radius-lg)',
+            full: 'var(--radius-full)',
+          },
+
+          boxShadow: {
+            sm: 'var(--shadow-sm)',
+            md: 'var(--shadow-md)',
+            lg: 'var(--shadow-lg)',
+          },
+
+          spacing: {
+            xs: 'var(--space-xs)',
+            sm: 'var(--space-sm)',
+            md: 'var(--space-md)',
+            lg: 'var(--space-lg)',
+            xl: 'var(--space-xl)',
+          },
+
+          transitionDuration: {
+            fast: 'var(--transition-fast)',
+            normal: 'var(--transition-normal)',
+          },
+
+          opacity: {
+            disabled: '0.5',
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Your custom styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- AlpineJS, Icons, Chart.js, Toastify -->
+  <script defer src="https://unpkg.com/feather-icons"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+  <!-- Toastify CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  </noscript>
+
+  <!-- PWA -->
+  <link rel="manifest" href="/static/manifest.json" />
+  <link rel="apple-touch-icon" href="/static/icons/icon-192x192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Tinkerhome">
+
+  <!-- Theme initialization (optional if you control it via Alpine) -->
+  <script>
+    document.documentElement.setAttribute('data-theme', 'light');
+  </script>
+</head>
+
+
+<body class="bg-[var(--bg-300)] text-[var(--text-100)] font-sans min-h-screen flex flex-col"
+      role="document"
+      x-data="{ mobileMenuOpen: false, theme: localStorage.getItem('theme') || 'dark' }"
+      x-init="
+        if (!localStorage.getItem('theme')) {
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          theme = prefersDark ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+          if (!localStorage.getItem('theme')) {
+            theme = e.matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+          }
+        });
+      "
+      :class="{ 'overflow-hidden': mobileMenuOpen }">
+
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--primary-100)] focus:text-[var(--text-100)] focus:rounded transition-all duration-200">
+    Saltar al contenido principal
+  </a>
+
+  <div class="flex min-h-screen">
+
+    <!-- Sidebar -->
+    <aside id="sidebar"
+      class="fixed top-0 left-0 h-full w-72 bg-[var(--bg-200)] border-r border-[var(--bg-300)] shadow-lg transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-50 overflow-y-auto scrollbar-thin scrollbar-thumb-[var(--primary-100)]">
+
+      <div class="sidebar-header">
+        {{ macros.logo('Tinkerhome', href=url_for('main.index')) }}
+      </div>
+
+      {{ macros.search_input() }}
+
+      {{ macros.nav_section('Dashboard', [
+          {'label': 'Inicio', 'href': url_for('main.index'), 'icon': 'home', 'active': request.path == '/'},
+          {'label': 'Resumen diario', 'href': '#', 'icon': 'calendar'}
+      ]) }}
+
+      {{ macros.collapsible_section('finanzas', 'Finanzas', 'activity', [
+          {'label': 'Movimientos', 'href': url_for('main.movimientos'), 'active': request.path == '/movimientos', 'badge': '34', 'badge_classes': 'bg-[var(--accent-100)] text-black text-xs px-2 py-1 rounded-full'},
+          {'label': 'Cuentas', 'href': '#', 'badge': '7', 'badge_classes': 'text-[var(--text-200)] text-xs'},
+          {'label': 'Ahorros', 'href': '#', 'badge': '$5.400.000', 'badge_classes': 'text-[var(--primary-100)] text-xs font-semibold'},
+          {'label': 'Reportes', 'href': '#', 'badge': '2', 'badge_classes': 'bg-[var(--primary-200)] text-[var(--text-100)] text-xs px-2 py-1 rounded-full'}
+      ]) }}
+
+      {{ macros.collapsible_section('mente', 'Mente', 'activity', [
+          {'label': 'Estado emocional', 'href': '#', 'badge': '😊 Feliz', 'badge_classes': 'text-green-400 text-xs'},
+          {'label': 'Diario de pensamientos', 'href': '#'},
+          {'label': 'Meditación', 'href': '#', 'badge': '3', 'badge_classes': 'bg-[var(--accent-100)] text-black text-xs px-2 py-1 rounded-full'}
+      ]) }}
+
+      {{ macros.collapsible_section('tiempo', 'Tiempo', 'clock', [
+          {'label': 'Tareas', 'href': '#', 'badge': '7', 'badge_classes': 'bg-[var(--color-danger)] text-[var(--text-100)] text-xs px-2 py-1 rounded-full'},
+          {'label': 'Calendario', 'href': '#'},
+          {'label': 'Hábitos', 'href': '#', 'badge': '85%', 'badge_classes': 'text-[var(--primary-100)] text-xs'}
+      ]) }}
+
+      {{ macros.collapsible_section('salud', 'Salud', 'heart', [
+          {'label': 'Datos biométricos', 'href': '#'},
+          {'label': 'Ejercicio', 'href': '#', 'badge': '5', 'badge_classes': 'bg-[var(--accent-100)] text-black text-xs px-2 py-1 rounded-full'},
+          {'label': 'Sueño', 'href': '#', 'badge': '6.5 h', 'badge_classes': 'text-[var(--primary-100)] text-xs'},
+          {'label': 'Hidratación', 'href': '#', 'badge': '2.4 L', 'badge_classes': 'text-[var(--primary-200)] text-xs'}
+      ]) }}
+
+      {{ macros.collapsible_section('aspecto', 'Aspecto', 'star', [
+          {'label': 'Closet digital', 'href': '#'},
+          {'label': 'Looks favoritos', 'href': '#', 'badge': '12', 'badge_classes': 'bg-[var(--accent-100)] text-black text-xs px-2 py-1 rounded-full'},
+          {'label': 'Peso corporal', 'href': '#', 'badge': '81.4 kg', 'badge_classes': 'text-[var(--primary-100)] text-xs'}
+      ]) }}
+
+      {{ macros.nav_section('Seguridad', [
+          {'label': 'VPS', 'href': url_for('main.vps'), 'icon': 'server', 'active': request.path == '/vps'},
+          {'label': 'Dominios', 'href': '#', 'icon': 'globe'},
+          {'label': 'Logs', 'href': '#', 'icon': 'file-text'}
+      ]) }}
+
+      {{ macros.nav_section('Perfil', [
+          {'label': 'Datos personales', 'href': url_for('main.perfil'), 'icon': 'user', 'active': request.path == '/perfil'},
+          {'label': 'Preferencias', 'href': '#', 'icon': 'settings'},
+          {'label': 'Notificaciones', 'href': '#', 'icon': 'bell'}
+      ]) }}
+
+      {{ macros.nav_section('Configuración', [
+          {'label': 'Sistema', 'href': '#', 'icon': 'settings'},
+          {'label': 'Apariencia', 'href': '#', 'icon': 'sliders'},
+          {'label': 'Cerrar sesión', 'href': url_for('auth.logout'), 'icon': 'log-out'}
+      ]) }}
+
+    </aside>
+
+    <!-- Main Area -->
+    <div class="flex-1 flex flex-col md:ml-72">
+      <header
+        class="sticky top-0 z-40 h-16 bg-[var(--bg-200)] border-b border-[var(--bg-300)] shadow flex items-center justify-between px-6">
+        <h1 class="text-lg font-semibold tracking-wide">{% block page_title %}Panel{% endblock %}</h1>
+        <div class="flex items-center gap-4">
+          <button id="theme-toggle" class="text-[var(--primary-100)]" aria-label="Cambiar tema">
+            <i id="theme-icon" data-feather="sun" class="w-5 h-5" aria-hidden="true"></i>
+          </button>
+          <button id="hamburger" aria-controls="sidebar" aria-expanded="false" aria-label="Abrir menú"
+            class="md:hidden text-[var(--primary-100)]">
+            <i data-feather="menu" class="w-6 h-6" aria-hidden="true"></i>
+          </button>
+        </div>
+      </header>
+
+      <main class="flex-1 p-6 max-w-7xl w-full mx-auto">
+        {% block content %}{% endblock %}
+      </main>
+
+      <footer class="text-[var(--text-200)] text-center text-xs border-t border-[var(--bg-300)] mt-6 py-4">
+        <p>
+          Panel corriendo en
+          <span class="text-[var(--primary-100)] font-semibold">{{ request.host }}</span>
+        </p>
+        <p>
+          Para más detalles revisa
+          <a href="{{ url_for('main.vps') }}" class="text-[var(--accent-100)] hover:text-[var(--primary-100)] transition-colors">
+            VPS
+          </a>.
+        </p>
+        <p>
+          Tinkerhome Cloud &copy; 2025
+        </p>
+      </footer>
+    </div>
+  </div>
+
+
+
+  <!-- Backdrop for mobile -->
+  <div id="backdrop" class="fixed inset-0 bg-black/50 hidden z-40"></div>
+
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script>
+    // Initialize application when DOM is fully loaded
+    document.addEventListener('alpine:init', () => {
+      // Initialize Feather Icons
+      feather.replace();
+      
+      // Watch for dynamically added content
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.addedNodes.length) {
+            feather.replace();
+          }
+        });
+      });
+      
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+      
+      // Initialize tooltips
+      document.querySelectorAll('[data-tooltip]').forEach(el => {
+        el.setAttribute('aria-label', el.getAttribute('data-tooltip'));
+        el.setAttribute('role', 'tooltip');
+      });
+
+      // -------------------------------
+      // Hamburger toggle for mobile menu
+      // -------------------------------
+      const btn = document.getElementById('hamburger');
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('backdrop');
+
+      if (btn) {
+        btn.addEventListener('click', () => {
+          sidebar?.classList.toggle('-translate-x-full');
+          backdrop?.classList.toggle('hidden');
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!expanded));
+        });
+      }
+
+      // Close sidebar when clicking on backdrop
+      if (backdrop) {
+        backdrop.addEventListener('click', () => {
+          sidebar?.classList.add('-translate-x-full');
+          backdrop.classList.add('hidden');
+          if (btn) {
+            btn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      // Close sidebar when clicking outside on mobile
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth < 768 && sidebar && btn && 
+            !sidebar.contains(e.target) && !btn.contains(e.target)) {
+          sidebar.classList.add('-translate-x-full');
+          backdrop?.classList.add('hidden');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // -------------------------------
+      // Theme handling
+      // -------------------------------
+      function updateThemeIcon(theme) {
+        const themeIcon = document.getElementById('theme-icon');
+        if (themeIcon) {
+          themeIcon.setAttribute('data-feather', theme === 'dark' ? 'sun' : 'moon');
+          feather.replace();
+        }
+      }
+
+      // Initialize theme icon
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      updateThemeIcon(currentTheme);
+
+      // Theme toggle handler
+      const themeToggle = document.getElementById('theme-toggle');
+      if (themeToggle) {
+        themeToggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+          updateThemeIcon(newTheme);
+        });
+      }
+
+      // -------------------------------
+      // Collapsible submenus
+      // -------------------------------
+      document.querySelectorAll('[data-toggle]').forEach(button => {
+        button.addEventListener('click', () => {
+          const id = button.getAttribute('data-toggle');
+          const target = document.getElementById(id);
+          if (target) {
+            target.classList.toggle('hidden');
+            const expanded = button.getAttribute('aria-expanded') === 'true';
+            button.setAttribute('aria-expanded', String(!expanded));
+            const icon = button.querySelector('i[data-feather]');
+            if (icon) {
+              icon.classList.toggle('rotate-180');
+            }
+          }
+        });
+      });
+
+      // -------------------------------
+      // Chart.js initialization
+      // -------------------------------
+      function initializeCharts() {
+        // Expenses chart
+        const expensesCtx = document.getElementById('chart-gastos');
+        if (expensesCtx) {
+          new Chart(expensesCtx, {
+            type: 'line',
+            data: {
+              labels: ['Enero', 'Febrero', 'Marzo'],
+              datasets: [{
+                label: 'Gastos',
+                data: [500, 800, 300],
+                backgroundColor: 'rgba(139, 92, 246, 0.5)',
+                borderColor: '#8B5CF6',
+                tension: 0.4
+              }]
+            }
+          });
+        }
+
+        // Sleep chart
+        const sleepCtx = document.getElementById('chart-sueno');
+        if (sleepCtx) {
+          new Chart(sleepCtx, {
+            type: 'bar',
+            data: {
+              labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie'],
+              datasets: [{
+                label: 'Sueño (h)',
+                data: [7, 6.5, 8, 5, 7.2],
+                backgroundColor: '#8B5CF6'
+              }]
+            }
+          });
+        }
+
+        // Categories chart
+        const categoriesCtx = document.getElementById('chart-categorias');
+        if (categoriesCtx) {
+          const theme = document.documentElement.getAttribute('data-theme');
+          const textColor = theme === 'dark' ? '#FFFFFF' : '#1F2937';
+          new Chart(categoriesCtx, {
+            type: 'pie',
+            data: {
+              labels: ['Alimentos', 'Transporte', 'Entretenimiento'],
+              datasets: [{
+                data: [300, 150, 200],
+                backgroundColor: ['#8B5CF6', '#22D3EE', '#DC2626'],
+              }]
+            },
+            options: {
+              plugins: {
+                legend: { labels: { color: textColor } }
+              }
+            }
+          });
+        }
+
+        // Daily movements chart
+        const dailyCtx = document.getElementById('chart-diario');
+        if (dailyCtx) {
+          const theme = document.documentElement.getAttribute('data-theme');
+          const textColor = theme === 'dark' ? '#FFFFFF' : '#1F2937';
+          new Chart(dailyCtx, {
+            type: 'bar',
+            data: {
+              labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie'],
+              datasets: [{
+                label: 'Movimientos',
+                data: [2, 4, 1, 3, 5],
+                backgroundColor: '#8B5CF6'
+              }]
+            },
+            options: {
+              scales: {
+                x: { ticks: { color: textColor } },
+                y: { ticks: { color: textColor } }
+              }
+            }
+          });
+        }
+      }
+
+      // Initialize charts
+      initializeCharts();
+
+      // -------------------------------
+      // Table search functionality
+      // -------------------------------
+      const searchInput = document.getElementById('buscador');
+      if (searchInput) {
+        searchInput.addEventListener('keyup', function() {
+          const value = this.value.toLowerCase();
+          document.querySelectorAll('tbody tr').forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(value) ? '' : 'none';
+          });
+        });
+      }
+
+      // -------------------------------
+      // Toast notification example
+      // -------------------------------
+      function showWelcomeToast() {
+        Toastify({
+          text: "Bienvenido al Panel Celestial!",
+          duration: 3000,
+          gravity: "top",
+          position: "right",
+          backgroundColor: "var(--primary)"
+        }).showToast();
+      }
+
+      // Uncomment to enable welcome toast
+      // showWelcomeToast();
+
+      // -------------------------------
+      // Keyboard shortcuts
+      // -------------------------------
+      document.addEventListener('keydown', e => {
+        // Toggle sidebar with Ctrl+M
+        if (e.ctrlKey && e.key === 'm') {
+          e.preventDefault();
+          sidebar?.classList.toggle('-translate-x-full');
+          backdrop?.classList.toggle('hidden');
+          if (btn) {
+            const expanded = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', String(!expanded));
+          }
+        }
+      });
+
+      // -------------------------------
+      // Service Worker for PWA
+      // -------------------------------
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/static/sw.js')
+            .then(registration => {
+              console.log('ServiceWorker registration successful with scope: ', registration.scope);
+              // Check for updates
+              registration.update().catch(err => console.debug('ServiceWorker update check failed:', err));
+            })
+            .catch(err => {
+              console.error('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    });
+  </script>
+
+</body>
+
+</html>

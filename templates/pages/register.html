@@ -1,0 +1,35 @@
+{% extends "layouts/auth_base.html" %}
+{% from "components.html" import input_field, primary_button %}
+
+{% block title %}Registro - Tinkerhome{% endblock %}
+
+{% block content %}
+  <div class="w-full max-w-md p-8 space-y-8 bg-[var(--color-surface)] rounded-2xl shadow-2xl border border-[var(--color-border)]">
+
+    <div class="flex justify-center">
+      <i data-feather="user-plus" class="w-12 h-12 text-[var(--color-primary)]"></i>
+    </div>
+
+    <h1 class="text-3xl font-extrabold text-[var(--color-primary)] text-center">Crear cuenta</h1>
+    <p class="text-center text-[var(--color-text-muted)]">Únete a Tinkerhome</p>
+
+    <form method="POST" class="space-y-6 mt-8">
+      {{ input_field('Usuario', 'username', 'text', 'Elige tu nombre de usuario') }}
+      {{ input_field('Contraseña', 'password', 'password', '••••••••') }}
+      {{ primary_button('Crear cuenta', 'user-plus') }}
+    </form>
+
+    <p class="text-center text-sm text-[var(--color-text-muted)] mt-6">
+      ¿Ya tienes una cuenta?
+      <a href="{{ url_for('auth.login') }}" class="font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-hover)]">Inicia sesión</a>
+    </p>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    feather.replace();
+  });
+</script>
+{% endblock %}

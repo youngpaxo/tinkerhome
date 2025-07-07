@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+
+{% block title %}Panel VPS{% endblock %}
+
+{% block content %}
+
+<h2 class="text-3xl font-bold text-accent font-mono mb-10">Estado del VPS</h2>
+
+<div class="flex flex-col gap-10">
+
+  <!-- 🔹 Dashboard Resumen -->
+  <section>
+    <h2 class="text-2xl font-bold text-accent font-mono mb-6">Resumen del Sistema</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-surface border border-accent rounded-lg p-6 shadow-card">
+        <p class="text-xs uppercase text-textMuted mb-2 font-bold tracking-widest">CPU Uso Total</p>
+        <p class="text-3xl font-bold text-terminalgreen" id="cpu_total">-- %</p>
+      </div>
+      <div class="bg-surface border border-accent rounded-lg p-6 shadow-card">
+        <p class="text-xs uppercase text-textMuted mb-2 font-bold tracking-widest">RAM Uso</p>
+        <p class="text-3xl font-bold text-terminalgreen" id="ram_percent">-- %</p>
+      </div>
+      <div class="bg-surface border border-accent rounded-lg p-6 shadow-card">
+        <p class="text-xs uppercase text-textMuted mb-2 font-bold tracking-widest">Disco Uso</p>
+        <p class="text-3xl font-bold text-terminalgreen" id="disk_percent">-- %</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 Información del Sistema -->
+  <section>
+    <h2 class="text-2xl font-bold text-accent font-mono mb-6">Detalles del Sistema</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <div class="bg-surface border border-accent rounded-lg p-6 shadow-card">
+        <h3 class="text-lg font-bold text-text mb-4 font-mono">Sistema</h3>
+        <div id="system_info" class="text-sm text-text space-y-2"></div>
+      </div>
+
+      <div class="bg-surface border border-accent rounded-lg p-6 shadow-card">
+        <h3 class="text-lg font-bold text-text mb-4 font-mono">Red</h3>
+        <div id="network" class="text-sm text-text space-y-2"></div>
+      </div>
+
+      <div class="bg-surface border border-accent rounded-lg p-6 shadow-card">
+        <h3 class="text-lg font-bold text-text mb-4 font-mono">RAM Detalles</h3>
+        <div id="ram_info" class="text-sm text-text space-y-2"></div>
+      </div>
+
+      <div class="bg-surface border border-accent rounded-lg p-6 shadow-card">
+        <h3 class="text-lg font-bold text-text mb-4 font-mono">SWAP</h3>
+        <div id="swap_info" class="text-sm text-text space-y-2"></div>
+      </div>
+
+      <div class="bg-surface border border-accent rounded-lg p-6 shadow-card md:col-span-2">
+        <h3 class="text-lg font-bold text-text mb-4 font-mono">Usuarios Conectados</h3>
+        <ul id="users" class="text-sm text-text space-y-2"></ul>
+      </div>
+
+      <div class="bg-surface border border-accent rounded-lg p-6 shadow-card md:col-span-2">
+        <h3 class="text-lg font-bold text-text mb-4 font-mono">Puertos en Escucha</h3>
+        <ul id="ports" class="text-sm text-text space-y-2"></ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 🔹 CPU Núcleos -->
+  <section>
+    <h2 class="text-2xl font-bold text-accent font-mono mb-6">CPU por Núcleo</h2>
+    <ul id="cpu_cores" class="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm text-text"></ul>
+  </section>
+
+  <!-- 🔹 Discos -->
+  <section>
+    <h2 class="text-2xl font-bold text-accent font-mono mb-6">Discos</h2>
+    <ul id="disks" class="space-y-3 text-sm text-text"></ul>
+  </section>
+
+  <!-- 🔹 Procesos -->
+  <section>
+    <h2 class="text-2xl font-bold text-accent font-mono mb-6">Procesos (Top 10)</h2>
+    <div class="overflow-x-auto bg-surface border border-accent rounded-lg shadow-card">
+      <table class="w-full text-sm text-text">
+        <thead class="bg-surface border-b border-accent text-textMuted uppercase text-xs">
+          <tr>
+            <th class="px-4 py-3 text-left">PID</th>
+            <th class="px-4 py-3 text-left">Nombre</th>
+            <th class="px-4 py-3 text-left">Usuario</th>
+            <th class="px-4 py-3 text-left">% CPU</th>
+            <th class="px-4 py-3 text-left">% RAM</th>
+          </tr>
+        </thead>
+        <tbody id="processes" class="divide-y divide-accent"></tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+
+<script>
+fetch('/api/vps')
+  .then(response => {
+    if (!response.ok) throw new Error("HTTP error " + response.status);
+    return response.json();
+  })
+  .then(data => {
+    document.getElementById('cpu_total').textContent = data.cpu_percent + ' %';
+    document.getElementById('ram_percent').textContent = data.ram_info.percent + ' %';
+    document.getElementById('disk_percent').textContent = (data.disk_partitions[0]?.percent ?? '--') + ' %';
+
+    let sys_html = `
+      <p><strong>Sistema:</strong> ${data.system_info.system} ${data.system_info.release} (${data.system_info.machine})</p>
+      <p><strong>Node:</strong> ${data.system_info.node}</p>
+      <p><strong>Kernel:</strong> ${data.system_info.version}</p>
+      <p><strong>Procesador:</strong> ${data.system_info.processor}</p>
+      <p><strong>Python:</strong> ${data.system_info.python_version}</p>
+      <p><strong>Distro:</strong> ${data.distro_info ? data.distro_info.name + " " + data.distro_info.version : "N/A"}</p>
+      <p><strong>Boot Time:</strong> ${data.boot_time}</p>
+      <p>${data.load_average ? `Load avg: ${data.load_average["1min"]}, ${data.load_average["5min"]}, ${data.load_average["15min"]}` : ''}</p>
+    `;
+    document.getElementById('system_info').innerHTML = sys_html;
+
+    let cores_html = data.cpu_per_core.map((val, i) =>
+      `<li class="bg-indigo-900 text-white p-2 rounded">Core ${i+1}: ${val} %</li>`
+    ).join('');
+    document.getElementById('cpu_cores').innerHTML = cores_html;
+
+    document.getElementById('ram_info').innerHTML = `
+      <p>Total: ${(data.ram_info.total/1e9).toFixed(2)} GB</p>
+      <p>Usada: ${(data.ram_info.used/1e9).toFixed(2)} GB</p>
+      <p>Libre: ${(data.ram_info.available/1e9).toFixed(2)} GB</p>
+    `;
+
+    document.getElementById('swap_info').innerHTML = `
+      <p>Total: ${(data.swap_info.total/1e9).toFixed(2)} GB</p>
+      <p>Usada: ${(data.swap_info.used/1e9).toFixed(2)} GB</p>
+      <p>Uso: ${data.swap_info.percent} %</p>
+    `;
+
+    let disks_html = data.disk_partitions.map(part => `
+      <li class="bg-yellow-900 text-white p-3 rounded">
+        <p><strong>${part.device}</strong> (${part.mountpoint})</p>
+        <p>Total: ${(part.total/1e9).toFixed(2)} GB - Usado: ${(part.used/1e9).toFixed(2)} GB (${part.percent}%)</p>
+      </li>
+    `).join('');
+    document.getElementById('disks').innerHTML = disks_html;
+
+    let net_html = `
+      <p><strong>Bytes enviados:</strong> ${(data.net_io.bytes_sent/1e6).toFixed(2)} MB</p>
+      <p><strong>Bytes recibidos:</strong> ${(data.net_io.bytes_recv/1e6).toFixed(2)} MB</p>
+      <p class="mt-2 font-bold">Interfaces:</p>
+    `;
+    Object.keys(data.net_if_stats).forEach(iface => {
+      net_html += `
+        <p class="bg-gray-700 text-white p-2 rounded mt-1">
+          <strong>${iface}</strong> | UP: ${data.net_if_stats[iface].isup} | Speed: ${data.net_if_stats[iface].speed || "?"} Mbps<br>
+          IPs: ${(data.net_if_addrs[iface] || []).join(", ") || "N/A"}
+        </p>
+      `;
+    });
+    document.getElementById('network').innerHTML = net_html;
+
+    let users_html = data.users_logged_in.map(user =>
+      `<li class="bg-green-900 text-white p-2 rounded">${user.name} (${user.terminal}) desde ${user.host} - Login: ${user.started}</li>`
+    ).join('');
+    document.getElementById('users').innerHTML = users_html || '<p>No hay usuarios conectados.</p>';
+
+    let procs_html = data.processes
+      .sort((a, b) => b.cpu_percent - a.cpu_percent)
+      .slice(0, 10)
+      .map(proc => `
+        <tr class="border-b border-accent">
+          <td class="p-2">${proc.pid}</td>
+          <td class="p-2">${proc.name}</td>
+          <td class="p-2">${proc.username}</td>
+          <td class="p-2">${proc.cpu_percent} %</td>
+          <td class="p-2">${proc.memory_percent.toFixed(2)} %</td>
+        </tr>
+      `).join('');
+    document.getElementById('processes').innerHTML = procs_html;
+
+    let ports_html = data.open_ports.map(port =>
+      `<li class="bg-pink-900 text-white p-2 rounded"><strong>PID:</strong> ${port.pid} | <strong>IP:</strong> ${port.ip} | <strong>Puerto:</strong> ${port.port}</li>`
+    ).join('');
+    document.getElementById('ports').innerHTML = ports_html || '<p>No hay puertos en escucha.</p>';
+  })
+  .catch(error => {
+    console.error('Error al obtener datos del VPS:', error);
+  });
+</script>
+
+{% endblock %}

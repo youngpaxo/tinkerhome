@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Tinkerhome{% endblock %}</title>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              // backgrounds
+              bg: 'var(--color-bg)',
+              'bg-secondary': 'var(--color-bg-secondary)',
+              'bg-highlight': 'var(--color-bg-highlight)',
+              surface: 'var(--color-surface)',
+              card: 'var(--color-card)',
+    
+              // text
+              text: 'var(--color-text)',
+              'text-muted': 'var(--color-text-muted)',
+              heading: 'var(--color-heading)',
+    
+              // primary
+              primary: 'var(--color-primary)',
+              'primary-hover': 'var(--color-primary-hover)',
+              'primary-light': 'var(--color-primary-light)',
+    
+              // danger
+              danger: 'var(--color-danger)',
+              'danger-hover': 'var(--color-danger-hover)',
+              'danger-light': 'var(--color-danger-light)',
+    
+              // accent
+              accent: 'var(--color-accent)',
+              'accent-light': 'var(--color-accent-light)',
+              'accent-dark': 'var(--color-accent-dark)',
+    
+              // success & warning
+              success: 'var(--color-success)',
+              warning: 'var(--color-warning)',
+    
+              // borders
+              border: 'var(--color-border)',
+              'border-light': 'var(--color-border-light)',
+            },
+    
+            fontFamily: {
+              sans: ['var(--font-family-sans)', 'sans-serif'],
+              mono: ['var(--font-family-mono)', 'monospace'],
+            },
+    
+            borderRadius: {
+              sm: 'var(--radius-sm)',
+              md: 'var(--radius-md)',
+              lg: 'var(--radius-lg)',
+              full: 'var(--radius-full)',
+            },
+    
+            boxShadow: {
+              sm: 'var(--shadow-sm)',
+              md: 'var(--shadow-md)',
+              lg: 'var(--shadow-lg)',
+            },
+    
+            spacing: {
+              xs: 'var(--space-xs)',
+              sm: 'var(--space-sm)',
+              md: 'var(--space-md)',
+              lg: 'var(--space-lg)',
+              xl: 'var(--space-xl)',
+            },
+    
+            transitionDuration: {
+              fast: 'var(--transition-fast)',
+              medium: 'var(--transition-medium)',
+              slow: 'var(--transition-slow)',
+            },
+    
+            borderWidth: {
+              DEFAULT: 'var(--border-width)',
+            },
+    
+            gradientColorStops: {
+              primary: 'var(--gradient-primary)',
+              danger: 'var(--gradient-danger)',
+            },
+    
+            opacity: {
+              disabled: 'var(--opacity-disabled)',
+            },
+          },
+        },
+      }
+    </script>
+    
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Feather Icons -->
+    <script defer src="https://unpkg.com/feather-icons"></script>
+
+  </head>
+  <body class="bg-gradient-to-br from-[var(--color-surface)] to-[var(--color-bg)] text-[var(--color-text)] font-sans min-h-screen flex items-center justify-center">
+
+    {% block content %}{% endblock %}
+    {% block scripts %}{% endblock %}
+
+  </body>
+</html>

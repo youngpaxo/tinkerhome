@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Gestor de Finanzas - Notas{% endblock %}
+
+{% block content %}
+<div class="flex flex-col gap-10">
+
+  <!-- FORMULARIO -->
+  <section class="bg-surface rounded-xl p-8 shadow-card border border-surface">
+    <h2 class="text-3xl font-bold text-accent font-mono mb-6">
+      Agregar Nota
+    </h2>
+
+    <form method="post" class="space-y-6">
+
+      <!-- FECHA -->
+      <div class="flex flex-col gap-2">
+        <label for="fecha" class="text-sm font-semibold text-text">
+          Fecha
+        </label>
+        <input type="date" id="fecha" name="fecha" required
+          class="w-full rounded bg-darkbg border border-surface text-text p-3 focus:ring-2 focus:ring-accent placeholder:text-textMuted" />
+      </div>
+
+      <!-- NOTA -->
+      <div class="flex flex-col gap-2">
+        <label for="nota" class="text-sm font-semibold text-text">
+          Nota
+        </label>
+        <textarea id="nota" name="nota" rows="4" required
+          placeholder="Escribe tu nota aquí..."
+          class="w-full rounded bg-darkbg border border-surface text-text p-3 focus:ring-2 focus:ring-accent placeholder:text-textMuted"></textarea>
+      </div>
+
+      <!-- BOTONES -->
+      <div class="flex flex-col sm:flex-row gap-4 mt-6">
+        <button type="submit"
+          class="w-full sm:w-auto px-5 py-3 rounded bg-accent text-white font-semibold hover:bg-accentHover transition-colors">
+          Agregar Nota
+        </button>
+        <a href="{{ url_for('main.index') }}"
+          class="w-full sm:w-auto text-center px-5 py-3 rounded bg-gray-600 text-white font-semibold hover:bg-gray-500 transition-colors">
+          Cancelar
+        </a>
+      </div>
+    </form>
+  </section>
+
+  <!-- LISTA DE NOTAS -->
+  <section class="bg-surface rounded-xl p-8 shadow-card border border-surface">
+    <h2 class="text-3xl font-bold text-accent font-mono mb-6">
+      Notas Registradas
+    </h2>
+
+    {% if notas %}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for nota in notas %}
+        <div class="bg-darkbg border border-surface rounded-lg p-5 flex flex-col justify-between hover:border-accent transition-colors">
+          <div class="mb-4">
+            <span class="text-sm text-textMuted font-mono block mb-2">
+              {{ nota.fecha }}
+            </span>
+            <p class="text-text text-sm">
+              {{ nota.nota }}
+            </p>
+          </div>
+          <div class="flex gap-2 mt-4">
+            <button class="text-xs px-3 py-1 rounded bg-accent text-white hover:bg-accentHover transition-colors">
+              Ver
+            </button>
+            <button class="text-xs px-3 py-1 rounded bg-yellow-500 text-darkbg hover:bg-yellow-600 transition-colors">
+              Editar
+            </button>
+            <button class="text-xs px-3 py-1 rounded bg-ured text-white hover:bg-red-700 transition-colors">
+              Borrar
+            </button>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-textMuted">
+        No hay notas registradas.
+      </p>
+    {% endif %}
+  </section>
+
+</div>
+{% endblock %}

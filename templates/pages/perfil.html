@@ -1,0 +1,225 @@
+{% extends "base.html" %}
+
+{% block title %}Perfil de Usuario - Tinkerhome{% endblock %}
+
+{% block page_title %}Perfil de Usuario{% endblock %}
+
+{% block content %}
+<div class="space-y-8">
+  <!-- Header Section -->
+  <div class="bg-surface p-6 rounded-xl shadow-card border border-surface">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <div class="flex items-center gap-4">
+        <div class="relative">
+          <div
+            class="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-primaryDark flex items-center justify-center text-2xl font-bold text-white">
+            {{ current_user.username[0]|upper }}
+          </div>
+          <button
+            class="absolute -bottom-1 -right-1 bg-accent hover:bg-accentHover text-white p-1.5 rounded-full shadow-md">
+            <i data-feather="camera" class="w-4 h-4"></i>
+          </button>
+        </div>
+        <div>
+          <h1 class="text-2xl font-bold text-text">{{ current_user.username }}</h1>
+
+          {% if current_user.created_at %}
+          <p class="text-textMuted text-sm">
+            Miembro desde {{ current_user.created_at.strftime('%B %Y') }}
+          </p>
+          {% else %}
+          <p class="text-textMuted text-sm">
+            Miembro desde fecha desconocida
+          </p>
+          {% endif %}
+        </div>
+
+      </div>
+      <div class="flex gap-3">
+        <button
+          class="px-4 py-2 bg-surfaceDark hover:bg-surfaceDarker text-text rounded-lg border border-surface flex items-center gap-2 transition-colors">
+          <i data-feather="download" class="w-4 h-4"></i>
+          <span>Exportar datos</span>
+        </button>
+        <button
+          class="px-4 py-2 bg-primary hover:bg-primaryDark text-white rounded-lg flex items-center gap-2 transition-colors">
+          <i data-feather="edit-2" class="w-4 h-4"></i>
+          <span>Editar perfil</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Personal Information -->
+    <div class="lg:col-span-2 space-y-6">
+      <!-- Personal Details Card -->
+      <div class="bg-surface p-6 rounded-xl shadow-card border border-surface">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold text-text">Información Personal</h2>
+          <button class="text-primary hover:text-primaryDark transition-colors">
+            <i data-feather="edit-2" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <div class="space-y-4">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <p class="text-sm text-textMuted">Nombre de usuario</p>
+              <p class="text-text font-medium">{{ current_user.username }}</p>
+            </div>
+            <div>
+              <p class="text-sm text-textMuted">Correo electrónico</p>
+              <p class="text-text font-medium">{{ current_user.email or 'No especificado' }}</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <p class="text-sm text-textMuted">País</p>
+              <p class="text-text font-medium">Chile</p>
+            </div>
+            <div>
+              <p class="text-sm text-textMuted">Idioma</p>
+              <p class="text-text font-medium">Español</p>
+            </div>
+            <div>
+              <p class="text-sm text-textMuted">Zona horaria</p>
+              <p class="text-text font-medium">UTC-04:00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Security Card -->
+      <div class="bg-surface p-6 rounded-xl shadow-card border border-surface">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold text-text">Seguridad</h2>
+          <button class="text-primary hover:text-primaryDark transition-colors">
+            <i data-feather="key" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <div class="space-y-4">
+          <div class="flex items-center justify-between p-3 bg-surfaceDark rounded-lg">
+            <div>
+              <p class="font-medium text-text">Contraseña</p>
+              <p class="text-sm text-textMuted">Último cambio: Hace 3 meses</p>
+            </div>
+            <button class="text-primary hover:text-primaryDark text-sm font-medium">
+              Cambiar contraseña
+            </button>
+          </div>
+
+          <div class="flex items-center justify-between p-3 bg-surfaceDark rounded-lg">
+            <div>
+              <p class="font-medium text-text">Autenticación de dos factores</p>
+              <p class="text-sm text-textMuted">No activada</p>
+            </div>
+            <button class="text-primary hover:text-primaryDark text-sm font-medium">
+              Activar 2FA
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Activity & Preferences -->
+    <div class="space-y-6">
+      <!-- Preferences Card -->
+      <div class="bg-surface p-6 rounded-xl shadow-card border border-surface">
+        <h2 class="text-xl font-semibold text-text mb-4">Preferencias</h2>
+
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="font-medium text-text">Tema oscuro</p>
+              <p class="text-sm text-textMuted">Activar/Desactivar</p>
+            </div>
+            <button id="theme-toggle" class="relative inline-flex h-6 w-11 items-center rounded-full bg-surfaceDark">
+              <span class="sr-only">Cambiar tema</span>
+              <span
+                class="inline-block h-4 w-4 transform rounded-full bg-primary transition-transform translate-x-1"></span>
+            </button>
+          </div>
+
+          <div class="pt-4 border-t border-surface">
+            <p class="font-medium text-text mb-2">Notificaciones</p>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-textMuted">Correos electrónicos</span>
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" value="" class="sr-only peer" checked>
+                  <div
+                    class="w-9 h-5 bg-surfaceDark peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary">
+                  </div>
+                </label>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-textMuted">Notificaciones push</span>
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" value="" class="sr-only peer">
+                  <div
+                    class="w-9 h-5 bg-surfaceDark peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary">
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Account Status -->
+      <div class="bg-surface p-6 rounded-xl shadow-card border border-surface">
+        <h2 class="text-xl font-semibold text-text mb-4">Estado de la cuenta</h2>
+
+        <div class="space-y-4">
+          <div class="p-3 bg-surfaceDark rounded-lg">
+            <p class="font-medium text-text">Plan actual</p>
+            <p class="text-sm text-textMuted">Gratuito</p>
+            <button class="mt-2 text-sm text-primary hover:text-primaryDark font-medium">
+              Actualizar a Premium
+            </button>
+          </div>
+
+          <div class="p-3 bg-surfaceDark rounded-lg">
+            <p class="font-medium text-text">Almacenamiento usado</p>
+            <div class="w-full bg-surfaceDarker rounded-full h-2 mt-2">
+              <div class="bg-accent h-2 rounded-full" style="width: 25%"></div>
+            </div>
+            <p class="text-xs text-textMuted mt-1">2.5 GB de 10 GB usados</p>
+          </div>
+
+          <div class="pt-4 border-t border-surface">
+            <button
+              class="w-full py-2 px-4 border border-red-500 text-red-500 hover:bg-red-500/10 rounded-lg transition-colors flex items-center justify-center gap-2">
+              <i data-feather="trash-2" class="w-4 h-4"></i>
+              <span>Eliminar cuenta</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Initialize Feather Icons
+    feather.replace();
+
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', function () {
+        const html = document.documentElement;
+        const isDark = html.classList.contains('dark');
+        html.classList.toggle('dark', !isDark);
+        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      });
+    }
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "/components/base.html" %}
+
+{% block title %}Gestor de Finanzas - Inicio{% endblock %}
+
+{% block content %}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+  <!-- Total Ingresos -->
+  <div class="bg-surface border border-ublue rounded-xl p-6 shadow-lg">
+    <h2 class="text-lg font-bold text-ublue mb-2 font-mono">Total Ingresos</h2>
+    <p class="text-3xl font-bold text-terminalgreen">
+      ${{ total_ingresos | float | round(2) | string | replace(".", ",") }}
+    </p>
+  </div>
+
+  <!-- Total Gastos -->
+  <div class="bg-surface border border-ublue rounded-xl p-6 shadow-lg">
+    <h2 class="text-lg font-bold text-ublue mb-2 font-mono">Total Gastos</h2>
+    <p class="text-3xl font-bold text-ured">
+      ${{ total_gastos | float | round(2) | string | replace(".", ",") }}
+    </p>
+  </div>
+
+  <!-- Total Ahorros -->
+  <div class="bg-surface border border-ublue rounded-xl p-6 shadow-lg">
+    <h2 class="text-lg font-bold text-ublue mb-2 font-mono">Total Ahorros</h2>
+    <p class="text-3xl font-bold text-ublue">
+      ${{ total_ahorros | float | round(2) | string | replace(".", ",") }}
+    </p>
+  </div>
+
+  <!-- Saldo Neto -->
+  <div class="bg-surface border border-ublue rounded-xl p-6 shadow-lg">
+    <h2 class="text-lg font-bold text-ublue mb-2 font-mono">Saldo Neto</h2>
+    <p class="text-3xl font-bold {% if saldo_neto >= 0 %}text-terminalgreen{% else %}text-ured{% endif %}">
+      ${{ saldo_neto | float | round(2) | string | replace(".", ",") }}
+    </p>
+  </div>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+
+  <!-- Últimos Ingresos -->
+  <section class="bg-surface rounded-xl shadow-lg border border-ublue p-6">
+    <h2 class="text-2xl font-bold text-ublue mb-4 font-mono">Últimos Ingresos</h2>
+    {% if ultimos_ingresos %}
+      <ul class="space-y-2">
+        {% for ingreso in ultimos_ingresos %}
+          <li class="flex justify-between items-center border-b border-ublue pb-2">
+            <span class="text-text">{{ ingreso["fecha"] }} - {{ ingreso["nota"] or "Sin nota" }}</span>
+            <span class="text-terminalgreen font-semibold">
+              ${{ ingreso["monto"] | float | round(2) | string | replace(".", ",") }}
+            </span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-textMuted">No hay ingresos registrados aún.</p>
+    {% endif %}
+    <a href="{{ url_for('main.movimientos', tipo='Ingreso') }}"
+       class="mt-4 inline-block px-4 py-2 rounded bg-ublue text-white hover:bg-ured transition">
+      Ver más
+    </a>
+  </section>
+
+  <!-- Últimos Gastos -->
+  <section class="bg-surface rounded-xl shadow-lg border border-ublue p-6">
+    <h2 class="text-2xl font-bold text-ublue mb-4 font-mono">Últimos Gastos</h2>
+    {% if ultimos_gastos %}
+      <ul class="space-y-2">
+        {% for gasto in ultimos_gastos %}
+          <li class="flex justify-between items-center border-b border-ublue pb-2">
+            <span class="text-text">{{ gasto["fecha"] }} - {{ gasto["nota"] or "Sin nota" }}</span>
+            <span class="text-ured font-semibold">
+              ${{ gasto["monto"] | float | round(2) | string | replace(".", ",") }}
+            </span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-textMuted">No hay gastos registrados aún.</p>
+    {% endif %}
+    <a href="{{ url_for('main.movimientos', tipo='Gasto') }}"
+       class="mt-4 inline-block px-4 py-2 rounded bg-ublue text-white hover:bg-ured transition">
+      Ver más
+    </a>
+  </section>
+
+</div>
+{% endblock %}
